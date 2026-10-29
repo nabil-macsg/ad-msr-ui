@@ -1,0 +1,2663 @@
+{
+  "appName": "MASAR",
+  "appStrap": "Logistics Management",
+  "footer": "ADNOC Offshore · MASAR",
+  "greeting": {
+    "morning": "Good morning, {{name}}",
+    "afternoon": "Good afternoon, {{name}}",
+    "evening": "Good evening, {{name}}"
+  },
+  "narrowViewport": "MASAR is designed for desktop and tablet browsers. On a phone, use the MASAR app.",
+  "loading": "Loading…",
+  "notBuilt": {
+    "title": "In scope, not built yet",
+    "body": "This page is part of MASAR and arrives in a later delivery phase.",
+    "held": "Waiting for a decision on open point {{point}} before this page is built."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "There is no page at this address.",
+    "home": "Go to Home"
+  },
+  "denied": "You don't have access to {{page}}.",
+  "shell": {
+    "search": "Search passengers, flights, bookings…",
+    "searchTitle": "Global search",
+    "notifications": "Notifications",
+    "alerts": "Alerts",
+    "emails": "Emails",
+    "markAllRead": "Mark all as read",
+    "noAlerts": "You're all caught up.",
+    "noEmails": "No emails yet.",
+    "aiAssistant": "AI assistant",
+    "administration": "Administration",
+    "backToMasar": "Back to MASAR",
+    "support": "Support",
+    "signOut": "Log out",
+    "userMenu": "Your account menu",
+    "myAccount": "My account",
+    "delegation": "Delegation",
+    "changePassword": "Change password",
+    "mainNavigation": "Main navigation",
+    "adminNavigation": "Administration navigation"
+  },
+  "signIn": {
+    "brand": "ADNOC Offshore · MASAR",
+    "strap": "Every person and every cargo moving offshore, on one system.",
+    "title": "Sign in",
+    "lead": "Use your ADNOC email address. You will be taken to ADNOC single sign-on.",
+    "email": "Email",
+    "continueSso": "Continue with ADNOC SSO",
+    "note": "Access is granted through ADNOC identity. Accounts are not created here.",
+    "externalLink": "Contractors and service providers without an ADNOC account sign in through a separate external access route.",
+    "errors": {
+      "NOT_REGISTERED": "Access is granted through ADNOC identity. Accounts are not created here.",
+      "DEACTIVATED": "Access is granted through ADNOC identity. Accounts are not created here.",
+      "NO_ROLE": "Access is granted through ADNOC identity. Accounts are not created here.",
+      "IDENTITY_MISMATCH": "Your ADNOC identity does not match your MASAR account. Contact the MASAR service desk.",
+      "EXTERNAL_ACCOUNT": "This account signs in through the external access route, with email and password.",
+      "SSO_FAILED": "ADNOC single sign-on did not complete. Try again.",
+      "SESSION_ENDED": "Your session has ended. Sign in again."
+    },
+    "external": {
+      "title": "External access",
+      "lead": "For contractors and service providers without an ADNOC account.",
+      "password": "Password",
+      "continue": "Continue",
+      "codeTitle": "Enter your code",
+      "codeLead": "We emailed a 6-digit code to {{email}}. It is valid for 10 minutes.",
+      "code": "6-digit code",
+      "verify": "Sign in",
+      "resend": "Send a new code",
+      "resendIn": "Send a new code in {{seconds}} s",
+      "forgot": "Forgot your password?",
+      "back": "Back to ADNOC sign-in",
+      "resetTitle": "Reset your password",
+      "resetLead": "Enter your email. If it belongs to an external account, we will email a reset link.",
+      "resetSend": "Email me a link",
+      "resetSent": "If an external account uses that address, a reset link is on its way. It is valid for 1 hour."
+    },
+    "setPassword": {
+      "invitationTitle": "Set your password",
+      "resetTitle": "Choose a new password",
+      "lead": "At least 12 characters. A short sentence is easy to remember and hard to guess.",
+      "password": "New password",
+      "confirm": "Confirm the new password",
+      "save": "Save password",
+      "codeLead": "We emailed a 6-digit code to confirm the reset.",
+      "done": "Your password is set. Sign in with it and the code we email you.",
+      "toSignIn": "Go to sign-in",
+      "missingToken": "This link is incomplete. Open the link from your email again."
+    }
+  },
+  "validation": {
+    "email": "Enter a valid email address",
+    "required": "Required",
+    "code": "Enter the 6-digit code",
+    "passwordLength": "Use at least 12 characters",
+    "mismatch": "The passwords don't match"
+  },
+  "account": {
+    "changePasswordTitle": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm the new password",
+    "save": "Change password",
+    "cancel": "Cancel",
+    "changed": "Your password is changed. Your other sessions have ended.",
+    "title": "My account",
+    "subtitle": "Who MASAR knows you as, what you may do, and where you are signed in.",
+    "profile": "Profile",
+    "profileHint": "These details come from your source system and can only be changed there.",
+    "personnelNo": "Personnel No.",
+    "email": "Email",
+    "organisation": "Organisation",
+    "department": "Department",
+    "designation": "Designation",
+    "signIn": "Sign-in",
+    "lastSignIn": "Last sign-in",
+    "never": "Never",
+    "roles": "Roles and scope",
+    "noRoles": "You hold no roles.",
+    "until": "Until {{day}}",
+    "noExpiry": "No expiry",
+    "delegations": "Delegations",
+    "given": "Given by me",
+    "received": "Received",
+    "noDelegations": "None.",
+    "newDelegation": "New delegation",
+    "revokeDelegation": "End delegation to {{name}}",
+    "allWorkflows": "All workflows",
+    "delegationPeriod": "{{from}} – {{to}} GST",
+    "devices": "My devices",
+    "devicesHint": "The phones and tablets where the MASAR App is signed in as you.",
+    "noDevices": "The MASAR App isn’t signed in anywhere.",
+    "thisDevice": "This device",
+    "revokeDevice": "Sign out {{device}}",
+    "revokeDeviceTitle": "Sign out {{device}}?",
+    "revokeDeviceBody": "The app on it signs out and wipes its data. Signing in again there registers it afresh.",
+    "lastSeen": "Last seen {{at}} GST",
+    "deviceRevoked": "Signed out",
+    "preferences": "Notification preferences",
+    "preferencesHint": "Mandatory categories can’t be turned off.",
+    "mandatory": "Mandatory",
+    "channel": {
+      "email": "Email",
+      "sms": "SMS",
+      "push": "App"
+    },
+    "channelFor": "{{channel}} for {{category}}",
+    "savePreferences": "Save preferences",
+    "preferencesSaved": "Preferences saved.",
+    "password": "Password",
+    "passwordHint": "You sign in with your email, password and an emailed code.",
+    "changePassword": "Change password"
+  },
+  "ui": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "table": {
+      "count": "{{shown}} of {{total}}",
+      "showDeactivated": "Show deactivated",
+      "previous": "Previous page",
+      "nextPage": "Next page",
+      "pageOf": "Page {{page}} of {{pages}}",
+      "pageSize": "Rows per page",
+      "export": "Export",
+      "exportAs": "Export as {{format}}",
+      "empty": "Nothing to show",
+      "emptyFiltered": "Nothing matches these filters.",
+      "loading": "Loading rows…",
+      "sortBy": "Sort by {{column}}"
+    },
+    "filter": {
+      "search": "Search",
+      "clear": "Clear filters",
+      "all": "All"
+    },
+    "approval": {
+      "approved": "Approved",
+      "pending": "Pending",
+      "rejected": "Rejected",
+      "waiting": "Waiting",
+      "skipped": "Skipped",
+      "slaLeft": "{{hours}} h left",
+      "slaOverdue": "Overdue by {{hours}} h",
+      "chain": "Approval chain"
+    },
+    "confirm": {
+      "reason": "Reason",
+      "reasonHint": "A reason is required and is recorded in the audit log.",
+      "reasonRequired": "Enter a reason",
+      "failed": "That didn’t work. Try again."
+    },
+    "dropzone": {
+      "prompt": "Drag files here, or",
+      "choose": "choose files",
+      "limits": "{{types}} · up to {{size}} MB each",
+      "tooLarge": "{{name}} is larger than {{size}} MB.",
+      "wrongType": "{{name}} is not an accepted file type."
+    },
+    "unit": {
+      "weight": "Weight",
+      "equals": "= {{kg}} kg"
+    },
+    "provenance": {
+      "sap": "VIA SAP",
+      "fieldglass": "VIA FIELDGLASS",
+      "hse-passport": "VIA HSE PASSPORT",
+      "gis": "VIA GIS",
+      "imilaha": "VIA iMILAHA",
+      "manual": "MANUAL EXCEPTION",
+      "syncedAt": "Last synced {{at}} GST",
+      "contacts": "VIA CONTACTS LIST",
+      "masar": "KEPT IN MASAR"
+    },
+    "calendar": {
+      "previous": "Previous",
+      "next": "Next",
+      "today": "Today",
+      "more": "+{{count}} more",
+      "noTime": "No time"
+    },
+    "seat": {
+      "label": "Seat {{seat}}, {{state}}",
+      "free": "free",
+      "taken": "taken",
+      "blocked": "blocked",
+      "selected": "selected",
+      "map": "Seat map",
+      "front": "Front"
+    },
+    "ticker": {
+      "live": "LIVE",
+      "region": "Live updates"
+    },
+    "map": {
+      "region": "Map"
+    },
+    "stepper": {
+      "progress": "Progress",
+      "step": "Step {{n}} of {{total}}"
+    },
+    "audit": {
+      "changes": "What has happened",
+      "loading": "Loading the history…",
+      "loadFailed": "The history could not be loaded. Try again.",
+      "empty": "No changes recorded yet.",
+      "showMore": "Show more",
+      "onBehalfOf": "on behalf of {{name}}"
+    }
+  },
+  "masters": {
+    "new": "New {{noun}}",
+    "status": "Status",
+    "active": "Active",
+    "deactivated": "Deactivated",
+    "actions": "Actions",
+    "actionsFor": "Actions for {{record}}",
+    "edit": "Edit",
+    "history": "History",
+    "historyOf": "History of {{record}}",
+    "deactivate": "Deactivate",
+    "deactivateTitle": "Deactivate {{record}}?",
+    "deactivateBody": "It stays on record but can no longer be chosen. You can reactivate it later.",
+    "reactivate": "Reactivate",
+    "reactivateTitle": "Reactivate {{record}}?",
+    "reactivateBody": "It can be chosen again from now on.",
+    "delete": "Delete",
+    "deleteTitle": "Delete {{record}}?",
+    "deleteBody": "It leaves every list. The record and its history are kept for audit.",
+    "loadFailed": "The list could not be loaded. Try again.",
+    "exportFailed": "The export could not be downloaded. Try again."
+  },
+  "users": {
+    "title": "Users",
+    "subtitle": "The directory of everyone who can sign in — how each person signs in, which role and scope they hold, when their access expires and any delegation in place. Users are not created by hand: they arrive from source systems.",
+    "tabs": {
+      "directory": "Directory",
+      "analytics": "Usage analytics"
+    },
+    "kpi": {
+      "registered": "Registered",
+      "registeredSub": "{{invited}} invited · {{withoutRoles}} without a role",
+      "active": "Active",
+      "expiring": "Expiring in 30 days",
+      "expiringSub": "All their access ends",
+      "external": "External",
+      "externalSub": "Email + password + code",
+      "adminTier": "Admin-tier holders",
+      "overLimit": "{{role}} has {{holders}} holders; its limit is {{max}}."
+    },
+    "filters": {
+      "search": "Search by name, email or personnel no.",
+      "role": "Role",
+      "source": "Source",
+      "status": "Status",
+      "access": "Access",
+      "zone": "Zone",
+      "expiring": "Ending within 30 days",
+      "none": "No role"
+    },
+    "columns": {
+      "name": "Name",
+      "organisation": "Organisation / provider",
+      "source": "Source",
+      "signIn": "Sign-in",
+      "roles": "Roles",
+      "scope": "Scope",
+      "accessUntil": "Access until",
+      "status": "Status",
+      "lastSignIn": "Last sign-in"
+    },
+    "source": {
+      "sap": "SAP",
+      "fieldglass": "Fieldglass",
+      "external_contact": "External contact",
+      "manual_exception": "Manual exception"
+    },
+    "signIn": {
+      "sso": "ADNOC SSO",
+      "password_otp": "Email + password + code"
+    },
+    "status": {
+      "invited": "Invited",
+      "active": "Active",
+      "deactivated": "Deactivated"
+    },
+    "noRole": "No role",
+    "noExpiry": "No expiry",
+    "never": "Never",
+    "scope": {
+      "allLocations": "All locations",
+      "modules": "Modules: {{modules}}",
+      "self": "Own records",
+      "lineManagerOf": "Their reports",
+      "none": "No scope"
+    },
+    "drawer": {
+      "profile": "Profile",
+      "self": "This is you. Another administrator changes your access (segregation of duties).",
+      "left": "{{source}} reports that this person has left. They can be reactivated once they are active there again.",
+      "deactivated": "Deactivated: {{reason}}",
+      "organisation": "Organisation",
+      "department": "Department",
+      "designation": "Designation",
+      "lineManager": "Line manager",
+      "hsePassport": "HSE Passport No.",
+      "signIn": "Sign-in",
+      "lastSignIn": "Last sign-in",
+      "invitedAt": "Invitation sent",
+      "approvalTier": "Approval tier",
+      "noTier": "None",
+      "roles": "Roles and scope",
+      "noRoles": "No roles yet. Until a role is assigned this person can't sign in.",
+      "addRole": "Add role",
+      "edit": "Edit",
+      "revoke": "Revoke",
+      "invite": "Send invitation",
+      "resend": "Send the invitation again",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate",
+      "setTier": "Set approval tier",
+      "history": "History",
+      "showHistory": "Show what has happened",
+      "state": {
+        "active": "Active",
+        "scheduled": "Starts later",
+        "expired": "Expired"
+      },
+      "validity": "{{from}} – {{until}}",
+      "reference": "Ref. {{ref}}",
+      "assignedBy": "by {{name}}"
+    },
+    "dialog": {
+      "reference": "Access-request reference ID",
+      "referenceHint": "The request this change answers, e.g. RITM0012345. It is recorded in the audit log.",
+      "referenceRequired": "Enter the reference ID",
+      "reason": "Reason",
+      "reasonRequired": "Enter a reason (at least 3 characters)",
+      "deactivateTitle": "Deactivate {{name}}?",
+      "deactivateBody": "They are signed out everywhere, their app devices and delegations end, and they can't sign in. Their roles are kept for when they are reactivated.",
+      "reactivateTitle": "Reactivate {{name}}?",
+      "reactivateBody": "They can sign in again with the roles they still hold.",
+      "revokeTitle": "Revoke {{role}}?",
+      "revokeBody": "{{name}} loses this role on their next request.",
+      "inviteTitle": "Send the invitation to {{name}}?",
+      "inviteBody": "They get an email with a link, valid for 7 days, to set their password. An earlier link stops working.",
+      "tierTitle": "Approval tier for {{name}}",
+      "tierBody": "When several people could approve, the lowest tier is asked first.",
+      "tier": "Tier"
+    },
+    "assignment": {
+      "newTitle": "Add a role for {{name}}",
+      "editTitle": "Change {{role}} for {{name}}",
+      "role": "Role",
+      "choose": "Choose a role",
+      "holders": "{{holders}} of {{max}} holders",
+      "validFrom": "Access from",
+      "validUntil": "Access until",
+      "save": "Save role",
+      "scope": "Where it applies",
+      "allLocations": "All locations",
+      "zones": "Zones",
+      "locations": "Locations",
+      "provider": "Service provider",
+      "chooseProvider": "Choose a provider",
+      "departments": "Departments",
+      "modules": "Modules",
+      "self": "The person's own records",
+      "lineManagerOf": "The people who report to them",
+      "levelHint": {
+        "platform": "This role applies everywhere.",
+        "module": "Choose the modules, and where.",
+        "zone": "Set by zone.",
+        "site": "Set by site: choose locations, or whole zones.",
+        "provider": "Bound to one service provider.",
+        "department": "Set by department.",
+        "self": "Covers the person's own records, or their reports."
+      },
+      "untilHint": "Leave “Access until” empty for access with no expiry.",
+      "adminTier": "Admin tier: only a Super Admin can give, change or take away this role."
+    },
+    "sync": {
+      "title": "Source systems",
+      "never": "Not synced yet",
+      "counts": "{{created}} new · {{updated}} updated · {{left}} left · {{errors}} errors",
+      "now": "Sync now",
+      "running": "Syncing…",
+      "adapter": {
+        "sap": "SAP",
+        "fieldglass": "Fieldglass",
+        "hse_passport": "HSE Passport"
+      },
+      "status": {
+        "running": "Running",
+        "succeeded": "Succeeded",
+        "partial": "Partly failed",
+        "failed": "Failed"
+      }
+    },
+    "analytics": {
+      "signIns": "Sign-ins per day, last 30 days",
+      "signInsSummary": "{{total}} sign-ins in the last 30 days",
+      "activeUsers": "Active users",
+      "activeUsersSub": "Signed in during the last 30 days",
+      "lastSignIn": "Last sign-in",
+      "never": "Never",
+      "within7Days": "Last 7 days",
+      "within30Days": "8–30 days ago",
+      "within90Days": "31–90 days ago",
+      "older": "Longer ago",
+      "expiring": "Access ending in the next 30 days",
+      "expiringNone": "No access ends in the next 30 days.",
+      "until": "until {{day}}"
+    }
+  },
+  "contacts": {
+    "title": "External Organisation Contacts",
+    "subtitle": "People of service providers that aren’t in Fieldglass. Activating a contact gives them a MASAR sign-in: they get an email to set their password.",
+    "noun": "contact",
+    "search": "Search by name, email or personnel no.",
+    "columns": {
+      "personnelNo": "Personnel No.",
+      "name": "Name",
+      "provider": "Service provider",
+      "designation": "Designation",
+      "access": "Sign-in access"
+    },
+    "access": {
+      "pending": "Not activated",
+      "invited": "Invited",
+      "active": "Signs in",
+      "deactivated": "Access ended"
+    },
+    "filters": {
+      "provider": "Provider",
+      "state": "Access",
+      "pending": "Not activated",
+      "activated": "Activated"
+    },
+    "form": {
+      "newTitle": "New contact",
+      "editTitle": "Edit {{name}}",
+      "name": "Full name",
+      "email": "Email",
+      "provider": "Service provider",
+      "chooseProvider": "Choose a provider",
+      "designation": "Designation",
+      "phone": "Phone",
+      "gender": "Gender",
+      "genderUnknown": "Not recorded",
+      "male": "Male",
+      "female": "Female",
+      "nationality": "Nationality",
+      "hsePassport": "HSE Passport No.",
+      "nameRequired": "Enter the contact’s name",
+      "emailInvalid": "Enter a valid email address",
+      "providerRequired": "Choose the service provider"
+    },
+    "activate": "Activate access",
+    "activateTitle": "Give {{name}} a MASAR sign-in?",
+    "activateBody": "An external user is created and emailed a link to set their password. Assign them roles on the Users page."
+  },
+  "roles": {
+    "title": "Roles",
+    "subtitle": "What each role is for, who holds it and how many may.",
+    "noun": "role",
+    "banner": "A role decides nothing on its own — what it may open and do is set on the Access Rights Matrix.",
+    "openMatrix": "Open in the matrix",
+    "search": "Search by name, code or purpose",
+    "columns": {
+      "role": "Role",
+      "purpose": "What it is for",
+      "type": "Type",
+      "scopeLevel": "Scope level",
+      "holders": "Holders",
+      "locked": "Locked"
+    },
+    "holders": "{{holders}} / {{max}}",
+    "lockedYes": "Locked",
+    "type": {
+      "system": "System",
+      "module": "Module",
+      "end_user": "End user"
+    },
+    "scopeLevel": {
+      "platform": "Platform",
+      "module": "Module",
+      "zone": "Zone",
+      "site": "Site",
+      "provider": "Provider",
+      "department": "Department",
+      "self": "Self"
+    },
+    "filters": {
+      "type": "Type",
+      "scopeLevel": "Scope level"
+    },
+    "form": {
+      "newTitle": "New role",
+      "editTitle": "Edit {{name}}",
+      "code": "Code",
+      "codeHint": "Permanent: the name can change later, the code can’t.",
+      "codeHintNew": "Leave empty to make it from the name. Permanent once saved.",
+      "name": "Name",
+      "description": "What it is for",
+      "type": "Type",
+      "scopeLevel": "Scope level",
+      "maxHolders": "Maximum holders",
+      "maxHoldersHint": "Leave empty for no limit.",
+      "maxHoldersInvalid": "Enter a whole number from 1 to 100,000, or leave it empty",
+      "codeInvalid": "Use 3–41 lower-case letters, digits or hyphens",
+      "nameRequired": "Enter a name",
+      "descriptionRequired": "Say what the role is for"
+    }
+  },
+  "matrix": {
+    "title": "Access Rights Matrix",
+    "subtitle": "What each role holds — module by module, and page by page within it.",
+    "role": "Role",
+    "chooseRole": "Choose a role",
+    "inactive": "{{name}} (deactivated)",
+    "rules": "Any right brings View. Delete and Reopen are for admin-tier roles only. A module switched off removes every page in it. Changes apply on everyone’s next request, and every save is a new version.",
+    "kpi": {
+      "modules": "Modules held",
+      "modulesSub": "{{held}} of {{total}}",
+      "view": "View",
+      "edit": "Edit",
+      "export": "Export",
+      "pages": "pages"
+    },
+    "readOnly": {
+      "super-admin": "Super Admin holds every right; its matrix is fixed.",
+      "own-role": "You hold this role, so you can’t change its rights. Ask another administrator.",
+      "locked": "This role is locked: only a Super Admin can change it.",
+      "view-only": "You can look at the matrix but not change it."
+    },
+    "tabs": {
+      "pages": "Pages and forms",
+      "capabilities": "Capabilities",
+      "history": "History"
+    },
+    "module": "{{module}} module",
+    "moduleSwitch": "{{module}} module switched on",
+    "page": "Page or form",
+    "app": "App",
+    "notApplicable": "Not applicable",
+    "adminTierOnly": "Admin tier only",
+    "rightFor": "{{right}}: {{page}}",
+    "rights": {
+      "view": "View",
+      "create": "Create",
+      "edit": "Edit",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "export": "Export",
+      "reopen": "Reopen"
+    },
+    "capability": {
+      "everywhere": "Wherever the holder’s own scope reaches",
+      "only": "Only at these locations",
+      "locations": "Locations for {{capability}}"
+    },
+    "unsaved": "Unsaved changes",
+    "save": "Save as a new version",
+    "discard": "Discard",
+    "saved": "Saved as version {{version}}.",
+    "conflict": "Someone saved the matrix after you opened it. Reload to see their changes, then make yours again.",
+    "reload": "Reload",
+    "history": {
+      "version": "Version {{n}}",
+      "by": "{{name}} · {{at}} GST",
+      "system": "Reference seed",
+      "show": "Show changes",
+      "none": "No changes for this role.",
+      "empty": "No versions yet."
+    },
+    "on": "On",
+    "off": "Off"
+  },
+  "delegation": {
+    "newTitle": "New delegation",
+    "delegator": "On behalf of",
+    "delegate": "Delegate to",
+    "searchPeople": "Search by name, email or personnel no.",
+    "noMatches": "No active person matches.",
+    "choose": "Choose {{name}}",
+    "chosen": "{{name}} · {{email}}",
+    "change": "Change",
+    "modules": "Workflows",
+    "allWorkflows": "All workflows",
+    "chooseModules": "Only these modules",
+    "starts": "Starts",
+    "ends": "Ends",
+    "reason": "Reason",
+    "create": "Create delegation",
+    "personRequired": "Choose a person",
+    "reasonRequired": "Enter a reason (at least 3 characters)",
+    "periodRequired": "Choose when it starts and ends"
+  },
+  "delegations": {
+    "title": "Delegation",
+    "subtitle": "Who acts for whom, on which workflows, and until when. Every action is recorded “by the delegate on behalf of the delegator”.",
+    "search": "Search by name or reason",
+    "columns": {
+      "delegator": "Delegator",
+      "delegate": "Delegate",
+      "modules": "Workflows",
+      "period": "Period (GST)",
+      "reason": "Reason",
+      "status": "Status"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "active": "Active",
+      "expired": "Expired",
+      "revoked": "Revoked"
+    },
+    "filters": {
+      "status": "Status"
+    },
+    "amend": "Amend",
+    "revoke": "Revoke",
+    "history": "History",
+    "actionsFor": "Actions for {{label}}",
+    "amendTitle": "Amend {{label}}",
+    "revokeTitle": "Revoke {{label}}?",
+    "revokeBody": "The delegate stops acting for the delegator at once.",
+    "save": "Save"
+  },
+  "devices": {
+    "title": "Devices",
+    "subtitle": "Phones and tablets where the MASAR App is signed in. A device you revoke here stays blocked until you lift the block.",
+    "search": "Search by person, email, model or device id",
+    "columns": {
+      "user": "Person",
+      "device": "Device",
+      "app": "App version",
+      "lastSeen": "Last seen (GST)",
+      "status": "Status"
+    },
+    "status": {
+      "active": "Active",
+      "revoked": "Signed out",
+      "blocked": "Blocked"
+    },
+    "filters": {
+      "status": "Status",
+      "platform": "Platform"
+    },
+    "platform": {
+      "android": "Android",
+      "ios": "iPhone",
+      "ipados": "iPad"
+    },
+    "block": "Revoke and block",
+    "unblock": "Lift the block",
+    "history": "History",
+    "actionsFor": "Actions for {{label}}",
+    "blockTitle": "Revoke and block {{label}}?",
+    "blockBody": "The app on it signs out and wipes its data, and nobody can sign in on it until the block is lifted.",
+    "unblockTitle": "Lift the block on {{label}}?",
+    "unblockBody": "Its owner can sign in on it again, which registers it afresh."
+  },
+  "notificationsPage": {
+    "title": "Notifications",
+    "subtitle": "Alerts in MASAR and the emails it sent you.",
+    "tabs": {
+      "alerts": "Alerts",
+      "emails": "Emails"
+    },
+    "category": "Category",
+    "unreadOnly": "Unread only",
+    "markAll": "Mark all as read",
+    "markRead": "Mark “{{title}}” as read",
+    "open": "Open",
+    "empty": "Nothing here.",
+    "more": "Show more",
+    "unread": "Unread"
+  },
+  "approvals": {
+    "title": "Approval Engine",
+    "subtitle": "One engine; each module owns its approval chains.",
+    "noun": "workflow",
+    "search": "Search by workflow name or code",
+    "banner": "The most specific active workflow that matches a request takes it. A workflow without conditions is the process’s fallback. A changed chain becomes a new version; requests already started keep theirs.",
+    "columns": {
+      "workflow": "Workflow",
+      "module": "Module",
+      "process": "Process",
+      "conditions": "Conditions",
+      "stages": "Stages",
+      "version": "Version"
+    },
+    "filters": {
+      "module": "Module",
+      "process": "Process"
+    },
+    "approverKind": {
+      "role": "A role",
+      "user": "A named person",
+      "rule": "A rule"
+    },
+    "mode": {
+      "any": "Any one of them approves",
+      "all": "Every one of them approves"
+    },
+    "escalation": {
+      "none": "No escalation",
+      "line_manager": "To the approvers’ line manager",
+      "role": "To a role"
+    },
+    "versionStatus": {
+      "active": "Active",
+      "retired": "Retired"
+    },
+    "conditions": {
+      "none": "This process has no conditions to set.",
+      "fallback": "Any request (fallback)",
+      "any": "Any",
+      "yes": "Yes",
+      "no": "No",
+      "anyIfNone": "None ticked: any.",
+      "valuesHint": "Separate values with commas. Empty: any.",
+      "min": "{{label}} from ({{unit}})",
+      "max": "{{label}} up to ({{unit}})",
+      "amount": {
+        "number": "Enter numbers only",
+        "order": "The lower limit is above the upper one"
+      }
+    },
+    "form": {
+      "newTitle": "New approval workflow",
+      "editTitle": "Edit {{name}}",
+      "versionNote": "Saving a changed chain creates a new version. Requests already started stay on theirs.",
+      "name": "Name",
+      "code": "Code",
+      "codeHint": "Permanent: the name can change later, the code can’t.",
+      "process": "Process",
+      "chooseProcess": "Choose a process",
+      "conditions": "Conditions",
+      "conditionsHint": "A request must meet every condition you set. Set none to make this the process’s fallback.",
+      "stages": "Approval stages, in order",
+      "stagesHint": "Each stage waits for the one before. Nobody approves a request they raised or that was raised for them.",
+      "stageN": "Stage {{n}}",
+      "moveUp": "Move stage {{n}} up",
+      "moveDown": "Move stage {{n}} down",
+      "removeStage": "Remove stage {{n}}",
+      "addStage": "Add stage",
+      "stageName": "Stage name",
+      "approverKind": "Approver",
+      "role": "Role",
+      "chooseRole": "Choose a role",
+      "rule": "Rule",
+      "chooseRule": "Choose a rule",
+      "person": "Person",
+      "mode": "When several may approve",
+      "slaHours": "SLA (hours)",
+      "reminderHours": "Remind every (hours)",
+      "reminderHint": "Empty: no reminders. Approvers after the first tier are told at half the SLA.",
+      "escalation": "After the SLA",
+      "escalationRole": "Escalate to",
+      "skip": "Skip this stage when the request meets conditions",
+      "skipWhen": "Skip stage {{n}} when",
+      "skipHint": "Stages are skipped only by their conditions, never by hand.",
+      "versions": "Versions",
+      "requests": "Requests that have used this workflow: {{count}}",
+      "versionLine": "v{{n}} · {{status}} · {{at}} · {{by}}",
+      "referenceSeed": "Reference seed",
+      "codeInvalid": "Use 3–61 lower-case letters, digits or hyphens, starting with a letter",
+      "nameRequired": "Enter a name",
+      "processRequired": "Choose the process this workflow is for",
+      "stageNameRequired": "Name the stage",
+      "approverRequired": "Choose one",
+      "slaInvalid": "Enter whole hours from 1 to 2160",
+      "reminderInvalid": "Enter whole hours from 1 to 720, or leave empty",
+      "fixAmounts": "Correct the amounts marked below."
+    }
+  },
+  "rules": {
+    "title": "Business Rules",
+    "subtitle": "Typed rules the modules apply: cut-offs, certificates, limits and bands.",
+    "noun": "rule",
+    "search": "Search by rule name, code or type",
+    "banner": "Each rule has a type, a condition, typed parameters and a priority (1 first). A change is a new version from its start; high-impact rules change only once a Super Admin approves.",
+    "missing": "No rule in force for: {{types}}. Actions that need them are refused until one is set.",
+    "highImpact": "High impact",
+    "anyCase": "Any case",
+    "versionPending": "v{{n}} (v{{pending}} awaiting approval)",
+    "columns": {
+      "rule": "Rule",
+      "module": "Module",
+      "type": "Type",
+      "condition": "Condition",
+      "value": "Value",
+      "priority": "Priority",
+      "version": "Version"
+    },
+    "filters": {
+      "module": "Module",
+      "type": "Type",
+      "state": "State"
+    },
+    "state": {
+      "active": "In effect",
+      "scheduled": "Scheduled",
+      "scheduledFrom": "From {{at}}",
+      "pending": "Awaiting approval",
+      "ended": "Ended",
+      "draft": "Never in effect"
+    },
+    "versionStatus": {
+      "inEffect": "In effect",
+      "approved": "Approved",
+      "pending": "Awaiting approval",
+      "returned": "Returned",
+      "withdrawn": "Withdrawn"
+    },
+    "end": {
+      "menu": "End",
+      "title": "End {{name}}?",
+      "body": "The rule stops applying now. It stays in the history and can be reinstated.",
+      "bodyApproval": "This is a high-impact rule: a Super Admin must approve the end, and it stays in effect until then."
+    },
+    "reinstate": {
+      "menu": "Reinstate",
+      "title": "Reinstate {{name}}?",
+      "body": "The rule applies again from now, with its last values.",
+      "bodyApproval": "This is a high-impact rule: it applies again once a Super Admin approves."
+    },
+    "pending": {
+      "title": "Version {{n}} awaits approval",
+      "yours": "You can decide it. Approved, it takes effect from its start.",
+      "waiting": "A Super Admin decides it. The rule can’t change until then.",
+      "approve": "Approve",
+      "return": "Return for changes",
+      "withdraw": "Withdraw",
+      "reasonCode": "Reason code",
+      "comment": "Comment",
+      "reason": "Why withdraw it",
+      "confirmReturn": "Return",
+      "confirmWithdraw": "Withdraw",
+      "chooseReason": "Choose a reason"
+    },
+    "params": {
+      "choose": "Choose",
+      "commas": "Separate with commas.",
+      "emptyIsNone": "Empty: none.",
+      "row": "Row",
+      "cell": "{{column}}, row {{row}}",
+      "addRow": "Add row",
+      "removeRow": "Remove row {{row}}",
+      "moveUp": "Move {{item}} up",
+      "moveDown": "Move {{item}} down",
+      "problem": {
+        "required": "Enter a value",
+        "whole": "Enter whole numbers",
+        "number": "Enter a number",
+        "time": "Enter a time as HH:MM"
+      }
+    },
+    "form": {
+      "newTitle": "New business rule",
+      "editTitle": "Edit {{name}}",
+      "name": "Name",
+      "code": "Code",
+      "codeHint": "Permanent: the name can change later, the code can’t.",
+      "type": "Rule type",
+      "chooseType": "Choose a type",
+      "highImpact": "High impact: this rule changes only once a Super Admin approves (ADR-0043).",
+      "condition": "Condition",
+      "conditionHint": "The rule applies when the case meets every condition you set. Set none to apply to every case.",
+      "parameters": "Parameters",
+      "priority": "Priority",
+      "priorityHint": "1 is the highest; it decides when several rules apply.",
+      "starts": "Takes effect",
+      "scheduled": "From a later date",
+      "fromDate": "Date",
+      "fromTime": "Time (GST)",
+      "startsHint": "Otherwise at once. Never in the past.",
+      "startsHintApproval": "Otherwise once approved. Never in the past.",
+      "endsLegend": "Ends",
+      "ends": "On a date",
+      "toDate": "Date",
+      "toTime": "Time (GST)",
+      "note": "Why it changes (optional)",
+      "submitForApproval": "Submit for approval",
+      "versions": "Versions",
+      "versionLine": "v{{n}} · {{status}} · {{by}} · {{at}}",
+      "referenceSeed": "Reference seed",
+      "from": "From {{from}}",
+      "window": "{{from}} to {{to}}",
+      "codeInvalid": "Use 3–61 lower-case letters, digits or hyphens, starting with a letter",
+      "nameRequired": "Enter a name",
+      "typeRequired": "Choose a rule type",
+      "priorityInvalid": "Enter a whole number from 1 to 999",
+      "momentRequired": "Enter a date and a time"
+    }
+  },
+  "engine": {
+    "title": "Notification Engine",
+    "subtitle": "Who hears of what, how and how often: rules on the modules' events.",
+    "noun": "rule",
+    "search": "Search by rule name, code or trigger",
+    "banner": "A rule fires on an event, filtered on what the event says, and reaches its recipients with a template per channel. Rules on events from later phases wait until their module publishes them.",
+    "mandatory": "Mandatory",
+    "everyEvent": "Every event",
+    "everyNDays": "Every {{count}} days",
+    "waitsShort": "From phase {{phase}}",
+    "tabs": {
+      "rules": "Rules",
+      "deliveries": "Delivery log"
+    },
+    "columns": {
+      "rule": "Rule",
+      "module": "Module",
+      "trigger": "Trigger",
+      "filter": "Filter",
+      "frequency": "Frequency",
+      "channels": "Channels",
+      "recipients": "Recipients"
+    },
+    "filters": {
+      "module": "Module",
+      "category": "Category"
+    },
+    "frequency": {
+      "immediate": "At once",
+      "digest": "Daily digest",
+      "recurring": "Recurring"
+    },
+    "severity": {
+      "info": "Information",
+      "warning": "Warning",
+      "critical": "Critical"
+    },
+    "channel": {
+      "in_app": "In-app",
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Push"
+    },
+    "category": {
+      "security": "Security alerts",
+      "access": "Access and delegation",
+      "approvals": "Approval tasks",
+      "booking": "Bookings and approvals",
+      "travel": "Travel updates",
+      "muster": "Muster and emergency",
+      "freight": "Freight",
+      "helideck": "Helideck",
+      "compliance": "ASP and GCAA audits",
+      "admin": "Administration requests"
+    },
+    "log": {
+      "title": "Delivery log",
+      "search": "Search by recipient, address or subject",
+      "empty": "Nothing sent yet",
+      "channel": "Channel",
+      "status": "Status",
+      "attempts": "Attempts: {{count}}",
+      "noRule": "Platform",
+      "retry": "Retry",
+      "retryFor": "Retry the message to {{recipient}}",
+      "state": {
+        "queued": "Queued",
+        "sending": "Sending",
+        "sent": "Sent",
+        "failed": "Failed"
+      },
+      "columns": {
+        "queuedAt": "Queued",
+        "channel": "Channel",
+        "recipient": "Recipient",
+        "message": "Message",
+        "status": "Status",
+        "rule": "Rule",
+        "outcome": "Error or provider reference"
+      }
+    },
+    "form": {
+      "newTitle": "New notification rule",
+      "editTitle": "Edit {{name}}",
+      "name": "Name",
+      "code": "Code",
+      "codeHint": "Permanent: the name can change later, the code can’t.",
+      "trigger": "Trigger",
+      "chooseTrigger": "Choose a trigger",
+      "fromPhase": "{{label}} (from phase {{phase}})",
+      "waits": "This trigger’s event is published from phase {{phase}}; the rule waits until then.",
+      "mandatory": "A mandatory category: people can’t opt out, and only a Super Admin can switch the rule off.",
+      "filter": "Filter",
+      "filterHint": "The rule fires only for events that meet every condition you set. Set none for every event.",
+      "frequency": "Frequency",
+      "everyDays": "At most once every (days)",
+      "severity": "Severity",
+      "channels": "Channels",
+      "recipients": "Recipients",
+      "people": "People found from the event",
+      "peopleHint": "Who the event names, or who is found from it.",
+      "roles": "Roles",
+      "rolesHint": "Their holders; where the event has a location, those whose scope reaches it.",
+      "namedUsers": "Named users",
+      "addUser": "Add a named user",
+      "removeUser": "Remove {{name}}",
+      "emails": "Email addresses outside MASAR",
+      "emailsHint": "Separate with commas. Only a Super Admin can set them.",
+      "templates": "Templates",
+      "placeholders": "Placeholders this trigger gives:",
+      "placeholderList": "Placeholders",
+      "part": {
+        "subject": "{{channel}} subject",
+        "title": "{{channel}} title",
+        "body": "{{channel}} text"
+      },
+      "preview": "Preview with sample values",
+      "codeInvalid": "Use 3–61 lower-case letters, digits or hyphens, starting with a letter",
+      "nameRequired": "Enter a name",
+      "triggerRequired": "Choose a trigger",
+      "channelsRequired": "Choose at least one channel",
+      "everyDaysInvalid": "Enter whole days from 1 to 365"
+    }
+  },
+  "reasons": {
+    "title": "Reason Codes",
+    "subtitle": "One central list behind every reason dropdown in the platform.",
+    "noun": "code",
+    "search": "Search by code or description",
+    "tabs": {
+      "codes": "Codes",
+      "contexts": "Contexts",
+      "requests": "Requests"
+    },
+    "columns": {
+      "code": "Code",
+      "context": "Context",
+      "flags": "Flags",
+      "order": "Order"
+    },
+    "flags": {
+      "required": "Reason required",
+      "optional": "Reason optional",
+      "comment": "Comment required",
+      "crewChange": "Crew change"
+    },
+    "contexts": {
+      "context": "Context",
+      "module": "Module",
+      "codes": "Active codes",
+      "required": "Reason required",
+      "yes": "Required",
+      "no": "Optional",
+      "makeOptional": "Make optional: {{label}}",
+      "makeRequired": "Make required: {{label}}",
+      "optionalTitle": "Let {{label}} complete without a reason?",
+      "requiredTitle": "Require a reason for {{label}}?",
+      "confirmBody": "Every page that asks for this reason follows at once."
+    },
+    "form": {
+      "newTitle": "New reason code",
+      "editTitle": "Edit {{code}}",
+      "context": "Context",
+      "chooseContext": "Choose a context",
+      "code": "Code",
+      "order": "Order",
+      "description": "Description",
+      "commentRequired": "A comment is required with this reason",
+      "crewChange": "Counts as a crew change",
+      "contextRequired": "Choose a context",
+      "codeInvalid": "Use letters, digits and hyphens, e.g. DLY-WX",
+      "descriptionRequired": "Describe the reason",
+      "orderInvalid": "Enter a whole number up to 9999"
+    },
+    "requests": {
+      "ask": "Request a code",
+      "newTitle": "Request a reason code",
+      "newBody": "Those who maintain reason codes are told, and decide.",
+      "send": "Send request",
+      "code": "Suggested code",
+      "why": "Why it is needed",
+      "whyRequired": "Say why it is needed",
+      "status": "Status",
+      "none": "No requests.",
+      "note": "Note to the requester (optional)",
+      "add": "Add code",
+      "addFor": "Add {{code}}",
+      "addTitle": "Add {{code}} to {{label}}",
+      "decline": "Decline",
+      "declineFor": "Decline {{code}}",
+      "declineTitle": "Decline the request for {{code}}?",
+      "declineBody": "The requester is told, with your reason.",
+      "state": {
+        "open": "Open",
+        "added": "Added",
+        "declined": "Declined"
+      },
+      "columns": {
+        "requested": "Requested",
+        "context": "Context",
+        "code": "Code",
+        "why": "Why",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    }
+  },
+  "auditLog": {
+    "title": "Audit Log",
+    "subtitle": "Who did what, when, from where, and what changed.",
+    "search": "Search actions, records, people or reference IDs",
+    "loadFailed": "The audit log could not be loaded. Try again.",
+    "empty": "No entries match",
+    "exportExcel": "Export Excel",
+    "exportCsv": "Export CSV",
+    "showing": "Showing {{shown}} of {{total}}",
+    "showMore": "Show more",
+    "kpi": {
+      "entries": "Entries",
+      "held": "of {{held}} held",
+      "people": "People",
+      "modules": "Modules",
+      "withChange": "With a value change"
+    },
+    "filters": {
+      "module": "Module",
+      "action": "Action",
+      "outcome": "Outcome",
+      "reference": "Reference ID",
+      "from": "From (GST)",
+      "to": "To (GST)",
+      "person": "Person"
+    },
+    "outcome": {
+      "success": "Succeeded",
+      "failure": "Failed",
+      "denied": "Refused"
+    },
+    "columns": {
+      "when": "When",
+      "module": "Module",
+      "action": "Action",
+      "record": "Record",
+      "who": "Who",
+      "change": "Change",
+      "source": "Source"
+    },
+    "retention": {
+      "title": "Retention",
+      "body": "How long MASAR keeps its data. Set by configuration; shown here read-only.",
+      "audit": "Audit log",
+      "records": "Operational and safety records",
+      "events": "Delivered integration events",
+      "syncKeys": "Integration sync keys",
+      "kept": "Kept",
+      "years": "{{count}} years; never purged automatically",
+      "days": "{{count}} days"
+    }
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "Who to contact, and how the system behaves.",
+    "loadFailed": "The support page could not be loaded. Try again.",
+    "technical": {
+      "title": "Technical support",
+      "body": "For sign-in problems, errors or anything not working as it should, raise a ticket with IT.",
+      "portal": "Open the IT service portal",
+      "noPortal": "Ask your administrator how to raise a ticket."
+    },
+    "contacts": {
+      "title": "Operational contacts",
+      "body": "Each location's focal point, for questions about travel, stays and site operations.",
+      "none": "No contacts yet.",
+      "location": "Location",
+      "focalPoint": "Focal point",
+      "email": "Email"
+    },
+    "faqs": "Common questions",
+    "guides": "Step-by-step guides",
+    "kind": {
+      "faq": "Question",
+      "guide": "Guide"
+    },
+    "articles": {
+      "title": "Support Articles",
+      "subtitle": "The questions and guides on the Support page.",
+      "noun": "article",
+      "search": "Search by title, code or text",
+      "columns": {
+        "title": "Article",
+        "kind": "Kind",
+        "order": "Order"
+      }
+    },
+    "form": {
+      "newTitle": "New support article",
+      "editTitle": "Edit {{title}}",
+      "code": "Code",
+      "kind": "Kind",
+      "order": "Order",
+      "titleField": "Title",
+      "body": "Text",
+      "bodyHint": "Markdown: ## headings, **bold**, *italics*, - lists, 1. steps, [links](https://…). HTML shows as text.",
+      "preview": "Preview",
+      "codeInvalid": "Use 3–61 lower-case letters, digits or hyphens, starting with a letter",
+      "titleRequired": "Enter a title",
+      "bodyRequired": "Enter the text",
+      "orderInvalid": "Enter a whole number up to 9999"
+    }
+  },
+  "places": {
+    "zones": {
+      "title": "Zones",
+      "subtitle": "The operating areas that scope access and approvals. Only administrators change them; the demo’s zones stand until the BRD’s Zone 1–5 mapping is agreed (P-19).",
+      "noun": "zone",
+      "search": "Search by code or name"
+    },
+    "locationTypes": {
+      "title": "Location Types",
+      "subtitle": "What kind of place a location is. A mobile type’s positions can change, which calls for an aerial survey; offshore types count for POB.",
+      "noun": "location type",
+      "search": "Search by code or name"
+    },
+    "installationTypes": {
+      "title": "Installation Types",
+      "subtitle": "Heliport or helideck, helipad, boat landing and the rest. Each is linked to its inspection checklist when helideck inspections arrive.",
+      "noun": "installation type",
+      "search": "Search by code or name"
+    },
+    "code": {
+      "columns": {
+        "code": "Code",
+        "name": "Name",
+        "flags": "Flags"
+      },
+      "mobile": "Mobile",
+      "offshore": "Offshore",
+      "form": {
+        "newTitle": "New {{noun}}",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "codeHint": "Letters, digits and hyphens. It can’t be changed later.",
+        "codeInvalid": "2 to {{max}} letters, digits or hyphens",
+        "name": "Name",
+        "nameRequired": "Enter a name",
+        "mobile": "Mobile: its positions can change",
+        "offshore": "Counts as offshore"
+      }
+    },
+    "coordinates": {
+      "none": "No coordinates",
+      "gis": "Get coordinates from GIS",
+      "gisDone": "{{name}}: coordinates updated from GIS.",
+      "lat": "Latitude",
+      "lng": "Longitude",
+      "hint": "Decimal degrees, e.g. 25.158 and 52.872. “Get coordinates from GIS” takes them from GIS instead.",
+      "reason": "Why the coordinates change",
+      "reasonHint": "Coordinates already set are overridden only with a reason.",
+      "reasonRequired": "Give a reason for changing the coordinates",
+      "invalid": "Enter both latitude (−90 to 90) and longitude (−180 to 180), or neither"
+    },
+    "service": {
+      "in": "In service",
+      "out": "Out of service",
+      "column": "Service",
+      "since": "Out of service since {{at}}",
+      "takeOut": "Take out of service",
+      "putBack": "Return to service",
+      "outTitle": "Take {{record}} out of service?",
+      "backTitle": "Return {{record}} to service?",
+      "outLocation": "Its future journeys are cancelled with your reason, and the Aviation Team is told. When it returns to service, the journeys without bookings come back.",
+      "outInstallation": "It can’t be used for flights until it is returned to service.",
+      "back": "It can be used again from now on.",
+      "reasonCode": "Reason code",
+      "chooseReason": "Choose a reason",
+      "reasonCodeRequired": "Choose a reason code",
+      "reason": "Why",
+      "reasonRequired": "Say why, in at least 3 characters",
+      "filter": "Service",
+      "inService": "In service",
+      "outOfService": "Out of service",
+      "checking": "Looking for the journeys it affects…",
+      "noJourneys": "No future journeys stop here.",
+      "journeys": "Journeys to be cancelled: {{count}}",
+      "booked": "has bookings",
+      "bookedStay": "{{count}} with bookings stay cancelled when it returns, for their passengers to be moved."
+    },
+    "locations": {
+      "title": "Locations",
+      "subtitle": "Sites, islands, hubs and fields, with their sub-locations, coordinates, POB limit and focal point. Taking one out of service cancels its journeys and bookings.",
+      "noun": "location",
+      "search": "Search by code or name",
+      "columns": {
+        "code": "Code",
+        "name": "Location",
+        "type": "Type",
+        "zone": "Zone",
+        "coordinates": "Coordinates",
+        "pobLimit": "POB limit"
+      },
+      "under": "Under {{name}}",
+      "subLocations": "Sub-locations: {{n}}",
+      "flags": {
+        "hub": "Hub",
+        "complex": "Complex",
+        "residencyReset": "Residency reset",
+        "accommodation": "Accommodation"
+      },
+      "filters": {
+        "zone": "Zone",
+        "type": "Type"
+      },
+      "form": {
+        "newTitle": "New location",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "name": "Name",
+        "type": "Location type",
+        "chooseType": "Choose a type",
+        "zone": "Zone",
+        "chooseZone": "Choose a zone",
+        "parent": "Parent location (for a sub-location)",
+        "noParent": "None",
+        "pobLimit": "POB limit",
+        "focalPoint": "Focal point",
+        "focalPointEmail": "Focal point email",
+        "hub": "Hub",
+        "residencyReset": "Residency-reset location: arriving here starts a new residency period",
+        "complex": "Complex",
+        "accommodation": "Accommodation available",
+        "codeInvalid": "2 to 12 letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "typeRequired": "Choose a location type",
+        "zoneRequired": "Choose a zone",
+        "pobInvalid": "A whole number above zero",
+        "emailInvalid": "Enter a valid email address"
+      }
+    },
+    "installations": {
+      "title": "Installations",
+      "subtitle": "Helidecks, helipads and landings, with the technical data inspections use. Activation needs D, T, GCAA class of use, elevation and coordinates.",
+      "noun": "installation",
+      "search": "Search by code, name or callsign",
+      "columns": {
+        "code": "Code",
+        "name": "Installation",
+        "type": "Type",
+        "location": "Location",
+        "dt": "D / T",
+        "classOfUse": "Class of use",
+        "coordinates": "Coordinates"
+      },
+      "dt": "{{d}} m / {{t}} t",
+      "pending": "Pending AvTech confirmation",
+      "pendingFields": "Pending Aviation Technical confirmation: {{fields}}",
+      "status": {
+        "draft": "Draft",
+        "active": "Active",
+        "deactivated": "Deactivated"
+      },
+      "fields": {
+        "dValue": "D-value",
+        "tValue": "T-value",
+        "gcaaClassOfUse": "GCAA class of use",
+        "elevationM": "elevation",
+        "coordinates": "coordinates"
+      },
+      "filters": {
+        "location": "Location",
+        "type": "Type",
+        "unconfirmed": "Confirmation",
+        "pendingOnly": "Pending confirmation",
+        "confirmedOnly": "Confirmed"
+      },
+      "activate": "Activate",
+      "reactivate": "Reactivate",
+      "activateTitle": "Activate {{record}}?",
+      "activateBody": "It can then be used for flights, inspections and the helideck limitations list.",
+      "reactivateBody": "It can be used again. The reason is recorded in its history.",
+      "missing": "Enter the {{fields}} before activating.",
+      "files": "Drawings and photos",
+      "filesOf": "Drawings and photos of {{record}}",
+      "filesEmpty": "No drawings or photos yet.",
+      "fileKind": {
+        "installation-drawing": "Drawing",
+        "installation-photo": "Photo"
+      },
+      "addDrawings": "Add drawings",
+      "addPhotos": "Add photos",
+      "drawingTypes": "PDF, PNG or JPG",
+      "photoTypes": "PNG, JPG or HEIC",
+      "scanning": "Being checked for malware",
+      "infected": "Failed the malware check",
+      "open": "Open",
+      "remove": "Remove",
+      "removeTitle": "Remove {{name}}?",
+      "removeBody": "It leaves the installation; the file and its history are kept for audit.",
+      "uploadFailed": "{{name}} could not be uploaded: {{message}}",
+      "form": {
+        "newTitle": "New installation",
+        "editTitle": "Edit {{name}}",
+        "technical": "Technical data",
+        "details": "Details",
+        "validity": "Acceptance and tests",
+        "validityNote": "Acceptance and test validity come from helideck inspections: not recorded yet.",
+        "code": "Code",
+        "name": "Name",
+        "callsign": "Callsign",
+        "type": "Installation type",
+        "chooseType": "Choose a type",
+        "location": "Location",
+        "chooseLocation": "Choose a location",
+        "material": "Material",
+        "dValue": "D-value (m)",
+        "tValue": "T-value (t)",
+        "classOfUse": "GCAA class of use",
+        "elevation": "Elevation (m)",
+        "deckClass": "Deck class",
+        "minPerformanceClass": "Minimum performance class",
+        "radioFrequency": "Radio frequency",
+        "deckHeight": "Deck height (ft)",
+        "ndb": "NDB",
+        "heading": "Heading",
+        "firefighting": "Firefighting",
+        "operator": "Operator / owner",
+        "riskLevel": "Risk level",
+        "noRisk": "Not set",
+        "risk": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High"
+        },
+        "lastOpsSurvey": "Last ops survey",
+        "statusLights": "Status lights",
+        "fuel": "Fuel available",
+        "gpu": "GPU available",
+        "confirm": "Confirm as they are",
+        "confirmHint": "Values entered by hand or confirmed here stop showing as pending.",
+        "reason": "Reason for the change",
+        "reasonHint": "Every change to an installation is kept with its reason.",
+        "reasonRequired": "Give a reason, in at least 3 characters",
+        "codeInvalid": "2 to 16 letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "typeRequired": "Choose an installation type",
+        "locationRequired": "Choose a location",
+        "numberInvalid": "Enter a number"
+      }
+    },
+    "routes": {
+      "title": "Routes",
+      "subtitle": "Origins, stops and destinations, with great-circle distances. Changing a route’s stops makes a new revision; schedules keep the one they were planned on.",
+      "noun": "route",
+      "search": "Search by code, place or team",
+      "columns": {
+        "code": "Code",
+        "route": "Route",
+        "category": "Category",
+        "distance": "Distance",
+        "duration": "Duration",
+        "team": "Owning team",
+        "revision": "Rev."
+      },
+      "km": "{{km}} km",
+      "minutes": "{{n}} min",
+      "exclusive": "Exclusive",
+      "noDistance": "A stop has no coordinates",
+      "category": {
+        "FIXED-WING": "Fixed wing",
+        "ROTARY-WING": "Rotary wing",
+        "MARINE": "Marine"
+      },
+      "filters": {
+        "category": "Category",
+        "via": "Through"
+      },
+      "revisions": "Revisions",
+      "revisionsOf": "Revisions of {{record}}",
+      "revision": "Revision {{n}}",
+      "revisionBy": "{{at}} GST · {{by}}",
+      "revisionByUnknown": "{{at}} GST",
+      "form": {
+        "newTitle": "New route",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "name": "Name",
+        "nameHint": "Leave blank to name it from its stops.",
+        "points": "Path",
+        "origin": "Origin",
+        "stop": "Stop {{n}}",
+        "destination": "Destination",
+        "choosePlace": "Choose a location",
+        "chooseCategory": "Choose a category",
+        "addStop": "Add a stop",
+        "moveUp": "Move {{name}} up",
+        "moveDown": "Move {{name}} down",
+        "removeStop": "Remove {{name}}",
+        "category": "Resource category",
+        "duration": "Duration (minutes)",
+        "team": "Owning team",
+        "exclusive": "Exclusive: no transit passengers",
+        "newRevision": "Changing the stops saves revision {{n}}.",
+        "codeInvalid": "2 to 24 letters, digits or hyphens",
+        "pointRequired": "Choose every location on the path",
+        "categoryRequired": "Choose a resource category",
+        "durationInvalid": "Minutes, as a whole number above zero"
+      }
+    }
+  },
+  "resources": {
+    "categories": {
+      "title": "Resource Categories",
+      "subtitle": "The top-level classes of transport resource: the parent of resource types, the mode filter in dispatch dashboards and reports, and a condition in business rules.",
+      "noun": "resource category",
+      "search": "Search by code or name"
+    },
+    "cargoTypes": {
+      "title": "Cargo Types",
+      "subtitle": "What freight can be booked as, and the dangerous-goods class it brings with it by default.",
+      "noun": "cargo type",
+      "search": "Search by code or name"
+    },
+    "fuelStations": {
+      "title": "Fuel Stations",
+      "subtitle": "Where aviation fuel is held, with each station’s capacity and the level at which to reorder.",
+      "noun": "fuel station",
+      "search": "Search by code or name"
+    },
+    "fields": {
+      "weightUnit": "Weight unit",
+      "dgClass": "Dangerous-goods class",
+      "dgClassHint": "A UN class such as 3 or 2.1; blank for ordinary cargo.",
+      "dgClassInvalid": "A UN class such as 3 or 2.1",
+      "location": "Location",
+      "chooseLocation": "Choose a location",
+      "capacityKg": "Capacity (kg)",
+      "reorderLevelKg": "Reorder level (kg)",
+      "numberInvalid": "Enter a number",
+      "required": "Choose one"
+    },
+    "choices": {
+      "kg": "Kilograms (kg)",
+      "lb": "Pounds (lb)"
+    },
+    "types": {
+      "title": "Resource Types",
+      "subtitle": "Aircraft and vessel types: capacity, seat-map template, baggage allowance and payload. Recurring schedules may use a type before a tail is assigned.",
+      "noun": "resource type",
+      "search": "Search by code or name",
+      "columns": {
+        "code": "Code",
+        "name": "Type",
+        "category": "Category",
+        "capacity": "Seats",
+        "payload": "Payload",
+        "fleet": "Fleet"
+      },
+      "seatMap": "{{rows}} × {{seats}}",
+      "seatMapAisle": "{{rows}} × {{seats}}, aisle after {{aisle}}",
+      "kg": "{{kg}} kg",
+      "openSeating": "Open seating",
+      "loadsheet": "Loadsheet",
+      "filters": {
+        "category": "Category"
+      },
+      "form": {
+        "code": "Code",
+        "name": "Name",
+        "codeInvalid": "2 to {{max}} letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "numberInvalid": "Enter a whole number of zero or more",
+        "chooseOne": "Choose one",
+        "none": "None",
+        "editTitle": "Edit {{name}}",
+        "newTitle": "New resource type",
+        "category": "Category",
+        "aircraftModel": "Aircraft model",
+        "capacity": "Passenger capacity",
+        "seatMap": "Seat-map template",
+        "seatMapHint": "Rows × seats per row, with the aisle after seat n of each row. Leave blank for none.",
+        "rows": "Rows",
+        "seatsPerRow": "Seats per row",
+        "aisleAfter": "Aisle after seat",
+        "baggage": "Baggage allowance (kg)",
+        "payload": "Payload (kg)",
+        "openSeating": "Open seating (marine): no seat map",
+        "loadsheet": "Loadsheet required (fixed and rotary wing)"
+      }
+    },
+    "models": {
+      "title": "Aircraft Models",
+      "subtitle": "The helideck D-value and T-value each model needs; compatibility with each installation is derived from them. A model without values is “not recorded”, which flags rather than permits.",
+      "noun": "aircraft model",
+      "search": "Search by code or name",
+      "columns": {
+        "code": "Code",
+        "name": "Model",
+        "category": "Category",
+        "d": "Required D",
+        "t": "Required T",
+        "performance": "Performance class",
+        "unit": "Weighs in",
+        "types": "Types"
+      },
+      "d": "{{d}} m",
+      "t": "{{t}} t",
+      "notRecorded": "Not recorded",
+      "pending": "Pending AvTech confirmation",
+      "fields": {
+        "requiredDM": "Required D-value",
+        "requiredTT": "Required T-value"
+      },
+      "form": {
+        "code": "Code",
+        "name": "Name",
+        "codeInvalid": "2 to {{max}} letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "numberInvalid": "Enter a whole number of zero or more",
+        "chooseOne": "Choose one",
+        "none": "None",
+        "editTitle": "Edit {{name}}",
+        "newTitle": "New aircraft model",
+        "category": "Category",
+        "d": "Required D-value (m)",
+        "t": "Required T-value (t)",
+        "performance": "Performance class",
+        "unit": "Weight unit",
+        "confirm": "Confirm as they are",
+        "confirmHint": "Values entered or confirmed here stop showing as pending.",
+        "reason": "Reason for the change",
+        "reasonHint": "Required D and T are safety data: every change is kept with its reason.",
+        "reasonRequired": "Give a reason, in at least 3 characters",
+        "decimalInvalid": "Enter a number above zero"
+      }
+    },
+    "fleet": {
+      "title": "Fleet",
+      "subtitle": "Each aircraft, helicopter and vessel, of a resource type and a service provider. Its category, seat map, baggage, payload and helideck needs come from the type; only its seat capacity can be its own. Seat quotas are set in Quotas.",
+      "noun": "fleet resource",
+      "search": "Search by registration, type or provider",
+      "columns": {
+        "registration": "Registration",
+        "type": "Type",
+        "provider": "Service provider",
+        "availability": "Availability",
+        "seats": "Seats",
+        "payload": "Payload"
+      },
+      "availability": {
+        "available": "Available",
+        "maintenance": "Under maintenance",
+        "retired": "Retired"
+      },
+      "mode": {
+        "air": "Air",
+        "marine": "Water / marine"
+      },
+      "notBookable": "Not bookable",
+      "own": "own value",
+      "fromType": "Type: {{value}}",
+      "certification": "Certification status comes from the aviation registers when they are built: not recorded yet.",
+      "filters": {
+        "category": "Category",
+        "provider": "Provider",
+        "availability": "Availability",
+        "type": "Type"
+      },
+      "form": {
+        "editTitle": "Edit {{name}}",
+        "newTitle": "New fleet resource",
+        "registration": "Registration (tail or vessel number)",
+        "registrationInvalid": "2–40 letters, digits, spaces, dots or hyphens, starting with a letter or digit",
+        "type": "Resource type",
+        "chooseType": "Choose a type",
+        "provider": "Service provider",
+        "chooseProvider": "Choose a provider",
+        "availability": "Availability",
+        "bookable": "Bookable",
+        "capacity": "Seat capacity",
+        "baggage": "Baggage allowance (kg)",
+        "payload": "Payload (kg)",
+        "registrationRequired": "Enter the registration",
+        "category": "Resource category",
+        "chooseCategory": "Choose a category",
+        "categoryFirst": "Choose a category first",
+        "identification": "Resource identification",
+        "availabilitySection": "Availability",
+        "availabilityHint": "Only available, bookable units are offered for new journeys. Journeys that already have a unit keep it.",
+        "becomes": {
+          "maintenance": "Under maintenance: the unit is no longer offered for new journeys.",
+          "retired": "Retired: the unit is never offered for new journeys again and can’t be bookable."
+        },
+        "capacitySection": "Capacity",
+        "capacityHint": "Leave blank to use the type’s seat capacity. Otherwise enter 1 to {{max}}, and no more than the type’s seat map holds.",
+        "capacityAboveMap": "The type’s seat map has {{seats}} seats; enter no more than that.",
+        "fromTypeHint": "From the resource type; change these on Resource Types.",
+        "typeSeats": "Type’s seat capacity",
+        "seatLayout": "Seat layout",
+        "typeChanged": "The seat layout, payload, baggage and helideck needs will be the new type’s once you save.",
+        "optionsFailed": "The categories, types and providers couldn’t be loaded. Close the form and try again.",
+        "capacityInvalid": "Enter a whole number from 1 to {{max}}"
+      },
+      "view": "View",
+      "status": "Record status",
+      "yes": "Yes",
+      "no": "No",
+      "notRecorded": "Not recorded",
+      "openSeating": "Open seating (no seat map)",
+      "helideck": {
+        "title": "Helideck compatibility",
+        "model": "Aircraft model",
+        "requiredD": "Required D-value",
+        "requiredT": "Required T-value",
+        "performanceClass": "Performance class",
+        "hint": "From the type’s aircraft model, kept on Aircraft Models. Scheduling checks it against each helideck’s D-value and T-value.",
+        "noModel": "The type has no aircraft model, so helideck compatibility is not recorded. Set one on Resource Types."
+      }
+    },
+    "quotas": {
+      "title": "Quotas",
+      "subtitle": "Seats held for a department, location, zone, provider or passenger category on a resource type or route, per flight, day, week or month.",
+      "noun": "quota",
+      "search": "Search by code",
+      "notice": "Quotas apply to fixed-wing services only.",
+      "columns": {
+        "code": "Code",
+        "appliesTo": "Whose seats",
+        "scope": "Where",
+        "period": "Period",
+        "limit": "Limit",
+        "validity": "Valid"
+      },
+      "dimension": {
+        "department": "Department",
+        "location": "Location",
+        "zone": "Zone",
+        "service-provider": "Service provider",
+        "passenger-category": "Passenger category"
+      },
+      "scope": {
+        "resource-type": "Resource type",
+        "route": "Route"
+      },
+      "period": {
+        "flight": "Per flight",
+        "day": "Per day",
+        "week": "Per week",
+        "month": "Per month"
+      },
+      "limit": "{{n}} seats · warn at {{pct}}%",
+      "from": "From {{from}}",
+      "fromTo": "{{from}} – {{to}}",
+      "filters": {
+        "dimension": "Whose seats",
+        "scope": "Where",
+        "period": "Period"
+      },
+      "form": {
+        "code": "Code",
+        "name": "Name",
+        "codeInvalid": "2 to {{max}} letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "numberInvalid": "Enter a whole number of zero or more",
+        "chooseOne": "Choose one",
+        "none": "None",
+        "editTitle": "Edit {{name}}",
+        "newTitle": "New quota",
+        "dimension": "Whose seats",
+        "value": "Which",
+        "chooseValue": "Choose one",
+        "scopeKind": "Where",
+        "scope": "Which (fixed wing only)",
+        "period": "Period",
+        "limit": "Seat limit",
+        "warning": "Warn at (% of the limit)",
+        "validFrom": "Valid from",
+        "validTo": "Valid to",
+        "validFromRequired": "Choose the first day",
+        "pctInvalid": "1 to 100"
+      }
+    }
+  },
+  "orgs": {
+    "providers": {
+      "title": "Service Providers",
+      "subtitle": "Aviation, marine and test providers. The code is the prefix on every flight and voyage number the operator runs, so it can’t change. External users see only their own organisation.",
+      "noun": "service provider",
+      "search": "Search by code or legal name",
+      "columns": {
+        "code": "Code",
+        "name": "Legal name",
+        "type": "Type",
+        "contact": "Contact",
+        "fleet": "Fleet",
+        "contacts": "Contacts"
+      },
+      "type": {
+        "aviation": "Aviation",
+        "marine": "Marine",
+        "test": "Test provider"
+      },
+      "filters": {
+        "type": "Type"
+      },
+      "form": {
+        "newTitle": "New service provider",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "codeHint": "Two or three letters: the prefix on its flight and voyage numbers.",
+        "codeInvalid": "Two or three letters",
+        "name": "Legal name",
+        "nameRequired": "Enter the legal name",
+        "type": "Type",
+        "contactName": "Contact name",
+        "contactEmail": "Contact email",
+        "contactPhone": "Contact phone",
+        "emailInvalid": "Enter a valid email address"
+      }
+    },
+    "categories": {
+      "title": "Passenger Categories",
+      "subtitle": "Who is seated first when demand exceeds capacity: lower numbers rank higher. Crew changes go first, then VIP, then the rest by rank.",
+      "noun": "passenger category",
+      "search": "Search by code or name",
+      "columns": {
+        "rank": "Rank",
+        "name": "Category",
+        "rules": "Seating",
+        "mapping": "Source mapping"
+      },
+      "seatForward": "Seated forward",
+      "crewChange": "Crew change",
+      "form": {
+        "newTitle": "New passenger category",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "codeInvalid": "2 to 20 letters, digits or hyphens",
+        "name": "Name",
+        "nameRequired": "Enter a name",
+        "icon": "Icon",
+        "colour": "Colour",
+        "rank": "Priority rank",
+        "rankHint": "Lower numbers are seated first; one active category per rank.",
+        "rankInvalid": "A whole number from 1 to 999",
+        "seatForward": "Seat forward (e.g. VIP)",
+        "crewChange": "Counts as a crew change",
+        "mapping": "Source mapping",
+        "mappingHint": "Which SAP or Fieldglass attribute maps a person here."
+      },
+      "colours": {
+        "#1D4ED8": "Blue",
+        "#16A34A": "Green",
+        "#F59E0B": "Amber",
+        "#DC2626": "Red",
+        "#7E22CE": "Purple",
+        "#0EA5E9": "Sky",
+        "#64748B": "Slate"
+      },
+      "icons": {
+        "crown": "Crown",
+        "star": "Star",
+        "shield-check": "Shield",
+        "refresh-cw": "Rotation",
+        "briefcase": "Briefcase",
+        "hard-hat": "Hard hat",
+        "radar": "Radar",
+        "user-round": "Visitor",
+        "user": "Person",
+        "stethoscope": "Medical"
+      }
+    },
+    "chargeCodes": {
+      "title": "Charge Codes",
+      "subtitle": "What travel is charged to: at every site or some, recoverable or not, with validity dates and an owning department.",
+      "noun": "charge code",
+      "search": "Search by code or description",
+      "columns": {
+        "code": "Code",
+        "description": "Description",
+        "sites": "Sites",
+        "recoverability": "Recoverability",
+        "validity": "Valid",
+        "department": "Owning department"
+      },
+      "allSites": "All sites",
+      "sitesCount": "{{n}} sites",
+      "recoverability": {
+        "recoverable": "Recoverable",
+        "non-recoverable": "Non-recoverable"
+      },
+      "always": "Always",
+      "from": "From {{from}}",
+      "until": "Until {{to}}",
+      "fromTo": "{{from}} – {{to}}",
+      "filters": {
+        "recoverability": "Recoverability",
+        "site": "Site",
+        "department": "Department"
+      },
+      "form": {
+        "newTitle": "New charge code",
+        "editTitle": "Edit {{code}}",
+        "code": "Code",
+        "codeInvalid": "1 to 20 letters, digits or hyphens",
+        "description": "Description",
+        "descriptionRequired": "Enter a description",
+        "allSites": "Every site",
+        "sites": "Sites",
+        "sitesRequired": "Choose at least one site, or every site",
+        "recoverability": "Recoverability",
+        "validFrom": "Valid from",
+        "validTo": "Valid to",
+        "validityInvalid": "Valid to is before valid from",
+        "department": "Owning department",
+        "noDepartment": "None"
+      }
+    },
+    "departments": {
+      "title": "Departments",
+      "subtitle": "SAP’s departments are synced and read-only here; others are kept in MASAR.",
+      "noun": "department",
+      "search": "Search by code or name",
+      "columns": {
+        "code": "Code",
+        "name": "Department",
+        "source": "Source",
+        "people": "People"
+      },
+      "under": "Under {{name}}",
+      "filters": {
+        "source": "Source"
+      },
+      "source": {
+        "sap": "SAP",
+        "manual": "Kept in MASAR"
+      },
+      "form": {
+        "newTitle": "New department",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "codeInvalid": "2 to 20 letters, digits or hyphens",
+        "name": "Name",
+        "nameRequired": "Enter a name",
+        "parent": "Parent department",
+        "noParent": "None"
+      }
+    },
+    "companies": {
+      "title": "Companies",
+      "subtitle": "SAP’s and Fieldglass’s companies are synced and read-only here; providers’ external organisations are kept in MASAR.",
+      "noun": "external organisation",
+      "search": "Search by code or name",
+      "columns": {
+        "code": "Code",
+        "name": "Company",
+        "source": "Source",
+        "provider": "Service provider",
+        "people": "People"
+      },
+      "filters": {
+        "source": "Source",
+        "provider": "Provider"
+      },
+      "source": {
+        "sap": "SAP",
+        "fieldglass": "Fieldglass",
+        "external": "External organisation"
+      },
+      "form": {
+        "newTitle": "New external organisation",
+        "editTitle": "Edit {{name}}",
+        "code": "Code",
+        "codeInvalid": "2 to 20 letters, digits or hyphens",
+        "name": "Name",
+        "nameRequired": "Enter a name",
+        "provider": "Service provider",
+        "chooseProvider": "Choose a provider",
+        "providerRequired": "Choose the organisation’s service provider"
+      }
+    }
+  },
+  "pob": {
+    "columns": {
+      "location": "Location"
+    },
+    "master": {
+      "muster-points": "Muster points",
+      "lifeboats": "Lifeboats",
+      "essential-positions": "Essential positions"
+    },
+    "action": {
+      "create": "New",
+      "update": "Change",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate",
+      "delete": "Delete",
+      "return-to-use": "Back in use"
+    },
+    "notice": {
+      "makerChecker": "Changes here take effect only once a second person approves them. Taking a point or craft out of use is immediate.",
+      "sentTitle": "Sent for approval",
+      "sent": "Sent for a second person’s approval as {{refs}}. It applies once approved.",
+      "waiting": "Waiting for approval: {{count}} · View"
+    },
+    "pending": {
+      "pill": "Awaiting approval · {{action}} · {{ref}}"
+    },
+    "returnToUse": "Return to use",
+    "returnTitle": "Return {{record}} to use?",
+    "returnBody": "A second person approves this before it applies. Say why it can be used again.",
+    "form": {
+      "chooseLocation": "Choose a location",
+      "numberInvalid": "Enter a whole number",
+      "none": "None",
+      "noChange": "Nothing has changed.",
+      "approvalHint": "This goes to a second person for approval; nothing changes until they approve it.",
+      "submit": "Send for approval"
+    },
+    "fields": {
+      "code": "Code",
+      "name": "Name",
+      "designation": "Designation",
+      "installationId": "Installation",
+      "role": "Role",
+      "capacity": "Capacity",
+      "evacuationModes": "Evacuation modes",
+      "craftType": "Type",
+      "station": "Station",
+      "ratedCapacity": "Rated capacity",
+      "certificateExpiresOn": "Certificate expires",
+      "classification": "Classification",
+      "minCount": "Minimum count",
+      "criticality": "Criticality",
+      "notes": "Notes",
+      "effectiveFrom": "Effective from",
+      "isActive": "Active",
+      "isInService": "In service",
+      "isOperational": "Operational",
+      "outOfServiceReason": "Out of service because",
+      "unavailableReason": "Unavailable because"
+    },
+    "muster": {
+      "title": "Muster Points",
+      "subtitle": "Each location’s muster points: its primary and alternates, how many each holds and how people leave from it.",
+      "noun": "muster point",
+      "search": "Search by code, name or location",
+      "columns": {
+        "point": "Muster point",
+        "role": "Role",
+        "modes": "Evacuation modes",
+        "capacity": "Capacity"
+      },
+      "role": {
+        "primary": "Primary",
+        "alternate": "Alternate"
+      },
+      "mode": {
+        "helicopter": "Helicopter",
+        "lifeboat": "Lifeboat",
+        "boat": "Boat"
+      },
+      "musterOnly": "Muster only",
+      "operational": "Operational",
+      "unavailable": "Unavailable",
+      "filters": {
+        "operational": "Availability"
+      },
+      "makeUnavailable": "Make unavailable",
+      "unavailableTitle": "Make {{record}} unavailable?",
+      "unavailableBody": "It is out of use at once. Bringing it back needs a second person’s approval.",
+      "reasonCode": "Reason code (optional)",
+      "chooseReason": "Choose a reason",
+      "reason": "Reason",
+      "reasonRequired": "Say why, in at least 3 characters",
+      "form": {
+        "code": "Code",
+        "name": "Name",
+        "installation": "Installation (optional)",
+        "codeInvalid": "2 to 24 letters, digits or hyphens",
+        "nameRequired": "Enter a name",
+        "modesHint": "None: a muster point only.",
+        "editTitle": "Change {{name}}",
+        "newTitle": "New muster point"
+      }
+    },
+    "lifeboats": {
+      "title": "Lifeboats",
+      "subtitle": "Each craft, where it serves and its certificate. Capacity counts craft in service, less the largest while that rule is on.",
+      "noun": "craft",
+      "search": "Search by code, name or location",
+      "kpi": {
+        "counted": "Counted capacity",
+        "heldBack": "{{seats}} seats held back (largest craft per location)",
+        "noHoldBack": "Every craft in service counts",
+        "inService": "Craft in service",
+        "seats": "{{seats}} seats in service",
+        "outOfService": "Out of service",
+        "locations": "Locations",
+        "location": "{{location}}: {{counted}}"
+      },
+      "columns": {
+        "craft": "Craft",
+        "type": "Type",
+        "capacity": "Rated capacity",
+        "certificate": "Certificate expires"
+      },
+      "craft": {
+        "lifeboat": "Lifeboat",
+        "liferaft": "Life raft",
+        "rescue-boat": "Rescue boat"
+      },
+      "notRecorded": "Not recorded",
+      "expired": "Expired",
+      "expiresIn": "Expires in {{count}} d",
+      "inService": "In service",
+      "outOfService": "Out of service",
+      "takeOut": "Take out of service",
+      "takeOutTitle": "Take {{record}} out of service?",
+      "takeOutBody": "It stops counting at once. Returning it to service needs a second person’s approval.",
+      "returnToService": "Return to service",
+      "filters": {
+        "service": "Service",
+        "certificate": "Certificate",
+        "expiring": "Expiring within 60 days"
+      },
+      "form": {
+        "station": "Station (optional)",
+        "stationHint": "e.g. Port side, Deck 2",
+        "capacityRequired": "Enter the rated capacity",
+        "editTitle": "Change {{name}}",
+        "newTitle": "New craft"
+      }
+    },
+    "essential": {
+      "title": "Essential Positions",
+      "subtitle": "Whether each designation is essential at each site. Changes apply from today or later; past classifications are kept.",
+      "noun": "classification",
+      "search": "Search by designation or location",
+      "tabs": {
+        "mappings": "Classifications",
+        "unmapped": "Unmapped"
+      },
+      "columns": {
+        "designation": "Designation",
+        "classification": "Classification",
+        "minCount": "Minimum count",
+        "criticality": "Criticality",
+        "effectiveFrom": "Effective from"
+      },
+      "class": {
+        "essential": "Essential",
+        "non-essential": "Non-essential"
+      },
+      "criticality": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "scheduled": "Scheduled",
+      "timeline": "Timeline",
+      "timelineOf": "Timeline of {{record}}",
+      "timelineHint": "Every classification it has had, newest first.",
+      "period": "{{from}} – {{to}}",
+      "since": "Since {{from}}",
+      "min": "Minimum {{count}}",
+      "noDetail": "No minimum, criticality or notes",
+      "unmappedHint": "Designations classified at other sites, or held by people, with no classification here. People holding them here show as “Unmapped — flagged for review”.",
+      "allMapped": "Every known designation is classified here.",
+      "unmapped": "Unmapped — flagged for review",
+      "mappedAt": "Classified at {{count}} sites",
+      "classifyHere": "Classify here",
+      "form": {
+        "designationRequired": "Enter a designation",
+        "notBackdated": "Choose today or a later day",
+        "chooseSites": "Choose at least one site.",
+        "sites": "Sites",
+        "sitesHint": "One change per site, each approved on its own.",
+        "effectiveFrom": "Effective from (blank: today)",
+        "notes": "Notes (optional)",
+        "forwardOnly": "Changes apply forward only: the classification in force until then stays on record.",
+        "editTitle": "Change {{name}}",
+        "newTitle": "Classify a designation"
+      }
+    },
+    "changes": {
+      "title": "Pending Changes",
+      "subtitle": "Changes to muster points, lifeboats and essential positions: those waiting for a second person, and those decided.",
+      "search": "Search by reference or change",
+      "columns": {
+        "ref": "Reference",
+        "change": "Change",
+        "requested": "Proposed by"
+      },
+      "filters": {
+        "master": "Master",
+        "who": "Proposed by",
+        "anyone": "Anyone",
+        "mine": "Me"
+      },
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "returned": "Returned",
+        "withdrawn": "Withdrawn",
+        "failed": "Not applied"
+      },
+      "yourTurn": "Your approval",
+      "empty": "No changes match.",
+      "reason": "Reason",
+      "decided": "Decided",
+      "note": "Note",
+      "values": "Values before and after",
+      "field": "Field",
+      "before": "Before",
+      "after": "Proposed",
+      "yes": "Yes",
+      "no": "No",
+      "waiting": "Waiting for a second person who holds the approval right at this location.",
+      "yourDecision": "Your decision",
+      "yourChange": "Your change",
+      "approve": "Approve",
+      "return": "Return",
+      "withdraw": "Withdraw",
+      "approved": "Approved. The change applies in a moment.",
+      "returned": "Returned to its maker. Nothing changes.",
+      "withdrawn": "Withdrawn. Nothing changes.",
+      "reasonCode": "Reason code",
+      "comment": "Comment",
+      "confirmReturn": "Return change",
+      "confirmWithdraw": "Withdraw change"
+    }
+  },
+  "home": {
+    "hello": "Hello, {{name}}",
+    "today": "What is happening today, {{as}}",
+    "asRole": "as {{role}}",
+    "asRoles": "as {{role}} (and {{count}} more)",
+    "loadFailed": "Your home page could not be loaded. Try again.",
+    "failed": "Could not load just now.",
+    "nothing": "Nothing to show yet.",
+    "open": "Open",
+    "widgets": {
+      "approvals": {
+        "title": "Awaiting your approval",
+        "overdue": "Overdue: {{count}}",
+        "onTime": "Soonest due first",
+        "empty": "Nothing is waiting for you.",
+        "overdueItem": "Overdue",
+        "due": "Due {{when}}"
+      },
+      "delegations": {
+        "title": "Acting for others",
+        "subline": "You delegate to others: {{given}} · Scheduled: {{scheduled}}"
+      },
+      "expiring": {
+        "title": "Access expiring",
+        "subline": "Within 30 days · Users with no role: {{withoutRoles}}"
+      },
+      "today": {
+        "title": "Today's flights and voyages",
+        "count": "Departing today: {{count}}",
+        "withoutTime": "Without a departure time: {{count}}",
+        "empty": "Nothing departs today.",
+        "noTime": "No time"
+      },
+      "sync": {
+        "title": "Source systems",
+        "failing": "Need attention: {{count}}",
+        "healthy": "Every source synced",
+        "lastRun": "Last run {{when}}",
+        "status": {
+          "succeeded": "Synced",
+          "partial": "Partly synced",
+          "failed": "Failed",
+          "running": "Running",
+          "never": "Not run yet"
+        }
+      }
+    }
+  },
+  "search": {
+    "hint": "Type at least two characters: a name, personnel no., HSE Passport no., location, installation, or flight or voyage no.",
+    "searching": "Searching…",
+    "failed": "The search could not run. Try again.",
+    "none": "Nothing found for “{{q}}”.",
+    "seeAll": "See all {{group}}",
+    "groups": {
+      "people": "People",
+      "locations": "Locations",
+      "installations": "Installations",
+      "journeys": "Flights and voyages"
+    }
+  },
+  "scheduling": {
+    "mode": {
+      "fixed-wing": "Fixed wing",
+      "rotary-wing": "Rotary wing",
+      "ferry": "Ferry",
+      "crew-boat": "Crew boat"
+    },
+    "days": {
+      "daily": "Daily",
+      "short": {
+        "1": "Mon",
+        "2": "Tue",
+        "3": "Wed",
+        "4": "Thu",
+        "5": "Fri",
+        "6": "Sat",
+        "7": "Sun"
+      },
+      "long": {
+        "1": "Monday",
+        "2": "Tuesday",
+        "3": "Wednesday",
+        "4": "Thursday",
+        "5": "Friday",
+        "6": "Saturday",
+        "7": "Sunday"
+      }
+    },
+    "columns": {
+      "flight": "Flight / voyage",
+      "route": "Route",
+      "resource": "Resource",
+      "pattern": "Days and times",
+      "validity": "Valid",
+      "journeys": "Upcoming journeys",
+      "mode": "Mode",
+      "operator": "Operator"
+    },
+    "recurring": {
+      "title": "Recurring Schedules",
+      "subtitle": "Routes flown or sailed on a weekly pattern. Saving one plans its journeys up to 180 days ahead.",
+      "noun": "recurring schedule",
+      "search": "Search by number, reference, name or route",
+      "unassigned": "Resource not assigned",
+      "noTime": "No departure time yet",
+      "validFrom": "From {{from}}",
+      "validFromTo": "{{from}} – {{to}}",
+      "toReassign": "To reassign: {{count}}",
+      "reassignment": "Journeys to reassign",
+      "reassignmentOf": "Journeys to reassign · {{record}}",
+      "reassignmentHint": "These journeys have bookings, so they stay as they were when the schedule changed. Move their passengers, then cancel or keep them.",
+      "end": "End",
+      "endTitle": "End {{record}}?",
+      "endBody": "Its future journeys without bookings leave the plan; any with bookings stay, to be reassigned. You can resume it later.",
+      "resume": "Resume",
+      "resumeTitle": "Resume {{record}}?",
+      "resumeBody": "Its journeys are planned again from today."
+    },
+    "form": {
+      "newTitle": "New recurring schedule",
+      "editTitle": "Change {{name}}",
+      "flightNumber": "Flight / voyage no.",
+      "name": "Name (optional)",
+      "route": "Route",
+      "chooseRoute": "Choose a route",
+      "mode": "Mode",
+      "resourceType": "Resource type",
+      "chooseType": "Choose a resource type",
+      "fleet": "Fleet resource",
+      "notAssigned": "Not assigned yet",
+      "maintenance": "under maintenance",
+      "departure": "Departure (GST)",
+      "arrival": "Arrival (GST)",
+      "validFrom": "Valid from",
+      "validTo": "Valid to (blank: ongoing)",
+      "days": "Days",
+      "chooseDays": "Choose at least one day.",
+      "timesHint": "Times are GST. Without a departure time, journeys wait for one on the Planning Board.",
+      "numberInvalid": "The operator code and three digits, e.g. ADA101",
+      "timeInvalid": "A time as HH:mm",
+      "validFromRequired": "Choose the first day",
+      "validToBefore": "Valid to is before valid from",
+      "arrivalNeedsDeparture": "Give the departure time with the arrival time",
+      "noChange": "Nothing has changed.",
+      "preview": "What it makes",
+      "previewNone": "No movements from today within the 180-day horizon.",
+      "previewSome": "Movements from today: {{count}}, {{first}} – {{last}}.",
+      "previewTaken": "Already running on {{count}} of these days: {{dates}}.",
+      "replanHint": "Saving replans its journeys from today: those without bookings follow the change; booked ones are listed for reassignment."
+    },
+    "dashboard": {
+      "title": "Scheduling Dashboard",
+      "subtitle": "Author routes and voyages, and browse what's published — Booking consumes whatever's here",
+      "kpi": {
+        "schedules": "Active Recurring Schedules",
+        "adhoc": "Active Ad Hoc Movements",
+        "unassignedFleet": "Unassigned Fleet Resources",
+        "published": "Movements Published",
+        "withoutTime": "Journeys Without a Departure Time",
+        "nextWeek": "Nothing planned in the next 7 days",
+        "horizon": "From today to the 180-day horizon",
+        "compatibility": "Compatibility flags",
+        "compatibilityHint": "Rotary wing, next 14 days: helideck and aircraft checks (flags only until Phase 7)",
+        "needingRoute": "Requests needing a route",
+        "needingRouteHint": "From today: no master route goes there"
+      },
+      "conflicts": "Fleet conflicts in the next 14 days",
+      "conflict": {
+        "overlap": "{{fleet}} on {{date}}: {{journeys}} at the same time",
+        "maintenance": "{{fleet}} is under maintenance, with {{journeys}} on {{date}}"
+      },
+      "modes": "Modes",
+      "all": "All",
+      "day": "Day",
+      "table": "Departures on {{date}}",
+      "empty": "No departures on this day."
+    },
+    "journeys": {
+      "departure": "Departure",
+      "arrival": "Arrival",
+      "seats": "Seats",
+      "quota": "Quota held: {{count}}",
+      "cutoff": "Cut-off",
+      "noCutoff": "No cut-off set",
+      "gate": "Gate",
+      "flag": {
+        "no-time": "No departure time",
+        "no-resource": "No resource",
+        "resource-maintenance": "Resource under maintenance",
+        "resource-overlap": "Resource double-booked"
+      },
+      "status": {
+        "scheduled": "Scheduled",
+        "manifest-confirmed": "Manifest confirmed",
+        "open": "Open",
+        "check-in": "Check-in",
+        "check-in-closed": "Check-in closed",
+        "boarding": "Boarding",
+        "departed": "Departed",
+        "arrived": "Arrived",
+        "closed": "Closed",
+        "delayed": "Delayed",
+        "cancelled": "Cancelled"
+      },
+      "helideckFlag": "Helideck flag",
+      "demand": "Pending {{pending}} · waitlisted {{waitlisted}}"
+    },
+    "board": {
+      "title": "Planning Board",
+      "subtitle": "Planned journeys by month or week, with the weather. Give a departure time to those planned without one.",
+      "view": "View",
+      "month": "Month",
+      "week": "Week",
+      "legend": {
+        "planned": "Planned",
+        "attention": "No time yet, or weather caution",
+        "adverse": "Adverse weather",
+        "cancelled": "Cancelled"
+      },
+      "untimed": "Departure times to give: {{count}}",
+      "untimedHint": "Journeys from today whose schedule gives no departure time. Booking shows them without a time until one is given.",
+      "untimedNone": "Every journey from today has a departure time.",
+      "page": "{{page}} of {{pages}}",
+      "giveTime": "Give a departure time",
+      "giveTimeShort": "Give time",
+      "changeTime": "Change the departure time",
+      "details": "Details",
+      "givenHere": "Given on the Planning Board",
+      "source": "Planned by",
+      "timedBySchedule": "{{ref}} sets this journey’s time: change it on",
+      "arrivalOptional": "Arrival (GST, optional)",
+      "timeHint": "Times are GST. An arrival earlier than the departure is the next day. A later change to the schedule keeps this time until the schedule has one of its own.",
+      "departureRequired": "Give the departure time as HH:mm.",
+      "save": "Save time"
+    },
+    "weather": {
+      "level": {
+        "caution": "Weather caution",
+        "adverse": "Adverse weather"
+      },
+      "at": "{{level}} at {{location}}",
+      "advice": "NCM advisory: advice only, and operations decide.",
+      "unavailable": "NCM weather is unavailable just now: no advisories are shown. Nothing is blocked by it.",
+      "window": "NCM advisories cover {{from}} to {{to}}."
+    },
+    "requests": {
+      "title": "Unscheduled Requests",
+      "subtitle": "Requests for a route or a day with no movement. Set up a schedule, or create an ad hoc movement for them.",
+      "travelDate": "Travel date",
+      "at": "Requested {{time}}",
+      "request": "Request",
+      "asked": "From → to",
+      "criticality": "Criticality",
+      "critical": {
+        "normal": "Normal",
+        "urgent": "Urgent",
+        "vital": "Vital"
+      },
+      "missing": "What is missing",
+      "kind": {
+        "no-route": "No route",
+        "no-movement": "No movement that day"
+      },
+      "actions": "Actions",
+      "createAdhoc": "Create ad hoc",
+      "setUpSchedule": "Set up schedule",
+      "needsRoute": "A master route is needed first (Administration · Routes).",
+      "from": "From",
+      "table": "Unscheduled requests",
+      "empty": "No unscheduled requests from this day.",
+      "choose": "Choose",
+      "chooseOne": "Choose {{ref}}",
+      "chooseHint": "Choose requests to carry them together on one ad hoc movement.",
+      "createFromChosen": "Create ad hoc from {{count}} chosen"
+    },
+    "adhoc": {
+      "title": "Ad Hoc Movements",
+      "subtitle": "One-off flights and voyages in the 9xx band, on master routes, for emergencies and accumulated requests.",
+      "noun": "ad hoc movement",
+      "search": "Search by number, reference, purpose or route",
+      "newTitle": "New ad hoc movement",
+      "date": "Date",
+      "dateRequired": "Choose the day it runs",
+      "requests": "Requests taken up",
+      "booked": "{{count}} booked",
+      "purpose": "Purpose (emergency or ad hoc demand)",
+      "fromRequests": "Unscheduled requests",
+      "numberInvalid": "The operator code and a 9xx number, e.g. ADA901",
+      "hint": "Times are GST. Saving plans its journey at once; the requests chosen travel on it.",
+      "hasPassengers": "It has passengers: its number, route, mode and day stay; its resource, times and purpose can change.",
+      "suggestions": "Requests to carry: {{count}}",
+      "suggesting": "Looking for master routes that carry them…",
+      "groupLine": "{{count}} requests along {{stops}}",
+      "seats": "{{type}}, {{count}} seats",
+      "unplaced": "{{count}} of the requests have no master route that carries them, or are no longer open.",
+      "endTitle": "End {{record}}?",
+      "endBody": "Its journey leaves the plan. A movement with passengers can’t be ended until they are moved.",
+      "resumeTitle": "Resume {{record}}?",
+      "resumeBody": "Its journey is planned again."
+    },
+    "premanifest": {
+      "title": "Pre-manifest",
+      "subtitle": "Who gets a seat on each journey, in order: crew changes, then VIPs, then categories by priority, first come first served. Review, adjust and publish.",
+      "journeys": "Journeys",
+      "none": "No journeys on this day.",
+      "choose": "Choose a journey to review its pre-manifest.",
+      "status": {
+        "none": "Not yet",
+        "draft": "Draft",
+        "published": "Published"
+      },
+      "counts": "Seated {{manifest}} of {{capacity}} · waitlist {{waitlist}}",
+      "dueAt": "Suggested {{at}}",
+      "notYet": "Not suggested yet: it is made {{at}}, or now with Suggest now.",
+      "suggest": "Suggest now",
+      "refresh": "Refresh suggestion",
+      "publish": "Publish",
+      "summary": {
+        "seats": "Seats",
+        "seated": "Seated",
+        "waitlist": "Waitlist",
+        "overCap": "Over the cap",
+        "reserve": "Reserve seats"
+      },
+      "reserveLabel": "Reserve seats for no-show backfill",
+      "reserveSave": "Hold back",
+      "nonTimed": "No fixed time: {{needing}} need service on this route today; {{here}} are on this run.",
+      "table": "Pre-manifest lines",
+      "passenger": "Passenger",
+      "category": "Category",
+      "decision": "Decision",
+      "crewChange": "Crew change",
+      "decisions": {
+        "manifest": "Seated",
+        "waitlist": "Waitlisted",
+        "over-cap": "Over the cap",
+        "excluded": "Excluded"
+      },
+      "reasons": {
+        "no-seat": "No seat free",
+        "quota-full": "Category quota full",
+        "waitlist-full": "Waitlist full",
+        "manual": "Waitlisted by hand",
+        "excluded": "Excluded"
+      },
+      "reassign": "Advice: {{flight}} ({{kind}}) has a seat",
+      "up": "Move {{name}} up",
+      "down": "Move {{name}} down",
+      "seat": "Seat",
+      "waitlist": "Waitlist",
+      "exclude": "Exclude",
+      "empty": "No approved or waitlisted bookings on this journey.",
+      "confirm": {
+        "refresh": {
+          "title": "Refresh the suggestion?",
+          "body": "A new suggestion replaces the draft and the changes made to it. The reserve seats stay.",
+          "button": "Refresh"
+        },
+        "publish": {
+          "title": "Publish the pre-manifest?",
+          "body": "It becomes final: manifest confirmation starts from it, and it can no longer be refreshed or changed.",
+          "button": "Publish"
+        },
+        "exclude": {
+          "title": "Exclude {{name}}?",
+          "body": "They stay booked but are left off this pre-manifest. The reason goes to the audit log.",
+          "button": "Exclude"
+        }
+      }
+    }
+  },
+  "demo": {
+    "landing": {
+      "title": "AD-MSR Demo",
+      "continue": "Continue"
+    },
+    "login": {
+      "title": "Log in to AD-MSR Demo",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Log in",
+      "usernameRequired": "Enter your username.",
+      "passwordRequired": "Enter your password.",
+      "invalid": "The username or password is incorrect.",
+      "note": "Demo access only. This login is not connected to MASAR or ADNOC accounts, and all data is sample data."
+    }
+  }
+}

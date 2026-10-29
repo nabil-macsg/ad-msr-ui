@@ -1,0 +1,42 @@
+[
+  {
+    "code": "1",
+    "description": "Company Staff — Operations",
+    "recoverability": "non-recoverable"
+  },
+  {
+    "code": "2",
+    "description": "Company Staff — Projects",
+    "recoverability": "non-recoverable"
+  },
+  {
+    "code": "3",
+    "description": "Direct Hire",
+    "recoverability": "non-recoverable"
+  },
+  {
+    "code": "4",
+    "description": "Contractor — Recoverable",
+    "recoverability": "recoverable"
+  },
+  {
+    "code": "5",
+    "description": "Contractor — Non-Recoverable",
+    "recoverability": "non-recoverable"
+  },
+  {
+    "code": "6",
+    "description": "Visitor / Third Party",
+    "recoverability": "recoverable"
+  },
+  {
+    "code": "7",
+    "description": "Government Traffic",
+    "recoverability": "recoverable"
+  },
+  {
+    "code": "8",
+    "description": "Emergency / Medevac",
+    "recoverability": "non-recoverable"
+  }
+]

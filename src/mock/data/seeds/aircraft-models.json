@@ -1,0 +1,22 @@
+[
+  {
+    "code": "BELL-412",
+    "requiredTT": 5.4,
+    "requiredDM": 14.02
+  },
+  {
+    "code": "AW169",
+    "requiredTT": 4.8,
+    "requiredDM": 12.12
+  },
+  {
+    "code": "AW139",
+    "requiredTT": 6.4,
+    "requiredDM": 13.8
+  },
+  {
+    "code": "AW189",
+    "requiredTT": 8.6,
+    "requiredDM": 14.6
+  }
+]

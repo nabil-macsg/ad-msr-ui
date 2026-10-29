@@ -1,0 +1,55 @@
+{
+  "effectiveFrom": "2026-01-01",
+  "essential": [
+    "Operations Supervisor",
+    "Operator",
+    "Senior Process Engineer",
+    "Field Technician",
+    "Response Coordinator",
+    "Radar Technician",
+    "Team Lead",
+    "HLO",
+    "HDA",
+    "HRO",
+    "Master / Captain",
+    "Chief Engineer",
+    "Second Engineer",
+    "Deck Officer",
+    "Crane Operator"
+  ],
+  "nonEssential": [
+    "Senior Engineer",
+    "Service Engineer",
+    "Field Specialist",
+    "Catering Supervisor",
+    "Consultant",
+    "Auditor",
+    "Guest Engineer",
+    "Visiting Executive",
+    "Vice President",
+    "Mechanic",
+    "Bosun",
+    "Able Seaman",
+    "Marine Technician",
+    "Cook",
+    "Steward"
+  ],
+  "overrides": [
+    {
+      "designation": "Catering Supervisor",
+      "location": "DAS",
+      "classification": "essential"
+    },
+    {
+      "designation": "Senior Engineer",
+      "location": "UZ",
+      "classification": "essential"
+    }
+  ],
+  "unmapped": [
+    {
+      "location": "ACPT",
+      "designations": ["Radar Technician", "Guest Engineer"]
+    }
+  ]
+}

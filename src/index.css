@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@import './shared/theme/tokens.css';
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    background-color: var(--color-canvas);
+    background-image: var(--masar-canvas-gradient);
+    background-attachment: fixed;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar-thumb);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-scrollbar-thumb-hover);
+  }
+}
+
+/* Sidebar icons take the theme's icon colours; the selected item's follow its text. */
+[data-sidebar] a svg,
+[data-sidebar] button svg {
+  color: var(--color-nav-icon);
+}
+[data-sidebar] a[aria-current='page'] svg {
+  color: var(--color-nav-active-icon);
+}
+
+/* Sidebar scrolling: a thin scrollbar that sits on the dark navigation panel. */
+@utility nav-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-nav-hover) transparent;
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-nav-hover);
+  }
+}
+
+/* LiveTicker: two copies of the list slide left by one copy's width, forever. */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@utility ticker-track {
+  animation: ticker 40s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+}

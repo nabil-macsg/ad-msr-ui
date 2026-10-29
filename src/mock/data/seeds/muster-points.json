@@ -1,0 +1,261 @@
+[
+  {
+    "code": "DAS-MA",
+    "name": "Muster A — Helideck",
+    "location": "DAS",
+    "role": "primary",
+    "evacuationModes": ["helicopter"],
+    "capacity": 86
+  },
+  {
+    "code": "DAS-MB",
+    "name": "Muster B — Jetty",
+    "location": "DAS",
+    "role": "alternate",
+    "evacuationModes": ["lifeboat", "boat"],
+    "capacity": 86
+  },
+  {
+    "code": "DAS-MC",
+    "name": "Muster C — Camp",
+    "location": "DAS",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 86
+  },
+  {
+    "code": "ZRK-MA",
+    "name": "Muster A — Terminal",
+    "location": "ZRK",
+    "role": "primary",
+    "evacuationModes": ["lifeboat", "boat"],
+    "capacity": 90
+  },
+  {
+    "code": "ZRK-MB",
+    "name": "Muster B — Camp",
+    "location": "ZRK",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 90
+  },
+  {
+    "code": "UZ-MA",
+    "name": "Muster A — Platform",
+    "location": "UZ",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"],
+    "capacity": 50
+  },
+  {
+    "code": "UZ-MB",
+    "name": "Muster B — Living Quarters",
+    "location": "UZ",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 50
+  },
+  {
+    "code": "UZ-MC",
+    "name": "Muster C — Process",
+    "location": "UZ",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 50,
+    "unavailable": {
+      "reasonCode": "MUS-MAINT",
+      "reason": "Non-operational in the demo: process area shut in"
+    }
+  },
+  {
+    "code": "LZ-MA",
+    "name": "Muster A — Platform",
+    "location": "LZ",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"],
+    "capacity": 47
+  },
+  {
+    "code": "LZ-MB",
+    "name": "Muster B — Living Quarters",
+    "location": "LZ",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 47
+  },
+  {
+    "code": "US-MA",
+    "name": "Muster A — Process",
+    "location": "US",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"]
+  },
+  {
+    "code": "US-MB",
+    "name": "Muster B — Living Quarters",
+    "location": "US",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "US-MC",
+    "name": "Muster C — Utilities",
+    "location": "US",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "ACPT-MA",
+    "name": "Muster A — Main",
+    "location": "ACPT",
+    "role": "primary",
+    "evacuationModes": ["lifeboat", "helicopter"],
+    "capacity": 55
+  },
+  {
+    "code": "NASR-MA",
+    "name": "Muster A — Platform",
+    "location": "NASR",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"]
+  },
+  {
+    "code": "NASR-MB",
+    "name": "Muster B — Rig",
+    "location": "NASR",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "ABK-MA",
+    "name": "Muster A — Platform",
+    "location": "ABK",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"],
+    "capacity": 40
+  },
+  {
+    "code": "ZRK-Z1-MA",
+    "name": "Muster A — Platform",
+    "location": "ZRK-Z1",
+    "role": "primary",
+    "evacuationModes": ["boat"],
+    "capacity": 25
+  },
+  {
+    "code": "ZRK-Z2-MA",
+    "name": "Muster A — Platform",
+    "location": "ZRK-Z2",
+    "role": "primary",
+    "evacuationModes": ["boat"],
+    "capacity": 20
+  },
+  {
+    "code": "BHS-MA",
+    "name": "Muster A — Main Deck",
+    "location": "BHS",
+    "role": "primary",
+    "evacuationModes": ["lifeboat", "boat"]
+  },
+  {
+    "code": "BHS-MB",
+    "name": "Muster B — Accommodation",
+    "location": "BHS",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "GHF-MA",
+    "name": "Muster A — GOP Island Helipad",
+    "location": "GHF",
+    "role": "primary",
+    "evacuationModes": ["helicopter", "boat"]
+  },
+  {
+    "code": "GHF-MB",
+    "name": "Muster B — Barge Accommodation",
+    "location": "GHF",
+    "role": "alternate",
+    "evacuationModes": ["lifeboat", "boat"]
+  },
+  {
+    "code": "GHF-MC",
+    "name": "Muster C — Construction Deck",
+    "location": "GHF",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "HAIL-MA",
+    "name": "Muster A — Gaff Island",
+    "location": "HAIL",
+    "role": "primary",
+    "evacuationModes": ["helicopter"]
+  },
+  {
+    "code": "HAIL-MB",
+    "name": "Muster B — Vessel Deck",
+    "location": "HAIL",
+    "role": "alternate",
+    "evacuationModes": ["lifeboat"]
+  },
+  {
+    "code": "UAS-MA",
+    "name": "Muster A — Main Deck",
+    "location": "UAS",
+    "role": "primary",
+    "evacuationModes": ["boat"],
+    "capacity": 32
+  },
+  {
+    "code": "BLB-MA",
+    "name": "Muster A — Main Deck",
+    "location": "BLB",
+    "role": "primary",
+    "evacuationModes": ["boat"]
+  },
+  {
+    "code": "STH-MA",
+    "name": "Muster A — Platform",
+    "location": "STH",
+    "role": "primary",
+    "evacuationModes": ["lifeboat", "boat"]
+  },
+  {
+    "code": "SRB-MA",
+    "name": "Muster A — Platform",
+    "location": "SRB",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"]
+  },
+  {
+    "code": "SRB-MB",
+    "name": "Muster B — Wellhead Tower",
+    "location": "SRB",
+    "role": "alternate",
+    "evacuationModes": []
+  },
+  {
+    "code": "UAD-MA",
+    "name": "Muster A — Process",
+    "location": "UAD",
+    "role": "primary",
+    "evacuationModes": ["lifeboat"],
+    "capacity": 35
+  },
+  {
+    "code": "UAD-MB",
+    "name": "Muster B — Living Quarters",
+    "location": "UAD",
+    "role": "alternate",
+    "evacuationModes": [],
+    "capacity": 35
+  },
+  {
+    "code": "CSM-MA",
+    "name": "Muster A — Main Deck",
+    "location": "CSM",
+    "role": "primary",
+    "evacuationModes": ["boat"]
+  }
+]

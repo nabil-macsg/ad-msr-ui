@@ -1,0 +1,349 @@
+[
+  {
+    "code": "GHWEIFAT",
+    "name": "AL GHWEIFAT",
+    "location": "BHS",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 19,
+    "tValue": 8,
+    "lastOpsSurveyOn": "2026-05-09",
+    "minPerformanceClass": "PC2WE",
+    "radioFrequency": "120.1"
+  },
+  {
+    "code": "OML-JACOB-HLV",
+    "name": "OML Jacob HLV",
+    "location": "BHS",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22,
+    "tValue": 12.6,
+    "lastOpsSurveyOn": "2026-05-09",
+    "minPerformanceClass": "PC2WE",
+    "radioFrequency": "120.1"
+  },
+  {
+    "code": "ADNOC-AB-01",
+    "name": "ADNOC AB-01",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 24,
+    "tValue": 12,
+    "lastOpsSurveyOn": "2024-03-12"
+  },
+  {
+    "code": "ADNOC-AB-02",
+    "name": "ADNOC AB-02",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 25.5,
+    "tValue": 12,
+    "lastOpsSurveyOn": "2025-04-17"
+  },
+  {
+    "code": "ALLIANZ-INST",
+    "name": "Allianz Installer",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 25.6,
+    "tValue": 12.8,
+    "lastOpsSurveyOn": "2025-08-16"
+  },
+  {
+    "code": "ALLIANZ-CMDR",
+    "name": "Allianz Commander",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22.6,
+    "tValue": 12,
+    "lastOpsSurveyOn": "2024-10-15"
+  },
+  {
+    "code": "AMS-REEM",
+    "name": "AMS Reem",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22.2,
+    "tValue": 12.8,
+    "lastOpsSurveyOn": "2025-07-04"
+  },
+  {
+    "code": "CHANANIZ",
+    "name": "Chananiz Island (GOP Island)",
+    "location": "GHF",
+    "type": "HELIPAD",
+    "deckClass": "F5",
+    "dValue": 18,
+    "tValue": 8.6,
+    "lastOpsSurveyOn": "2025-12-13"
+  },
+  {
+    "code": "CREST-STN-1",
+    "name": "CREST STATION 1",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 25,
+    "tValue": 12,
+    "lastOpsSurveyOn": "2025-10-14"
+  },
+  {
+    "code": "DLS-4200",
+    "name": "DLS 4200 (BOAT)",
+    "location": "GHF",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22.2,
+    "tValue": 12.8,
+    "lastOpsSurveyOn": "2026-06-16"
+  },
+  {
+    "code": "ADNOC-AB-03",
+    "name": "ADNOC AB-03",
+    "location": "HAIL",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 26,
+    "tValue": 12.8,
+    "lastOpsSurveyOn": "2026-04-23"
+  },
+  {
+    "code": "SAIPEM-ENDV",
+    "name": "Saipem Endeavour",
+    "location": "HAIL",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 23,
+    "tValue": 5.4,
+    "lastOpsSurveyOn": "2025-05-27"
+  },
+  {
+    "code": "AL-DANAT",
+    "name": "Al Danat",
+    "location": "UAS",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 23,
+    "tValue": 12.6,
+    "lastOpsSurveyOn": "2025-09-16"
+  },
+  {
+    "code": "AL-GURM",
+    "name": "AL Gurm",
+    "location": "BLB",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 23,
+    "tValue": 12.6,
+    "lastOpsSurveyOn": "2026-07-05"
+  },
+  {
+    "code": "AL-MARMAR",
+    "name": "Al Marmar",
+    "location": "STH",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22.2,
+    "tValue": 12.6,
+    "lastOpsSurveyOn": "2026-07-25"
+  },
+  {
+    "code": "LEEN",
+    "name": "Leen",
+    "location": "STH",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 17.5,
+    "tValue": 8,
+    "lastOpsSurveyOn": "2026-08-14"
+  },
+  {
+    "code": "AL-SHUWEHAT",
+    "name": "Al Shuwehat",
+    "location": "SRB",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 22,
+    "tValue": 12.8,
+    "lastOpsSurveyOn": "2026-01-03",
+    "coordinates": {
+      "lat": 24.756667,
+      "lng": 53.185
+    }
+  },
+  {
+    "code": "AL-QATIA",
+    "name": "Al Qatia [Sarb Island North]",
+    "location": "SRB",
+    "type": "HELIPAD",
+    "deckClass": "F5",
+    "dValue": 22,
+    "tValue": 9.3,
+    "lastOpsSurveyOn": "2026-01-26"
+  },
+  {
+    "code": "BU-SIKEEN",
+    "name": "Bu Sikeen [Sarb Island South]",
+    "location": "SRB",
+    "type": "HELIPAD",
+    "deckClass": "F5",
+    "dValue": 22,
+    "tValue": 9.3,
+    "lastOpsSurveyOn": "2025-09-01"
+  },
+  {
+    "code": "UAD-CPC",
+    "name": "CPC (UMM AL DALKH)",
+    "location": "UAD",
+    "type": "HELIDECK",
+    "deckClass": "F1",
+    "dValue": 21,
+    "tValue": 9.3,
+    "lastOpsSurveyOn": "2025-10-09"
+  },
+  {
+    "code": "AL-BZOOM",
+    "name": "Al Bzoom",
+    "location": "CSM",
+    "type": "HELIDECK",
+    "deckClass": "M5",
+    "dValue": 17,
+    "tValue": 5.4
+  },
+  {
+    "code": "DAS-HD-A",
+    "name": "Das Island Helideck Alpha",
+    "location": "DAS",
+    "type": "HELIDECK",
+    "dValue": 15.8,
+    "tValue": 12.5
+  },
+  {
+    "code": "DAS-HD-B",
+    "name": "Das Island Helideck Bravo",
+    "location": "DAS",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  },
+  {
+    "code": "ZRK-HD",
+    "name": "Zirku Island Helideck",
+    "location": "ZRK",
+    "type": "HELIDECK",
+    "dValue": 15.8,
+    "tValue": 12.5
+  },
+  {
+    "code": "UZ-HUB-HD",
+    "name": "Upper Zakum Hub Helideck",
+    "location": "UZ",
+    "type": "HELIDECK",
+    "dValue": 16.5,
+    "tValue": 13.6,
+    "material": "Steel"
+  },
+  {
+    "code": "UZ-RP3-HD",
+    "name": "Upper Zakum RP-3 Helideck",
+    "location": "UZ",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  },
+  {
+    "code": "UZ-STP-HD",
+    "name": "Upper Zakum STP Helideck",
+    "location": "UZ",
+    "type": "HELIDECK",
+    "dValue": 13.5,
+    "tValue": 10
+  },
+  {
+    "code": "LZ-CPP-HD",
+    "name": "Lower Zakum CPP Helideck",
+    "location": "LZ",
+    "type": "HELIDECK",
+    "dValue": 15.8,
+    "tValue": 12.5,
+    "material": "Steel"
+  },
+  {
+    "code": "LZ-WHQ-HD",
+    "name": "Lower Zakum WHQ Helideck",
+    "location": "LZ",
+    "type": "HELIDECK",
+    "dValue": 12.2,
+    "tValue": 8.5
+  },
+  {
+    "code": "LZ-DWP-HD",
+    "name": "Lower Zakum DWP Helideck",
+    "location": "LZ",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  },
+  {
+    "code": "US-SUHUB-HD",
+    "name": "Umm Shaif SU-Hub Helideck",
+    "location": "US",
+    "type": "HELIDECK",
+    "dValue": 15.8,
+    "tValue": 12.5
+  },
+  {
+    "code": "US-ULQ-HD",
+    "name": "Umm Shaif ULQ Helideck",
+    "location": "US",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  },
+  {
+    "code": "US-SP3-HD",
+    "name": "Umm Shaif SP-3 Helideck",
+    "location": "US",
+    "type": "HELIDECK",
+    "dValue": 11.8,
+    "tValue": 7.5
+  },
+  {
+    "code": "ACPT-HD",
+    "name": "ACPT Helideck",
+    "location": "ACPT",
+    "type": "HELIDECK",
+    "dValue": 17,
+    "tValue": 14
+  },
+  {
+    "code": "NASR-HD-A",
+    "name": "NASR Alpha Helideck",
+    "location": "NASR",
+    "type": "HELIDECK",
+    "dValue": 15.8,
+    "tValue": 12.5
+  },
+  {
+    "code": "NASR-HD-B",
+    "name": "NASR Bravo Helideck",
+    "location": "NASR",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  },
+  {
+    "code": "ABK-HD",
+    "name": "ABK Helideck",
+    "location": "ABK",
+    "type": "HELIDECK",
+    "dValue": 14.5,
+    "tValue": 11.2
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "code": "Q-DASH8-300-VIP",
+    "type": "DASH8-300",
+    "category": "VIP",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-EP",
+    "type": "DASH8-300",
+    "category": "EP",
+    "seatLimit": 2,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-DH",
+    "type": "DASH8-300",
+    "category": "DH",
+    "seatLimit": 23,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-EST-POS",
+    "type": "DASH8-300",
+    "category": "EST-POS",
+    "seatLimit": 4,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-CON",
+    "type": "DASH8-300",
+    "category": "CON",
+    "seatLimit": 13,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-RADAR",
+    "type": "DASH8-300",
+    "category": "RADAR",
+    "seatLimit": 2,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-VIS",
+    "type": "DASH8-300",
+    "category": "VIS",
+    "seatLimit": 3,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-DASH8-300-GEN",
+    "type": "DASH8-300",
+    "category": "GEN",
+    "seatLimit": 2,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-VIP",
+    "type": "LET-410",
+    "category": "VIP",
+    "seatLimit": 0,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-EP",
+    "type": "LET-410",
+    "category": "EP",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-DH",
+    "type": "LET-410",
+    "category": "DH",
+    "seatLimit": 9,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-EST-POS",
+    "type": "LET-410",
+    "category": "EST-POS",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-CON",
+    "type": "LET-410",
+    "category": "CON",
+    "seatLimit": 5,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-RADAR",
+    "type": "LET-410",
+    "category": "RADAR",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-VIS",
+    "type": "LET-410",
+    "category": "VIS",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  },
+  {
+    "code": "Q-LET-410-GEN",
+    "type": "LET-410",
+    "category": "GEN",
+    "seatLimit": 1,
+    "period": "flight",
+    "validFrom": "2026-01-01"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "code": "AUH-DAS-FW",
+    "points": ["AUH", "DAS"],
+    "category": "FIXED-WING",
+    "durationMinutes": 75,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "AUH-ZRK-FW",
+    "points": ["AUH", "ZRK"],
+    "category": "FIXED-WING",
+    "durationMinutes": 60,
+    "owningTeam": "Zirku Island Logistics"
+  },
+  {
+    "code": "DAS-AUH-FW",
+    "points": ["DAS", "AUH"],
+    "category": "FIXED-WING",
+    "durationMinutes": 75,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "ZRK-AUH-FW",
+    "points": ["ZRK", "AUH"],
+    "category": "FIXED-WING",
+    "durationMinutes": 60,
+    "owningTeam": "Zirku Island Logistics"
+  },
+  {
+    "code": "DAS-UZ-RW",
+    "points": ["DAS", "UZ"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 40,
+    "owningTeam": "Upper Zakum Logistics"
+  },
+  {
+    "code": "DAS-US-RW",
+    "points": ["DAS", "US"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 30,
+    "owningTeam": "Umm Shaif Logistics"
+  },
+  {
+    "code": "DAS-LZ-RW",
+    "points": ["DAS", "LZ"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 45,
+    "owningTeam": "Lower Zakum Logistics"
+  },
+  {
+    "code": "ZRK-NASR-RW",
+    "points": ["ZRK", "NASR"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 30,
+    "owningTeam": "NASR Logistics"
+  },
+  {
+    "code": "UZ-DAS-RW",
+    "points": ["UZ", "DAS"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 40,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "US-DAS-RW",
+    "points": ["US", "DAS"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 30,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "AUH-US-RW",
+    "points": ["AUH", "US"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 45,
+    "owningTeam": "Umm Shaif Logistics"
+  },
+  {
+    "code": "AUH-DAS-RW",
+    "points": ["AUH", "DAS"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 50,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "US-AUH-RW",
+    "points": ["US", "AUH"],
+    "category": "ROTARY-WING",
+    "durationMinutes": 45,
+    "owningTeam": "Umm Shaif Logistics"
+  },
+  {
+    "code": "AUH-DAS-MAR",
+    "points": ["AUH", "DAS"],
+    "category": "MARINE",
+    "durationMinutes": 240,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "DAS-AUH-MAR",
+    "points": ["DAS", "AUH"],
+    "category": "MARINE",
+    "durationMinutes": 240,
+    "owningTeam": "Das Island Logistics"
+  },
+  {
+    "code": "AUH-UZ-MAR",
+    "points": ["AUH", "UZ"],
+    "category": "MARINE",
+    "durationMinutes": 360,
+    "owningTeam": "Upper Zakum Logistics"
+  },
+  {
+    "code": "AUH-ACPT-MAR",
+    "points": ["AUH", "UZ", "LZ", "ACPT"],
+    "category": "MARINE",
+    "durationMinutes": 510,
+    "owningTeam": "ACPT Logistics"
+  },
+  {
+    "code": "ACPT-AUH-MAR",
+    "points": ["ACPT", "LZ", "UZ", "AUH"],
+    "category": "MARINE",
+    "durationMinutes": 510,
+    "owningTeam": "ACPT Logistics"
+  },
+  {
+    "code": "AUH-ZRK-MAR",
+    "points": ["AUH", "ZRK"],
+    "category": "MARINE",
+    "durationMinutes": 180,
+    "owningTeam": "Zirku Island Logistics"
+  },
+  {
+    "code": "ZRK-AUH-MAR",
+    "points": ["ZRK", "AUH"],
+    "category": "MARINE",
+    "durationMinutes": 180,
+    "owningTeam": "Zirku Island Logistics"
+  },
+  {
+    "code": "ZRK-Z1-MAR",
+    "points": ["ZRK", "ZRK-Z1"],
+    "category": "MARINE",
+    "durationMinutes": 45,
+    "owningTeam": "Zirku Platform Z1 Logistics"
+  },
+  {
+    "code": "ZRK-Z2-MAR",
+    "points": ["ZRK", "ZRK-Z2"],
+    "category": "MARINE",
+    "durationMinutes": 60,
+    "owningTeam": "Zirku Platform Z2 Logistics"
+  },
+  {
+    "code": "Z1-ZRK-MAR",
+    "points": ["ZRK-Z1", "ZRK"],
+    "category": "MARINE",
+    "durationMinutes": 45,
+    "owningTeam": "Zirku Island Logistics"
+  },
+  {
+    "code": "Z2-ZRK-MAR",
+    "points": ["ZRK-Z2", "ZRK"],
+    "category": "MARINE",
+    "durationMinutes": 60,
+    "owningTeam": "Zirku Island Logistics"
+  }
+]

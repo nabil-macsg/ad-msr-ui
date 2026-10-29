@@ -1,0 +1,37 @@
+[
+  {
+    "code": "FS-ZRK",
+    "name": "Zirku fuel station",
+    "location": "ZRK",
+    "capacityKg": 20000,
+    "reorderLevelKg": 5000
+  },
+  {
+    "code": "FS-NASR",
+    "name": "Nasr fuel station",
+    "location": "NASR",
+    "capacityKg": 20000,
+    "reorderLevelKg": 5000
+  },
+  {
+    "code": "FS-LZ",
+    "name": "Lower Zakum fuel station",
+    "location": "LZ",
+    "capacityKg": 20000,
+    "reorderLevelKg": 5000
+  },
+  {
+    "code": "FS-UZ",
+    "name": "Upper Zakum fuel station",
+    "location": "UZ",
+    "capacityKg": 20000,
+    "reorderLevelKg": 5000
+  },
+  {
+    "code": "FS-US",
+    "name": "Umm Shaif fuel station",
+    "location": "US",
+    "capacityKg": 20000,
+    "reorderLevelKg": 5000
+  }
+]

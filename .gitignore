@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+dist/
+.prod-check/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local services data (ADR-0012)
+.local/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS / editors
+.DS_Store
+.idea/
+*.swp
+
+# Flutter / Dart
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+
+# Test output
+frontend/playwright-report/
+frontend/test-results/

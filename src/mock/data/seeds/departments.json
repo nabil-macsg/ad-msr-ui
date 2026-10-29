@@ -1,0 +1,38 @@
+[
+  {
+    "code": "AVL",
+    "name": "Aviation & Logistics"
+  },
+  {
+    "code": "OPS",
+    "name": "Operations"
+  },
+  {
+    "code": "HSE",
+    "name": "HSE"
+  },
+  {
+    "code": "MNT",
+    "name": "Maintenance"
+  },
+  {
+    "code": "QA",
+    "name": "Quality"
+  },
+  {
+    "code": "AVT",
+    "name": "Aviation Technical"
+  },
+  {
+    "code": "AVC",
+    "name": "Aviation Compliance"
+  },
+  {
+    "code": "MGT",
+    "name": "Management"
+  },
+  {
+    "code": "SITE",
+    "name": "Site Operations"
+  }
+]

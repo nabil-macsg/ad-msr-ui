@@ -1,0 +1,36 @@
+[
+  {
+    "code": "ADNOC-OFF",
+    "name": "ADNOC Offshore",
+    "source": "sap"
+  },
+  {
+    "code": "GOE",
+    "name": "Gulf Offshore Engineering LLC",
+    "source": "fieldglass"
+  },
+  {
+    "code": "ADA",
+    "name": "Abu Dhabi Aviation",
+    "source": "external",
+    "serviceProvider": "ADA"
+  },
+  {
+    "code": "FAL",
+    "name": "Falcon Aviation",
+    "source": "external",
+    "serviceProvider": "FAL"
+  },
+  {
+    "code": "AML",
+    "name": "ADNOC Marine Logistics",
+    "source": "external",
+    "serviceProvider": "AML"
+  },
+  {
+    "code": "GDS",
+    "name": "Gulf Deck Services LLC",
+    "source": "external",
+    "serviceProvider": "GDS"
+  }
+]

@@ -1,0 +1,1210 @@
+[
+  {
+    "key": "admin",
+    "name": "Admin User",
+    "email": "admin@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90001",
+    "hsePassportNo": "HSE-090001",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Platform Administrator",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "super-admin",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "aviation-control",
+    "name": "Aviation Control",
+    "email": "aviation.control@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90002",
+    "hsePassportNo": "HSE-090002",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Aviation Controller",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 2,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "aviation-team",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "saeed",
+    "name": "Saeed Al Kaabi",
+    "email": "s.alkaabi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90003",
+    "hsePassportNo": "HSE-090003",
+    "company": "ADNOC-OFF",
+    "department": "OPS",
+    "designation": "Operations Superintendent",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 1,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "line-manager",
+        "scope": {
+          "lineManagerOf": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "khalid-fp",
+    "name": "Khalid Al Dhaheri",
+    "email": "k.aldhaheri@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90004",
+    "hsePassportNo": "HSE-090004",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Logistics Focal Point",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "focal-point",
+        "scope": {
+          "locationIds": ["DAS", "ZRK"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "ahmed",
+    "name": "Ahmed Al Mansoori",
+    "email": "a.almansoori@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90005",
+    "hsePassportNo": "HSE-090005",
+    "company": "ADNOC-OFF",
+    "department": "OPS",
+    "designation": "Operator",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": "saeed",
+    "roles": [
+      {
+        "role": "passenger",
+        "scope": {
+          "self": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "omar",
+    "name": "Omar Al Blooshi",
+    "email": "o.alblooshi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90006",
+    "hsePassportNo": "HSE-090006",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Helideck Inspector",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "helideck-inspector",
+        "scope": {
+          "zoneIds": ["DAS", "ZAKUM"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "ops-centre",
+    "name": "Operations Centre",
+    "email": "ops.centre@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90007",
+    "hsePassportNo": "HSE-090007",
+    "company": "ADNOC-OFF",
+    "department": "MGT",
+    "designation": "MC Control",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 3,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "executive",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "checkin1",
+    "name": "Check-in Desk 1",
+    "email": "checkin1@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90008",
+    "hsePassportNo": "HSE-090008",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Check-in Agent",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "checkin-staff",
+        "scope": {
+          "locationIds": ["AUH"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "power-user",
+    "name": "Dispatch Power User",
+    "email": "power.user@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90009",
+    "hsePassportNo": "HSE-090009",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Logistics Power User",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "pl-power-user",
+        "scope": {
+          "zoneIds": ["BASE", "DAS", "ZAKUM"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "falcon-ops",
+    "name": "Falcon Ops Desk",
+    "email": "ops@fal.masar.example",
+    "source": "external_contact",
+    "personnelNo": "EXT-90010",
+    "hsePassportNo": "HSE-090010",
+    "company": "FAL",
+    "department": null,
+    "designation": "Operations Desk",
+    "gender": "M",
+    "external": true,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "service-provider",
+        "scope": {
+          "serviceProviderId": "FAL"
+        }
+      }
+    ]
+  },
+  {
+    "key": "hamad",
+    "name": "Hamad Al Suwaidi",
+    "email": "h.alsuwaidi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90011",
+    "hsePassportNo": "HSE-090011",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site In-charge",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-in-charge",
+        "scope": {
+          "locationIds": ["DAS"]
+        }
+      },
+      {
+        "role": "site-focal-point-helideck",
+        "scope": {
+          "locationIds": ["DAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "yousuf",
+    "name": "Yousuf Al Hammadi",
+    "email": "y.alhammadi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90012",
+    "hsePassportNo": "HSE-090012",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site In-charge",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-in-charge",
+        "scope": {
+          "locationIds": ["ZRK"]
+        }
+      },
+      {
+        "role": "site-focal-point-helideck",
+        "scope": {
+          "locationIds": ["ZRK"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-zirku",
+    "name": "Zirku Site Team",
+    "email": "site.team.zirku@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90013",
+    "hsePassportNo": "HSE-090013",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["ZRK"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-ghasha",
+    "name": "Ghasha Site Team",
+    "email": "site.team.ghasha@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90014",
+    "hsePassportNo": "HSE-090014",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["GHF"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-das-island",
+    "name": "Das Island Site Team",
+    "email": "site.team.das-island@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90015",
+    "hsePassportNo": "HSE-090015",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["DAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-upper-zakum",
+    "name": "Upper Zakum Site Team",
+    "email": "site.team.upper-zakum@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90016",
+    "hsePassportNo": "HSE-090016",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["UZ"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-lower-zakum",
+    "name": "Lower Zakum Site Team",
+    "email": "site.team.lower-zakum@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90017",
+    "hsePassportNo": "HSE-090017",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["LZ"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-umm-shaif",
+    "name": "Umm Shaif Site Team",
+    "email": "site.team.umm-shaif@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90018",
+    "hsePassportNo": "HSE-090018",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["US"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-nasr",
+    "name": "NASR Site Team",
+    "email": "site.team.nasr@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90019",
+    "hsePassportNo": "HSE-090019",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["NASR"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-abk",
+    "name": "ABK Site Team",
+    "email": "site.team.abk@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90020",
+    "hsePassportNo": "HSE-090020",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["ABK"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-buhaser-field",
+    "name": "Buhaser Field Site Team",
+    "email": "site.team.buhaser-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90021",
+    "hsePassportNo": "HSE-090021",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["BHS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-belbazem-field",
+    "name": "Belbazem Field Site Team",
+    "email": "site.team.belbazem-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90022",
+    "hsePassportNo": "HSE-090022",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["BLB"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-sarb-field",
+    "name": "Sarb Field Site Team",
+    "email": "site.team.sarb-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90023",
+    "hsePassportNo": "HSE-090023",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["SRB"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-satah-field",
+    "name": "Satah Field Site Team",
+    "email": "site.team.satah-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90024",
+    "hsePassportNo": "HSE-090024",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["STH"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-cosmo-field",
+    "name": "Cosmo Field Site Team",
+    "email": "site.team.cosmo-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90025",
+    "hsePassportNo": "HSE-090025",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["CSM"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-umm-al-dalkh",
+    "name": "Umm Al Dalkh Site Team",
+    "email": "site.team.umm-al-dalkh@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90026",
+    "hsePassportNo": "HSE-090026",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["UAD"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-hail-field",
+    "name": "Hail Field Site Team",
+    "email": "site.team.hail-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90027",
+    "hsePassportNo": "HSE-090027",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["HAIL"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "site-team-umm-al-salsal-field",
+    "name": "Umm Al Salsal Field Site Team",
+    "email": "site.team.umm-al-salsal-field@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90028",
+    "hsePassportNo": "HSE-090028",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Site Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "site-team",
+        "scope": {
+          "locationIds": ["UAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "fahad",
+    "name": "Fahad Al Otaiba",
+    "email": "f.alotaiba@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90029",
+    "hsePassportNo": "HSE-090029",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Inspection Team POC",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 1,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "inspection-team-poc",
+        "scope": {
+          "zoneIds": ["DAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "capt-khalid",
+    "name": "Capt. Khalid Al Mansoori",
+    "email": "k.almansoori@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90030",
+    "hsePassportNo": "HSE-090030",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Team Leader, Aviation Technical",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 2,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "tl-ats",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "ali",
+    "name": "Ali Al Shamsi",
+    "email": "a.alshamsi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90031",
+    "hsePassportNo": "HSE-090031",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Manager, Aviation Technical",
+    "gender": "M",
+    "external": false,
+    "approvalTier": 3,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "mosa",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "helideck-team",
+    "name": "Aviation & Helideck Team",
+    "email": "helideck@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90032",
+    "hsePassportNo": "HSE-090032",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Aviation Technical Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "aviation-technical-team",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "hse-audit",
+    "name": "HSE Audit Team",
+    "email": "hse.audit@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90033",
+    "hsePassportNo": "HSE-090033",
+    "company": "ADNOC-OFF",
+    "department": "HSE",
+    "designation": "HSE Focal Point",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "department-focal-point",
+        "scope": {
+          "departmentIds": ["HSE"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "ravi",
+    "name": "Eng. Ravi Kumar",
+    "email": "r.kumar@masar.example",
+    "source": "fieldglass",
+    "personnelNo": "OPT-90034",
+    "hsePassportNo": "HSE-090034",
+    "company": "GOE",
+    "department": "AVT",
+    "designation": "Helideck Inspector",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "helideck-inspector",
+        "scope": {
+          "zoneIds": ["ZAKUM", "UMM-SHAIF"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "ada-quality",
+    "name": "ADA Quality Team",
+    "email": "quality@ada.masar.example",
+    "source": "external_contact",
+    "personnelNo": "EXT-90035",
+    "hsePassportNo": "HSE-090035",
+    "company": "ADA",
+    "department": null,
+    "designation": "Quality Team",
+    "gender": "M",
+    "external": true,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "asp-team",
+        "scope": {
+          "serviceProviderId": "ADA"
+        }
+      }
+    ]
+  },
+  {
+    "key": "falcon-quality",
+    "name": "Falcon Quality Team",
+    "email": "quality@fal.masar.example",
+    "source": "external_contact",
+    "personnelNo": "EXT-90036",
+    "hsePassportNo": "HSE-090036",
+    "company": "FAL",
+    "department": null,
+    "designation": "Quality Team",
+    "gender": "M",
+    "external": true,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "asp-team",
+        "scope": {
+          "serviceProviderId": "FAL"
+        }
+      }
+    ]
+  },
+  {
+    "key": "noura",
+    "name": "Noura Al Shehhi",
+    "email": "n.alshehhi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90037",
+    "hsePassportNo": "HSE-090037",
+    "company": "ADNOC-OFF",
+    "department": "AVT",
+    "designation": "Helideck Inspector Lead",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "helideck-inspector-lead",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "rashed",
+    "name": "Rashed Al Marri",
+    "email": "r.almarri@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90038",
+    "hsePassportNo": "HSE-090038",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Dispatcher",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "dispatch-team",
+        "scope": {
+          "locationIds": ["AUH"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "capt-hughes",
+    "name": "Capt. Daniel Hughes",
+    "email": "d.hughes@fal.masar.example",
+    "source": "external_contact",
+    "personnelNo": "EXT-90039",
+    "hsePassportNo": "HSE-090039",
+    "company": "FAL",
+    "department": null,
+    "designation": "Captain",
+    "gender": "M",
+    "external": true,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "flight-crew",
+        "scope": {
+          "serviceProviderId": "FAL"
+        }
+      }
+    ]
+  },
+  {
+    "key": "imran",
+    "name": "Imran Qureshi",
+    "email": "i.qureshi@masar.example",
+    "source": "fieldglass",
+    "personnelNo": "OPT-90040",
+    "hsePassportNo": "HSE-090040",
+    "company": "GOE",
+    "department": "SITE",
+    "designation": "Fuel Operator",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "fuel-operator",
+        "scope": {
+          "locationIds": ["ZRK"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "joel",
+    "name": "Joel Santos",
+    "email": "j.santos@masar.example",
+    "source": "fieldglass",
+    "personnelNo": "OPT-90041",
+    "hsePassportNo": "HSE-090041",
+    "company": "GOE",
+    "department": "SITE",
+    "designation": "Vessel Focal Point",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "vessel-focal-point",
+        "scope": {
+          "locationIds": ["DAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "faisal",
+    "name": "Faisal Al Nuaimi",
+    "email": "f.alnuaimi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90042",
+    "hsePassportNo": "HSE-090042",
+    "company": "ADNOC-OFF",
+    "department": "SITE",
+    "designation": "Muster Coordinator",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "muster-coordinator",
+        "scope": {
+          "locationIds": ["DAS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "latifa",
+    "name": "Latifa Al Mazrouei",
+    "email": "l.almazrouei@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90043",
+    "hsePassportNo": "HSE-090043",
+    "company": "ADNOC-OFF",
+    "department": "HSE",
+    "designation": "POB Master Data Officer",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "pob-master-data-power-user",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "sara",
+    "name": "Sara Al Hashemi",
+    "email": "s.alhashemi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90044",
+    "hsePassportNo": "HSE-090044",
+    "company": "ADNOC-OFF",
+    "department": "AVC",
+    "designation": "Compliance Administrator",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "compliance-admin",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "hassan",
+    "name": "Hassan Al Jaberi",
+    "email": "h.aljaberi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90045",
+    "hsePassportNo": "HSE-090045",
+    "company": "ADNOC-OFF",
+    "department": "OPS",
+    "designation": "Operations Focal Point",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "department-focal-point",
+        "scope": {
+          "departmentIds": ["OPS"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "priya",
+    "name": "Priya Nair",
+    "email": "p.nair@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90046",
+    "hsePassportNo": "HSE-090046",
+    "company": "ADNOC-OFF",
+    "department": "MNT",
+    "designation": "Maintenance Focal Point",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "department-focal-point",
+        "scope": {
+          "departmentIds": ["MNT"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "omar-haddad",
+    "name": "Omar Haddad",
+    "email": "o.haddad@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90047",
+    "hsePassportNo": "HSE-090047",
+    "company": "ADNOC-OFF",
+    "department": "QA",
+    "designation": "Quality Focal Point",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "department-focal-point",
+        "scope": {
+          "departmentIds": ["QA"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "fatima",
+    "name": "Fatima Al Romaithi",
+    "email": "f.alromaithi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90048",
+    "hsePassportNo": "HSE-090048",
+    "company": "ADNOC-OFF",
+    "department": "QA",
+    "designation": "Auditor",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "auditor",
+        "scope": {
+          "departmentIds": ["QA"]
+        }
+      }
+    ]
+  },
+  {
+    "key": "majid",
+    "name": "Majid Al Falasi",
+    "email": "m.alfalasi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90049",
+    "hsePassportNo": "HSE-090049",
+    "company": "ADNOC-OFF",
+    "department": "MGT",
+    "designation": "Vice President, Logistics",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "logistics-vp",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "aviation-compliance",
+    "name": "Aviation Compliance Team",
+    "email": "aviation.compliance@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90050",
+    "hsePassportNo": "HSE-090050",
+    "company": "ADNOC-OFF",
+    "department": "AVC",
+    "designation": "Aviation Compliance Team",
+    "gender": "M",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "aviation-compliance-team",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  },
+  {
+    "key": "gulf-deck",
+    "name": "Mark Ellison",
+    "email": "inspector@gulfdeck.masar.example",
+    "source": "external_contact",
+    "personnelNo": "EXT-90051",
+    "hsePassportNo": "HSE-090051",
+    "company": "GDS",
+    "department": null,
+    "designation": "Third-party Inspector",
+    "gender": "M",
+    "external": true,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "third-party-inspector",
+        "scope": {
+          "serviceProviderId": "GDS"
+        }
+      }
+    ]
+  },
+  {
+    "key": "reem",
+    "name": "Reem Al Kindi",
+    "email": "r.alkindi@masar.example",
+    "source": "sap",
+    "personnelNo": "OPT-90052",
+    "hsePassportNo": "HSE-090052",
+    "company": "ADNOC-OFF",
+    "department": "AVL",
+    "designation": "Master Data Officer",
+    "gender": "F",
+    "external": false,
+    "approvalTier": null,
+    "lineManager": null,
+    "roles": [
+      {
+        "role": "master-data-power-user",
+        "scope": {
+          "allLocations": true
+        }
+      }
+    ]
+  }
+]

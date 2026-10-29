@@ -1,0 +1,291 @@
+[
+  {
+    "code": "AUH",
+    "name": "Abu Dhabi",
+    "zone": "BASE",
+    "type": "BASE",
+    "focalPoint": {
+      "name": "Aisha Al Qubaisi",
+      "email": "a.alqubaisi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.454,
+      "lng": 54.377
+    },
+    "pobLimit": 120,
+    "residencyReset": true
+  },
+  {
+    "code": "DAS",
+    "name": "Das Island",
+    "zone": "DAS",
+    "type": "ISLAND",
+    "focalPoint": {
+      "name": "Khalid Al Hosani",
+      "email": "k.alhosani@masar.example"
+    },
+    "coordinates": {
+      "lat": 25.158,
+      "lng": 52.872
+    },
+    "pobLimit": 260,
+    "hub": true,
+    "complex": true,
+    "accommodation": true
+  },
+  {
+    "code": "ZRK",
+    "name": "Zirku Island",
+    "zone": "DAS",
+    "type": "ISLAND",
+    "focalPoint": {
+      "name": "Mariam Al Suwaidi",
+      "email": "m.alsuwaidi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.883,
+      "lng": 53.067
+    },
+    "pobLimit": 180,
+    "hub": true,
+    "complex": true,
+    "accommodation": true
+  },
+  {
+    "code": "UZ",
+    "name": "Upper Zakum",
+    "zone": "ZAKUM",
+    "type": "HUB",
+    "focalPoint": {
+      "name": "Saeed Al Mazrouei",
+      "email": "s.almazrouei@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.85,
+      "lng": 53.5
+    },
+    "pobLimit": 150,
+    "hub": true,
+    "complex": true,
+    "accommodation": true
+  },
+  {
+    "code": "LZ",
+    "name": "Lower Zakum",
+    "zone": "ZAKUM",
+    "type": "HUB",
+    "focalPoint": {
+      "name": "Ahmed Al Blooshi",
+      "email": "a.alblooshi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.7,
+      "lng": 53.8
+    },
+    "pobLimit": 95,
+    "hub": true,
+    "complex": true,
+    "accommodation": true
+  },
+  {
+    "code": "US",
+    "name": "Umm Shaif",
+    "zone": "UMM-SHAIF",
+    "type": "HUB",
+    "focalPoint": {
+      "name": "Noura Al Dhaheri",
+      "email": "n.aldhaheri@masar.example"
+    },
+    "coordinates": {
+      "lat": 25.05,
+      "lng": 53.35
+    },
+    "hub": true,
+    "complex": true
+  },
+  {
+    "code": "ACPT",
+    "name": "ACPT",
+    "zone": "ZAKUM",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Rashid Al Kaabi",
+      "email": "r.alkaabi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.6,
+      "lng": 53.65
+    },
+    "pobLimit": 55,
+    "accommodation": true
+  },
+  {
+    "code": "NASR",
+    "name": "NASR",
+    "zone": "UMM-SHAIF",
+    "type": "FIELD",
+    "coordinates": {
+      "lat": 24.55,
+      "lng": 53.9
+    }
+  },
+  {
+    "code": "ABK",
+    "name": "ABK",
+    "zone": "DAS",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Hessa Al Mansoori",
+      "email": "h.almansoori@masar.example"
+    },
+    "coordinates": {
+      "lat": 25.2,
+      "lng": 53.15
+    },
+    "pobLimit": 40,
+    "accommodation": true
+  },
+  {
+    "code": "ZRK-Z1",
+    "name": "Zirku Platform Z1",
+    "zone": "DAS",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Ibrahim Al Nuaimi",
+      "email": "i.alnuaimi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.91,
+      "lng": 53.09
+    },
+    "pobLimit": 25,
+    "accommodation": true
+  },
+  {
+    "code": "ZRK-Z2",
+    "name": "Zirku Platform Z2",
+    "zone": "DAS",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Yousuf Al Ameri",
+      "email": "y.alameri@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.86,
+      "lng": 53.12
+    },
+    "pobLimit": 20,
+    "accommodation": true
+  },
+  {
+    "code": "BHS",
+    "name": "Buhaser Field",
+    "zone": "BUHASER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Saif Al Rumaithi",
+      "email": "s.alrumaithi@masar.example"
+    },
+    "coordinates": {
+      "lat": 25.004,
+      "lng": 52.952
+    }
+  },
+  {
+    "code": "GHF",
+    "name": "Ghasha Field",
+    "zone": "GHASHA",
+    "type": "FIELD",
+    "coordinates": {
+      "lat": 24.558,
+      "lng": 52.948
+    }
+  },
+  {
+    "code": "HAIL",
+    "name": "Hail Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Rashid Al Suwaidi",
+      "email": "r.alsuwaidi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.395,
+      "lng": 53.373
+    }
+  },
+  {
+    "code": "UAS",
+    "name": "Umm Al Salsal Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Hamdan Al Ameri",
+      "email": "h.alameri@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.984,
+      "lng": 52.255
+    },
+    "pobLimit": 32,
+    "accommodation": true
+  },
+  {
+    "code": "BLB",
+    "name": "Belbazem Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Jassim Al Muhairi",
+      "email": "j.almuhairi@masar.example"
+    }
+  },
+  {
+    "code": "STH",
+    "name": "Satah Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Abdulla Al Zaabi",
+      "email": "a.alzaabi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.924,
+      "lng": 52.569
+    }
+  },
+  {
+    "code": "SRB",
+    "name": "Sarb Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "coordinates": {
+      "lat": 24.757,
+      "lng": 53.185
+    }
+  },
+  {
+    "code": "UAD",
+    "name": "Umm Al Dalkh",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "pobLimit": 70,
+    "complex": true,
+    "accommodation": true
+  },
+  {
+    "code": "CSM",
+    "name": "Cosmo Field",
+    "zone": "OTHER",
+    "type": "FIELD",
+    "focalPoint": {
+      "name": "Tariq Al Hammadi",
+      "email": "t.alhammadi@masar.example"
+    },
+    "coordinates": {
+      "lat": 24.793,
+      "lng": 54.247
+    }
+  }
+]

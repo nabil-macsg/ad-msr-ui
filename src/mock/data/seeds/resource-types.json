@@ -1,0 +1,111 @@
+[
+  {
+    "code": "DASH8-300",
+    "name": "Dash 8-300",
+    "category": "FIXED-WING",
+    "passengerCapacity": 50,
+    "seatMap": {
+      "rows": 13,
+      "seatsPerRow": 4,
+      "aisleAfter": 2
+    },
+    "baggageAllowanceKg": 23,
+    "payloadKg": 5500,
+    "loadsheetRequired": true
+  },
+  {
+    "code": "LET-410",
+    "name": "Let 410",
+    "category": "FIXED-WING",
+    "passengerCapacity": 19,
+    "seatMap": {
+      "rows": 7,
+      "seatsPerRow": 3,
+      "aisleAfter": 1
+    },
+    "loadsheetRequired": true
+  },
+  {
+    "code": "AW139",
+    "name": "AW139",
+    "category": "ROTARY-WING",
+    "passengerCapacity": 12,
+    "seatMap": {
+      "rows": 3,
+      "seatsPerRow": 4,
+      "aisleAfter": null
+    },
+    "payloadKg": 1400,
+    "aircraftModel": "AW139",
+    "loadsheetRequired": true
+  },
+  {
+    "code": "AW189",
+    "name": "AW189",
+    "category": "ROTARY-WING",
+    "passengerCapacity": 16,
+    "seatMap": {
+      "rows": 4,
+      "seatsPerRow": 4,
+      "aisleAfter": null
+    },
+    "payloadKg": 1400,
+    "aircraftModel": "AW189",
+    "loadsheetRequired": true
+  },
+  {
+    "code": "BELL-412",
+    "name": "Bell 412",
+    "category": "ROTARY-WING",
+    "passengerCapacity": 12,
+    "seatMap": {
+      "rows": 3,
+      "seatsPerRow": 4,
+      "aisleAfter": null
+    },
+    "payloadKg": 1400,
+    "aircraftModel": "BELL-412",
+    "loadsheetRequired": true
+  },
+  {
+    "code": "FAST-CREW-BOAT",
+    "name": "Fast Crew Boat",
+    "category": "MARINE",
+    "passengerCapacity": 80,
+    "seatMap": {
+      "rows": 20,
+      "seatsPerRow": 4,
+      "aisleAfter": 2
+    },
+    "baggageAllowanceKg": 30,
+    "payloadKg": 500
+  },
+  {
+    "code": "SUPPLY-VESSEL",
+    "name": "Supply Vessel",
+    "category": "MARINE",
+    "passengerCapacity": 40,
+    "seatMap": {
+      "rows": 10,
+      "seatsPerRow": 4,
+      "aisleAfter": 2
+    },
+    "baggageAllowanceKg": 30,
+    "payloadKg": 3000
+  },
+  {
+    "code": "FERRY",
+    "name": "Ferry",
+    "category": "MARINE",
+    "passengerCapacity": 120,
+    "baggageAllowanceKg": 30,
+    "openSeating": true
+  },
+  {
+    "code": "BARGE",
+    "name": "Barge",
+    "category": "MARINE",
+    "passengerCapacity": 0,
+    "openSeating": true
+  }
+]

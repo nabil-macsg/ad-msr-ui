@@ -1,0 +1,21 @@
+[
+  {
+    "code": "BASE",
+    "name": "Base"
+  },
+  {
+    "code": "ISLAND",
+    "name": "Island",
+    "offshore": true
+  },
+  {
+    "code": "HUB",
+    "name": "Hub",
+    "offshore": true
+  },
+  {
+    "code": "FIELD",
+    "name": "Field",
+    "offshore": true
+  }
+]

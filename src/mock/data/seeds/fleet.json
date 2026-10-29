@@ -1,0 +1,125 @@
+[
+  {
+    "registration": "A6-ADA",
+    "type": "DASH8-300",
+    "provider": "ADA",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-ADB",
+    "type": "DASH8-300",
+    "provider": "ADA",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-LET",
+    "type": "LET-410",
+    "provider": "ADA",
+    "availability": "maintenance"
+  },
+  {
+    "registration": "A6-AWA",
+    "type": "AW139",
+    "provider": "ADA",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-AWB",
+    "type": "AW139",
+    "provider": "ADA",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-AWC",
+    "type": "AW189",
+    "provider": "ADA",
+    "availability": "maintenance"
+  },
+  {
+    "registration": "A6-FLA",
+    "type": "LET-410",
+    "provider": "FAL",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-FLB",
+    "type": "AW139",
+    "provider": "FAL",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-FLC",
+    "type": "AW139",
+    "provider": "FAL",
+    "availability": "available"
+  },
+  {
+    "registration": "A6-FLD",
+    "type": "BELL-412",
+    "provider": "FAL",
+    "availability": "maintenance"
+  },
+  {
+    "registration": "A6-FLE",
+    "type": "AW189",
+    "provider": "FAL",
+    "availability": "maintenance"
+  },
+  {
+    "registration": "A6-FLF",
+    "type": "BELL-412",
+    "provider": "FAL",
+    "availability": "available"
+  },
+  {
+    "registration": "ADNOC Explorer",
+    "type": "FAST-CREW-BOAT",
+    "provider": "AML",
+    "availability": "available"
+  },
+  {
+    "registration": "ADNOC Pioneer",
+    "type": "FAST-CREW-BOAT",
+    "provider": "AML",
+    "availability": "available"
+  },
+  {
+    "registration": "ADNOC Supply 1",
+    "type": "SUPPLY-VESSEL",
+    "provider": "AML",
+    "availability": "available"
+  },
+  {
+    "registration": "ADNOC Supply 2",
+    "type": "SUPPLY-VESSEL",
+    "provider": "AML",
+    "availability": "available"
+  },
+  {
+    "registration": "ADNOC Ferry 1",
+    "type": "FERRY",
+    "provider": "AML",
+    "availability": "maintenance"
+  },
+  {
+    "registration": "Barge Al Rayyan",
+    "type": "BARGE",
+    "provider": "AML",
+    "availability": "available",
+    "bookable": false
+  },
+  {
+    "registration": "Barge Hercules",
+    "type": "BARGE",
+    "provider": "AML",
+    "availability": "available",
+    "bookable": false
+  },
+  {
+    "registration": "Barge NPCC-7",
+    "type": "BARGE",
+    "provider": "AML",
+    "availability": "available",
+    "bookable": false
+  }
+]

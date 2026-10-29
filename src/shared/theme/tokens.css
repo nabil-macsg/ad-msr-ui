@@ -1,0 +1,217 @@
+/*
+ * Design tokens for the MASAR UI demo, branded with the ADNOC "Energy for Life" Visual Guidelines.
+ * Layout, spacing and type sizes follow the ADNOC LMS HTML reference as in MASAR.
+ */
+@theme {
+  /*
+   * ADNOC "Energy for Life" palette (Visual Guidelines V.12 draft, Dec 2024, pp. 30–35, 42).
+   * Royal Blue #0047BA is the logo's colour only (p. 30) and is never used for the UI.
+   */
+  --color-brand-bright-blue: #0030ff;
+  --color-brand-bright-teal: #00cfd1;
+  --color-brand-bright-green: #00de4c;
+  --color-brand-bright-yellow: #ffcc02;
+  --color-brand-bright-orange: #ff9500;
+  --color-brand-bright-red: #ff5070;
+  --color-brand-medium-blue: #27348b;
+  --color-brand-dark-blue: #001358;
+  --color-brand-medium-teal: #008591;
+  --color-brand-dark-teal: #003a51;
+  --color-brand-medium-green: #009d45;
+  --color-brand-dark-green: #005743;
+  --color-brand-medium-yellow: #eaaa00;
+  --color-brand-dark-yellow: #8b6500;
+  --color-brand-medium-orange: #ff6b10;
+  --color-brand-dark-orange: #bd471e;
+  --color-brand-medium-red: #e91c49;
+  --color-brand-dark-red: #920033;
+  --color-brand-slate-grey: #a7a8a9;
+  --color-brand-light-grey: #dbdcdb;
+  --color-brand-charcoal: #262626;
+  --color-brand-black: #000000;
+  /* The guidelines' page background. */
+  --color-brand-paper: #f1f1ef;
+
+  /* Kept for components that name them: now the brand's blues. */
+  --color-adnoc-blue: var(--color-brand-bright-blue);
+  --color-adnoc-dark: var(--color-brand-dark-blue);
+  --color-adnoc-light: #ecedf5;
+  --color-adnoc-accent: var(--color-brand-medium-blue);
+  --color-admin-dark: var(--color-brand-charcoal);
+
+  /* Navigation chrome; [data-nav-theme] below switches it per module. */
+  --color-nav: var(--color-brand-dark-blue);
+  /* The selected item: a soft highlight with a Bright Teal marker, readable on Dark Blue. */
+  --color-nav-active: rgb(255 255 255 / 0.12);
+  --color-nav-indicator: var(--color-brand-bright-teal);
+  --color-nav-hover: rgb(255 255 255 / 0.08);
+  --color-nav-active-fg: #ffffff;
+  --color-nav-icon: rgb(255 255 255 / 0.72);
+  --color-nav-active-icon: #ffffff;
+  --color-nav-sub: transparent;
+  --color-nav-border: transparent;
+  --color-nav-control: rgb(255 255 255 / 0.72);
+
+  /*
+   * Roles the theme preview (src/app/theme) sets per theme and intensity; these are the
+   * defaults before it runs.
+   */
+  --color-header: #ffffff;
+  --color-on-header: var(--color-brand-charcoal);
+  --color-on-header-muted: #6b6b6b;
+  --color-header-border: var(--color-brand-light-grey);
+  --color-header-search: #f5f5f4;
+  --color-on-header-search: #6b6b6b;
+  --color-focus: var(--color-brand-medium-blue);
+  --color-secondary: #ffffff;
+  --color-on-secondary: #525252;
+  --color-secondary-hover: #f5f5f4;
+  --color-secondary-border: #c4c5c5;
+  --color-input: #ffffff;
+  --color-input-border: #a7a8a9;
+  --color-table-head: #f7f7f6;
+  --color-on-table-head: #525252;
+  --color-table-row-hover: #f7f7f6;
+  --color-nav-divider: rgb(255 255 255 / 0.12);
+  --color-on-nav: #ffffff;
+  --color-on-nav-muted: rgb(255 255 255 / 0.72);
+  --color-on-nav-subtle: rgb(255 255 255 / 0.6);
+
+  /*
+   * Blue leads; white and light grey carry the page (p. 42). Filled controls use Medium Blue: at
+   * 100% on large areas Bright Blue is too intense for a working application, and the secondary
+   * blues exist to give depth (p. 35). Bright Blue stays in charts and the brand palette.
+   */
+  --color-primary: var(--color-brand-medium-blue);
+  --color-primary-hover: var(--color-brand-dark-blue);
+  --color-primary-subtle: #ecedf5;
+  --color-on-primary: #ffffff;
+  --color-canvas: var(--color-brand-paper);
+  --color-card: #ffffff;
+  --color-surface-muted: #f7f7f6;
+  --color-border: var(--color-brand-light-grey);
+  --color-border-strong: var(--color-brand-slate-grey);
+  --color-overlay: rgb(0 19 88 / 0.45);
+  --color-ink: var(--color-brand-charcoal);
+  --color-ink-body: var(--color-brand-charcoal);
+  --color-ink-secondary: #525252;
+  --color-ink-muted: #6b6b6b;
+  --color-link: var(--color-brand-medium-blue);
+  --color-danger: var(--color-brand-medium-red);
+
+  /*
+   * Status (StatusPill, Banner): the dark brand shade as text on a light tint of the bright one;
+   * every pair passes WCAG AA for small text.
+   */
+  --color-success-fg: var(--color-brand-dark-green);
+  --color-success-bg: #e0fbea;
+  --color-success-border: #99f2b7;
+  --color-info-fg: var(--color-brand-dark-teal);
+  --color-info-bg: #e0f9f9;
+  --color-info-border: #99eced;
+  --color-warning-fg: var(--color-brand-dark-orange);
+  --color-warning-bg: #fff2e0;
+  --color-warning-border: #ffd599;
+  --color-danger-fg: var(--color-brand-dark-red);
+  --color-danger-bg: #ffeef1;
+  --color-danger-border: #ffc2cd;
+  --color-neutral-fg: var(--color-brand-charcoal);
+  --color-neutral-bg: #f7f7f6;
+  --color-neutral-border: var(--color-brand-light-grey);
+  --color-accent-fg: var(--color-brand-medium-blue);
+  --color-accent-bg: #ecedf5;
+  --color-accent-border: #bec2dc;
+
+  --color-util-low: var(--color-brand-medium-green);
+  --color-util-mid: var(--color-brand-medium-yellow);
+  --color-util-high: var(--color-brand-medium-red);
+  --color-kiosk-background: var(--color-brand-dark-blue);
+  --color-kiosk-panel: var(--color-brand-medium-blue);
+  --color-kiosk-accent: var(--color-brand-bright-teal);
+  --color-kiosk-text: #ffffff;
+  --color-fids-background: #05080f;
+  --color-fids-row-alt: #0b1220;
+  --color-fids-text: #f8fafc;
+  --color-fids-highlight: var(--color-brand-bright-yellow);
+  --color-chart-1: var(--color-brand-bright-blue);
+  --color-chart-2: var(--color-brand-bright-teal);
+  --color-chart-3: var(--color-brand-bright-green);
+  --color-chart-4: var(--color-brand-bright-yellow);
+  --color-chart-5: var(--color-brand-bright-orange);
+  --color-chart-6: var(--color-brand-bright-red);
+  --color-chart-7: var(--color-brand-slate-grey);
+  --color-scrollbar-track: #f1f1ef;
+  --color-scrollbar-thumb: var(--color-brand-slate-grey);
+  --color-scrollbar-thumb-hover: #6b6b6b;
+
+  /*
+   * ADNOC Sans is the brand typeface (pp. 11–15) but no licensed web font is available; the
+   * guidelines' system typeface for applications is Arial (p. 14). A reviewer with ADNOC Sans
+   * installed sees it.
+   */
+  --font-sans: 'ADNOC Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --text-2xs: 0.625rem;
+  --text-caption: 0.6875rem;
+  --text-menu: 0.8125rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  /*
+   * Application scale (the guidelines' hierarchy, pp. 16–22, adapted to dense screens): page
+   * title 22, card title 16, body and table 14, labels 13, table headers and helper text 12.
+   */
+  --text-title: 1.375rem;
+  --text-label: 0.8125rem;
+  --text-kpi: 1.75rem;
+  --text-kiosk: 1.375rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --spacing: 4px;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-pill: 999px;
+  --shadow-card: 0 0 #0000;
+  --shadow-raised: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-overlay: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-modal: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --spacing-sidebar: 240px;
+  --spacing-header: 56px;
+  --spacing-touch: 38px;
+  --container-content: 1600px;
+  --breakpoint-tablet: 768px;
+}
+
+:root {
+  --masar-web-min-width: 768px;
+  /* The demo's theme preview bar sits above the header; the shell leaves room for it. */
+  --preview-bar-h: 36px;
+  /* Flat brand paper: the guidelines use plain white and light grey fields, not gradients. */
+  --masar-canvas-gradient: none;
+}
+
+/* Tablets and touch screens keep 44 px targets (CODING_GUIDELINES §6). */
+@media (pointer: coarse) {
+  :root {
+    --spacing-touch: 44px;
+  }
+}
+
+/* Module navigation themes (reference: admin-*.html use bg-admin-dark, every other module bg-adnoc-dark). */
+[data-nav-theme='admin'] {
+  --color-nav: var(--color-brand-charcoal);
+}

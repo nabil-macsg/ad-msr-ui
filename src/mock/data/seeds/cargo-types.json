@@ -1,0 +1,37 @@
+[
+  {
+    "code": "GENERAL",
+    "name": "General cargo"
+  },
+  {
+    "code": "TOOLS",
+    "name": "Tools and equipment"
+  },
+  {
+    "code": "SPARES",
+    "name": "Spare parts"
+  },
+  {
+    "code": "FOOD",
+    "name": "Food and perishables"
+  },
+  {
+    "code": "MAIL",
+    "name": "Documents and mail"
+  },
+  {
+    "code": "FLAMMABLE-LIQ",
+    "name": "Flammable liquids",
+    "dgClass": "3"
+  },
+  {
+    "code": "COMPRESSED-GAS",
+    "name": "Compressed gases",
+    "dgClass": "2.2"
+  },
+  {
+    "code": "LITHIUM-BATT",
+    "name": "Lithium batteries",
+    "dgClass": "9"
+  }
+]

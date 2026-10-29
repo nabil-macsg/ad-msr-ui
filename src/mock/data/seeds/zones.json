@@ -1,0 +1,30 @@
+[
+  {
+    "code": "BASE",
+    "name": "Base"
+  },
+  {
+    "code": "DAS",
+    "name": "Das"
+  },
+  {
+    "code": "ZAKUM",
+    "name": "Zakum"
+  },
+  {
+    "code": "UMM-SHAIF",
+    "name": "Umm Shaif"
+  },
+  {
+    "code": "BUHASER",
+    "name": "Buhaser"
+  },
+  {
+    "code": "GHASHA",
+    "name": "Ghasha"
+  },
+  {
+    "code": "OTHER",
+    "name": "Other"
+  }
+]

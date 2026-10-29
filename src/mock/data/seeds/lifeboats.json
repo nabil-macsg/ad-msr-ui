@@ -1,0 +1,184 @@
+[
+  {
+    "code": "DAS-LB1",
+    "name": "Boat 1",
+    "location": "DAS",
+    "ratedCapacity": 70,
+    "station": "Lifeboat station 1",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2026-11-01"
+  },
+  {
+    "code": "DAS-LB2",
+    "name": "Boat 2",
+    "location": "DAS",
+    "ratedCapacity": 70,
+    "station": "Lifeboat station 2",
+    "certificateExpiresOn": "2026-11-27"
+  },
+  {
+    "code": "DAS-LB3",
+    "name": "Boat 3",
+    "location": "DAS",
+    "ratedCapacity": 70,
+    "station": "Lifeboat station 3",
+    "certificateExpiresOn": "2026-12-22"
+  },
+  {
+    "code": "DAS-LB4",
+    "name": "Boat 4",
+    "location": "DAS",
+    "ratedCapacity": 70,
+    "station": "Lifeboat station 4",
+    "certificateExpiresOn": "2027-01-17"
+  },
+  {
+    "code": "DAS-LB5",
+    "name": "Boat 5",
+    "location": "DAS",
+    "ratedCapacity": 70,
+    "station": "Lifeboat station 5",
+    "certificateExpiresOn": "2027-02-12"
+  },
+  {
+    "code": "ZRK-LB1",
+    "name": "Boat 1",
+    "location": "ZRK",
+    "ratedCapacity": 60,
+    "station": "Lifeboat station 1",
+    "certificateExpiresOn": "2027-03-10"
+  },
+  {
+    "code": "ZRK-LB2",
+    "name": "Boat 2",
+    "location": "ZRK",
+    "ratedCapacity": 60,
+    "station": "Lifeboat station 2",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2027-04-04"
+  },
+  {
+    "code": "ZRK-LB3",
+    "name": "Boat 3",
+    "location": "ZRK",
+    "ratedCapacity": 60,
+    "station": "Lifeboat station 3",
+    "certificateExpiresOn": "2027-04-30"
+  },
+  {
+    "code": "ZRK-LB4",
+    "name": "Boat 4",
+    "location": "ZRK",
+    "ratedCapacity": 60,
+    "station": "Lifeboat station 4",
+    "certificateExpiresOn": "2027-05-26"
+  },
+  {
+    "code": "UZ-LB1",
+    "name": "Boat 1",
+    "location": "UZ",
+    "ratedCapacity": 50,
+    "station": "Lifeboat station 1",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2027-06-20"
+  },
+  {
+    "code": "UZ-LB2",
+    "name": "Boat 2",
+    "location": "UZ",
+    "ratedCapacity": 50,
+    "station": "Lifeboat station 2",
+    "certificateExpiresOn": "2027-07-16"
+  },
+  {
+    "code": "UZ-LB3",
+    "name": "Boat 3",
+    "location": "UZ",
+    "ratedCapacity": 50,
+    "station": "Lifeboat station 3",
+    "certificateExpiresOn": "2027-08-11"
+  },
+  {
+    "code": "UZ-LB4",
+    "name": "Boat 4",
+    "location": "UZ",
+    "ratedCapacity": 50,
+    "station": "Lifeboat station 4",
+    "certificateExpiresOn": "2027-09-06"
+  },
+  {
+    "code": "LZ-LB1",
+    "name": "Boat 1",
+    "location": "LZ",
+    "ratedCapacity": 45,
+    "station": "Lifeboat station 1",
+    "certificateExpiresOn": "2027-10-01"
+  },
+  {
+    "code": "LZ-LB2",
+    "name": "Boat 2",
+    "location": "LZ",
+    "ratedCapacity": 45,
+    "station": "Lifeboat station 2",
+    "certificateExpiresOn": "2027-10-27"
+  },
+  {
+    "code": "LZ-LB3",
+    "name": "Boat 3",
+    "location": "LZ",
+    "ratedCapacity": 45,
+    "station": "Lifeboat station 3",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2027-11-22"
+  },
+  {
+    "code": "US-LB1",
+    "name": "Boat 1",
+    "location": "US",
+    "ratedCapacity": 55,
+    "station": "Lifeboat station 1",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2027-12-17"
+  },
+  {
+    "code": "US-LB2",
+    "name": "Boat 2",
+    "location": "US",
+    "ratedCapacity": 55,
+    "station": "Lifeboat station 2",
+    "certificateExpiresOn": "2028-01-12"
+  },
+  {
+    "code": "US-LB3",
+    "name": "Boat 3",
+    "location": "US",
+    "ratedCapacity": 55,
+    "station": "Lifeboat station 3",
+    "certificateExpiresOn": "2028-02-07"
+  },
+  {
+    "code": "UAD-LB1",
+    "name": "Boat 1",
+    "location": "UAD",
+    "ratedCapacity": 25,
+    "station": "Lifeboat station 1",
+    "outOfService": "Annual maintenance",
+    "certificateExpiresOn": "2028-03-04"
+  },
+  {
+    "code": "UAD-LB2",
+    "name": "Boat 2",
+    "location": "UAD",
+    "ratedCapacity": 25,
+    "station": "Lifeboat station 2",
+    "certificateExpiresOn": "2028-03-29"
+  },
+  {
+    "code": "UAD-LB3",
+    "name": "Boat 3",
+    "location": "UAD",
+    "ratedCapacity": 25,
+    "station": "Lifeboat station 3",
+    "certificateExpiresOn": "2028-04-24"
+  }
+]

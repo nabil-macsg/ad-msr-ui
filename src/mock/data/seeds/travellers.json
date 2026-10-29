@@ -1,0 +1,577 @@
+{
+  "companies": [
+    {
+      "code": "ADNOC-DRL",
+      "name": "ADNOC Drilling",
+      "source": "sap"
+    },
+    {
+      "code": "TGT",
+      "name": "Target Engineering",
+      "source": "fieldglass"
+    },
+    {
+      "code": "SLB",
+      "name": "Schlumberger",
+      "source": "fieldglass"
+    },
+    {
+      "code": "HAL",
+      "name": "Halliburton",
+      "source": "fieldglass"
+    },
+    {
+      "code": "WFT",
+      "name": "Weatherford",
+      "source": "fieldglass"
+    },
+    {
+      "code": "NPCC",
+      "name": "NPCC",
+      "source": "fieldglass"
+    },
+    {
+      "code": "NPCC-MAR",
+      "name": "NPCC Marine",
+      "source": "fieldglass"
+    },
+    {
+      "code": "ZAMIL",
+      "name": "Zamil Offshore",
+      "source": "fieldglass"
+    },
+    {
+      "code": "BP",
+      "name": "BP",
+      "source": "sap"
+    },
+    {
+      "code": "SHELL",
+      "name": "Shell",
+      "source": "sap"
+    }
+  ],
+  "travellers": [
+    {
+      "personnelNo": "OPT-10678",
+      "name": "Abdulrahman Al Mazrouei",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Direct Hire",
+      "company": "ADNOC-OFF",
+      "department": "OPS",
+      "designation": "Field Technician",
+      "gender": "M",
+      "nationality": "Emirati",
+      "hsePassportNo": "HSE-110678",
+      "hseExpiresOn": "2027-04-04",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-10678",
+        "expiresOn": "2027-05-19"
+      },
+      "rotationPattern": "14/14",
+      "costObject": "CC-4038"
+    },
+    {
+      "personnelNo": "OPT-11840",
+      "name": "Adnan Chaudhry",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Radar/NGCPA",
+      "company": "ADNOC-OFF",
+      "department": "OPS",
+      "designation": "Radar Technician",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-111840",
+      "hseExpiresOn": "2027-10-06",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-11840",
+        "expiresOn": "2027-11-20"
+      },
+      "rotationPattern": "14/14",
+      "costObject": "CC-4000"
+    },
+    {
+      "personnelNo": "OPT-41931",
+      "name": "Adnan Malik",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "TGT",
+      "department": null,
+      "designation": "Rigger",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-141931",
+      "hseExpiresOn": "2027-08-28",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-41931",
+        "expiresOn": "2027-10-12"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-31819",
+      "name": "Adnan Qureshi",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "SLB",
+      "department": null,
+      "designation": "Consultant",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-131819",
+      "hseExpiresOn": "2027-04-07",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-31819",
+        "expiresOn": "2027-05-22"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-31861",
+      "name": "Adnan Siddiqui",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "HAL",
+      "department": null,
+      "designation": "Service Engineer",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-131861",
+      "hseExpiresOn": "2027-07-08",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-31861",
+        "expiresOn": "2027-08-22"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-10234",
+      "name": "Ahmed Al Mansoori",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Direct Hire",
+      "company": "ADNOC-OFF",
+      "department": "OPS",
+      "designation": "Team Lead",
+      "gender": "M",
+      "nationality": "Emirati",
+      "hsePassportNo": "HSE-110234",
+      "hseExpiresOn": "2026-10-20",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-10234",
+        "expiresOn": "2026-12-04"
+      },
+      "rotationPattern": "14/14",
+      "costObject": "CC-4034"
+    },
+    {
+      "personnelNo": "OPT-41672",
+      "name": "Aisha Al Suwaidi",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "WFT",
+      "department": null,
+      "designation": "Technician",
+      "gender": "F",
+      "nationality": "Emirati",
+      "hsePassportNo": "HSE-141672",
+      "hseExpiresOn": "2026-10-08",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-41672",
+        "expiresOn": "2026-11-22"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-31350",
+      "name": "Alfredo Reyes",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "HAL",
+      "department": null,
+      "designation": "Rigger",
+      "gender": "M",
+      "nationality": "Filipino",
+      "hsePassportNo": "HSE-131350",
+      "hseExpiresOn": "2027-03-15",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-31350",
+        "expiresOn": "2027-04-29"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-20678",
+      "name": "Ali Reza Mohammadi",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Direct Hire",
+      "company": "ADNOC-DRL",
+      "department": "MNT",
+      "designation": "Operator",
+      "gender": "M",
+      "nationality": "Iranian",
+      "hsePassportNo": "HSE-120678",
+      "hseExpiresOn": "2027-01-05",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-20678",
+        "expiresOn": "2027-02-19"
+      },
+      "rotationPattern": "14/14",
+      "costObject": "CC-4038"
+    },
+    {
+      "personnelNo": "OPT-31378",
+      "name": "Amr Abdelrahman",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "SLB",
+      "department": null,
+      "designation": "Consultant",
+      "gender": "M",
+      "nationality": "Egyptian",
+      "hsePassportNo": "HSE-131378",
+      "hseExpiresOn": "2026-12-09",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-31378",
+        "expiresOn": "2027-01-23"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-41420",
+      "name": "Andrew Harrington",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "NPCC",
+      "department": null,
+      "designation": "Consultant",
+      "gender": "M",
+      "nationality": "British",
+      "hsePassportNo": "HSE-141420",
+      "hseExpiresOn": "2027-06-20",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-41420",
+        "expiresOn": "2027-08-04"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-30012",
+      "name": "Anil Patel",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "HAL",
+      "department": null,
+      "designation": "Field Specialist",
+      "gender": "M",
+      "nationality": "Indian",
+      "hsePassportNo": "HSE-130012",
+      "hseExpiresOn": "2026-10-30",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-30012",
+        "expiresOn": "2026-12-14"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-11553",
+      "name": "Anil Reddy",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Radar/NGCPA",
+      "company": "ADNOC-OFF",
+      "department": "OPS",
+      "designation": "Radar Technician",
+      "gender": "M",
+      "nationality": "Indian",
+      "hsePassportNo": "HSE-111553",
+      "hseExpiresOn": "2026-12-12",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-11553",
+        "expiresOn": "2027-01-26"
+      },
+      "rotationPattern": "14/14",
+      "costObject": "CC-4033"
+    },
+    {
+      "personnelNo": "OPT-60110",
+      "name": "Anil Sharma",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "NPCC-MAR",
+      "department": null,
+      "designation": "Cook",
+      "gender": "M",
+      "nationality": "Indian",
+      "hsePassportNo": "HSE-160110",
+      "hseExpiresOn": "2026-10-14",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-60110",
+        "expiresOn": "2026-11-28"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-21994",
+      "name": "Arjun Rao",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Established Position",
+      "company": "ADNOC-DRL",
+      "department": "MNT",
+      "designation": "Principal Engineer",
+      "gender": "M",
+      "nationality": "Indian",
+      "hsePassportNo": "HSE-121994",
+      "hseExpiresOn": "2026-12-20",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-21994",
+        "expiresOn": "2027-02-03"
+      },
+      "rotationPattern": "28/28",
+      "costObject": "CC-4034"
+    },
+    {
+      "personnelNo": "OPT-60106",
+      "name": "Arun Menon",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "ZAMIL",
+      "department": null,
+      "designation": "Mechanic",
+      "gender": "M",
+      "nationality": "Indian",
+      "hsePassportNo": "HSE-160106",
+      "hseExpiresOn": "2027-01-18",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-60106",
+        "expiresOn": "2027-03-04"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-41938",
+      "name": "Ayesha Qureshi",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "NPCC",
+      "department": null,
+      "designation": "Rigger",
+      "gender": "F",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-141938",
+      "hseExpiresOn": "2027-02-14",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-41938",
+        "expiresOn": "2027-03-31"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-21644",
+      "name": "Bikash Shrestha",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "Established Position",
+      "company": "ADNOC-DRL",
+      "department": "MNT",
+      "designation": "Discipline Lead",
+      "gender": "M",
+      "nationality": "Nepali",
+      "hsePassportNo": "HSE-121644",
+      "hseExpiresOn": "2027-03-08",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-21644",
+        "expiresOn": "2027-04-22"
+      },
+      "rotationPattern": "28/28",
+      "costObject": "CC-4004"
+    },
+    {
+      "personnelNo": "OPT-32050",
+      "name": "Bilal Malik",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "HAL",
+      "department": null,
+      "designation": "Rigger",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-132050",
+      "hseExpiresOn": "2027-07-16",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-32050",
+        "expiresOn": "2027-08-30"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-41763",
+      "name": "Bilal Qureshi",
+      "source": "fieldglass",
+      "isVisitor": false,
+      "category": "Contractor",
+      "company": "NPCC",
+      "department": null,
+      "designation": "Rigger",
+      "gender": "M",
+      "nationality": "Pakistani",
+      "hsePassportNo": "HSE-141763",
+      "hseExpiresOn": "2027-04-26",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-41763",
+        "expiresOn": "2027-06-10"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "VIS-51595",
+      "name": "Claire Blackwood",
+      "source": "sap",
+      "isVisitor": true,
+      "category": "Visitor",
+      "company": "BP",
+      "department": null,
+      "designation": "Visiting Executive",
+      "gender": "F",
+      "nationality": "British",
+      "hsePassportNo": "HSE-151595",
+      "hseExpiresOn": "2027-07-17",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-51595",
+        "expiresOn": "2027-08-31"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "VIS-51385",
+      "name": "Colin Marsden",
+      "source": "sap",
+      "isVisitor": true,
+      "category": "Visitor",
+      "company": "SHELL",
+      "department": null,
+      "designation": "Visiting Executive",
+      "gender": "M",
+      "nationality": "British",
+      "hsePassportNo": "HSE-151385",
+      "hseExpiresOn": "2026-10-30",
+      "offshoreCertificate": {
+        "type": "t_bosit",
+        "number": "TB-51385",
+        "expiresOn": "2026-12-14"
+      },
+      "rotationPattern": null,
+      "costObject": null
+    },
+    {
+      "personnelNo": "OPT-10011",
+      "name": "Hamad Al Dhaheri",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "VIP",
+      "company": "ADNOC-OFF",
+      "department": "MGT",
+      "designation": "Senior Vice President",
+      "gender": "M",
+      "nationality": "Emirati",
+      "hsePassportNo": "HSE-110011",
+      "hseExpiresOn": "2027-09-01",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-10011",
+        "expiresOn": "2027-10-16"
+      },
+      "rotationPattern": null,
+      "costObject": "CC-4011"
+    },
+    {
+      "personnelNo": "OPT-10019",
+      "name": "Mariam Al Hosani",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "EP",
+      "company": "ADNOC-OFF",
+      "department": "MGT",
+      "designation": "Asset Manager",
+      "gender": "F",
+      "nationality": "Emirati",
+      "hsePassportNo": "HSE-110019",
+      "hseExpiresOn": "2027-05-11",
+      "offshoreCertificate": {
+        "type": "t_huet",
+        "number": "TH-10019",
+        "expiresOn": "2027-06-25"
+      },
+      "rotationPattern": null,
+      "costObject": "CC-4019"
+    },
+    {
+      "personnelNo": "OPT-10342",
+      "name": "Omar Al Kaabi",
+      "source": "sap",
+      "isVisitor": false,
+      "category": "General",
+      "company": "ADNOC-OFF",
+      "department": "HSE",
+      "designation": "HSE Advisor",
+      "gender": "M",
+      "nationality": "Emirati",
+      "hsePassportNo": null,
+      "hseExpiresOn": null,
+      "offshoreCertificate": null,
+      "rotationPattern": null,
+      "costObject": "CC-4022"
+    }
+  ]
+}

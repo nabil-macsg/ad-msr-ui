@@ -1,0 +1,26 @@
+[
+  {
+    "code": "ADA",
+    "legalName": "Abu Dhabi Aviation",
+    "type": "aviation",
+    "contactEmail": "ops@ada.masar.example"
+  },
+  {
+    "code": "FAL",
+    "legalName": "Falcon Aviation",
+    "type": "aviation",
+    "contactEmail": "ops@fal.masar.example"
+  },
+  {
+    "code": "AML",
+    "legalName": "ADNOC Marine Logistics",
+    "type": "marine",
+    "contactEmail": "ops@aml.masar.example"
+  },
+  {
+    "code": "GDS",
+    "legalName": "Gulf Deck Services LLC",
+    "type": "test",
+    "contactEmail": "ops@gulfdeck.masar.example"
+  }
+]
