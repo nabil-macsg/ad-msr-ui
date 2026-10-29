@@ -47,7 +47,7 @@ function Shell({ sidebar }: { sidebar: React.ReactNode }) {
 export const MainLayout = () => <Shell sidebar={<Sidebar />} />;
 export const AdminLayout = () => <Shell sidebar={<AdminSidebar />} />;
 
-/** The staff-operated check-in kiosk: full screen, dark blue, large type (PROMPT §4.2).bjnj */
+/** The staff-operated check-in kiosk: full screen, dark blue, large type (PROMPT §4.2)j */
 export function KioskLayout() {
   return (
     <main className="min-h-screen bg-kiosk-background p-8 text-kiosk text-kiosk-text">
