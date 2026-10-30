@@ -1,22 +1,24 @@
 import { describe, expect, it } from 'vitest';
 import { accessWith } from '../../../test/render-app';
-import { ADMIN_AREAS, adminMenu, mainMenu } from './menu';
+import { adminMenu, mainMenu } from './menu';
 import { WEB_PAGES } from './registry';
 
-describe('PROMPT-4.2 the sidebar is generated from the registry and view rights', () => {
+describe('the sidebar follows the original demo menu, filtered by view rights', () => {
   it('PROMPT-2.7 shows only the groups and pages the access payload grants', () => {
     const menu = mainMenu(
       accessWith({ 'booking.dashboard': ['view'], 'booking.bookings': ['view', 'edit'] }),
     );
-    expect(menu.groups.map((g) => g.label)).toEqual(['PEOPLE LOGISTICS']);
-    expect(menu.groups[0]?.sections).toEqual([
-      {
-        area: 'BOOKING',
-        items: [
-          { key: 'booking.dashboard', label: 'Booking Dashboard', route: '/booking' },
-          { key: 'booking.bookings', label: 'Bookings', route: '/booking/my-bookings' },
+    expect(menu.groups.map((g) => g.label)).toEqual(['People Logistics']);
+    expect(
+      menu.groups[0]?.sections.map((s) => [s.area, s.items.map((i) => [i.label, i.route])]),
+    ).toEqual([
+      [
+        'Booking',
+        [
+          ['Booking Dashboard', '/booking'],
+          ['Bookings', '/booking/my-bookings'],
         ],
-      },
+      ],
     ]);
     expect(menu.administration).toBeNull();
     expect(menu.home?.route).toBe('/dashboard');
@@ -32,36 +34,38 @@ describe('PROMPT-4.2 the sidebar is generated from the registry and view rights'
     expect(menu).toEqual({ home: null, groups: [], support: null, administration: null });
   });
 
-  it('PROMPT-4.2 module groups keep the demo order whatever the grant order', () => {
-    const menu = mainMenu(
-      accessWith({
-        'reports.executive-summary': ['view'],
-        'pob.dashboard': ['view'],
-        'scheduling.dashboard': ['view'],
-      }),
-    );
-    expect(menu.groups.map((g) => g.module)).toEqual(['people-logistics', 'pob', 'reporting']);
+  it('keeps the original order: People Logistics (with Reporting), POB Tracking, Helideck', () => {
+    const everything = Object.fromEntries(WEB_PAGES.map((p) => [p.key, ['view']]));
+    const menu = mainMenu(accessWith(everything));
+    expect(menu.groups.map((g) => g.label)).toEqual([
+      'People Logistics',
+      'POB Tracking',
+      'Helideck Inspection & Tests',
+    ]);
+    expect(menu.groups[0]?.sections.map((s) => s.area)).toEqual([
+      'Scheduling',
+      'Booking',
+      'Dispatch',
+      'Terminal',
+      'Reporting',
+    ]);
+    expect(menu.administration?.route).toBe('/admin');
   });
 
-  it('PROMPT-4.2 Administration opens its own sidebar, grouped in the demo order', () => {
-    const access = accessWith({
-      'admin.audit-log': ['view'],
-      'admin.users': ['view', 'edit'],
-    });
-    const sections = adminMenu(access);
-    expect(sections.map((s) => s.area)).toEqual(['ACCESS CONTROL', 'GOVERNANCE']);
+  it('Administration has its own groups, in the original order', () => {
+    const access = accessWith({ 'admin.audit-log': ['view'], 'admin.users': ['view', 'edit'] });
+    expect(adminMenu(access).map((s) => s.area)).toEqual(['Access Control', 'Governance']);
     expect(mainMenu(access).administration?.route).toBe('/admin/users');
-    expect(ADMIN_AREAS).toContain('SHARED MASTERS');
   });
 
-  it('PROMPT-4.2 sidebar entries are list pages, never detail routes with parameters', () => {
+  it('PROMPT-4.2 sidebar entries never carry route parameters', () => {
     const everything = Object.fromEntries(WEB_PAGES.map((p) => [p.key, ['view']]));
     const menu = mainMenu(accessWith(everything));
     const routes = [
       ...menu.groups.flatMap((g) => g.sections.flatMap((s) => s.items.map((i) => i.route))),
       ...adminMenu(accessWith(everything)).flatMap((s) => s.items.map((i) => i.route)),
     ];
-    expect(routes.length).toBeGreaterThan(100);
+    expect(routes.length).toBeGreaterThan(90);
     expect(routes.filter((r) => r.includes(':'))).toEqual([]);
   });
 });

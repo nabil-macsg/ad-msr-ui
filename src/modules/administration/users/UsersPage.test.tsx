@@ -227,11 +227,18 @@ describe('BRD-D.2.1.1-MST the Users page (spec 10 §2.1)', () => {
   it('BRD-D.2.1.1-MST lists users with KPI cards, sync status, and no "New user"', async () => {
     stubUsers();
     renderApp('/admin/users', { access: accessWith({ 'admin.users': ADMIN }) });
-    expect(await screen.findByRole('heading', { level: 1, name: 'Users' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole(
+        'heading',
+        { level: 1, name: 'User & Role Management' },
+        // The page is lazy-loaded; its first load can take longer than the default second.
+        { timeout: 5000 },
+      ),
+    ).toBeInTheDocument();
     expect(await screen.findByText('Reem Al Kindi')).toBeInTheDocument();
     expect(screen.getByText('31 Mar 2027')).toBeInTheDocument();
     expect(
-      within(screen.getByRole('table', { name: 'Users' })).getByText('No role'),
+      within(screen.getByRole('table', { name: 'User & Role Management' })).getByText('No role'),
     ).toBeInTheDocument();
     expect(await screen.findByText('52')).toBeInTheDocument();
     expect(screen.getByText('5 invited · 1 without a role')).toBeInTheDocument();

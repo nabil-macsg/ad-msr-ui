@@ -28,6 +28,8 @@ import {
 
 const SOURCES = ['sap', 'fieldglass', 'external_contact', 'manual_exception'] as const;
 const STATUSES = ['invited', 'active', 'deactivated'] as const;
+/** The list also carries each person's approval tier (demo mock; absent on older payloads). */
+type UserRow = UserSummary & { approvalTier?: number | null };
 const TAB_CLASS =
   'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary data-[state=active]:border-primary data-[state=active]:text-ink';
 
@@ -62,7 +64,7 @@ export default function UsersPage() {
     );
   };
 
-  const columns: readonly Column<UserSummary>[] = [
+  const columns: readonly Column<UserRow>[] = [
     {
       id: 'name',
       header: t('users.columns.name'),
@@ -98,6 +100,12 @@ export default function UsersPage() {
             ))}
           </div>
         ),
+    },
+    {
+      id: 'approvalTier',
+      header: t('users.columns.approvalTier'),
+      align: 'right',
+      cell: (u) => u.approvalTier ?? '—',
     },
     {
       id: 'scope',

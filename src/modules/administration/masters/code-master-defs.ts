@@ -97,6 +97,29 @@ export const CODE_MASTER_VIEWS: Readonly<Record<CodeMasterKind, CodeMasterView>>
     fields: [
       {
         kind: 'choice',
+        key: 'baseMode',
+        label: 'resources.fields.transportMode',
+        choices: [
+          { value: 'fixed-wing', label: 'resources.choices.fixed-wing' },
+          { value: 'rotary-wing', label: 'resources.choices.rotary-wing' },
+          { value: 'marine', label: 'resources.choices.marine' },
+        ],
+      },
+      {
+        kind: 'choice',
+        key: 'icon',
+        label: 'resources.fields.icon',
+        choices: [
+          { value: 'plane', label: 'resources.choices.plane' },
+          { value: 'helicopter', label: 'resources.choices.helicopter' },
+          { value: 'ship', label: 'resources.choices.ship' },
+          { value: 'anchor', label: 'resources.choices.anchor' },
+          { value: 'truck', label: 'resources.choices.truck' },
+          { value: 'bus', label: 'resources.choices.bus' },
+        ],
+      },
+      {
+        kind: 'choice',
         key: 'weightUnit',
         label: 'resources.fields.weightUnit',
         choices: [

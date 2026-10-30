@@ -13,7 +13,7 @@ import {
   UserRound,
 } from 'lucide-react';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { EntityFormModal } from '../../../shared/ui/entity-form-modal';
@@ -170,6 +170,10 @@ function CategoryForm({ open, onOpenChange, record, onSaved }: MasterFormProps<P
     },
   });
   const { errors, isSubmitting } = form.formState;
+  const [name, icon, colour] = useWatch({
+    control: form.control,
+    name: ['name', 'icon', 'colour'],
+  });
 
   const submit = form.handleSubmit(async (v) => {
     setFailure(null);
@@ -242,6 +246,13 @@ function CategoryForm({ open, onOpenChange, record, onSaved }: MasterFormProps<P
         <div>
           <Field label={t('orgs.categories.form.mapping')} {...form.register('sourceMapping')} />
           <p className="mt-1 text-xs text-ink-secondary">{t('orgs.categories.form.mappingHint')}</p>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <p className="text-xs text-ink-secondary">{t('orgs.categories.form.preview')}</p>
+        <div className="flex items-center gap-2">
+          <Badge category={{ icon, colour, name }} />
+          <StatusPill tone="neutral">{name.trim() || t('orgs.categories.form.name')}</StatusPill>
         </div>
       </div>
       <label className="flex min-h-9 items-center gap-2 text-sm text-ink">

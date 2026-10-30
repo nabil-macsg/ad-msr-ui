@@ -310,7 +310,7 @@ describe('BRD-D.2.1.2-MST the Roles page (spec 10 §2.2)', () => {
     ).toBeInTheDocument();
     await user.clear(within(form).getByLabelText('Code'));
     await user.type(within(form).getByLabelText('Code'), 'fuel-auditor');
-    await user.type(within(form).getByLabelText('Name'), 'Fuel Auditor');
+    await user.type(within(form).getByLabelText('Role name'), 'Fuel Auditor');
     await user.type(within(form).getByLabelText('What it is for'), 'Audits fuel stations.');
     await user.type(within(form).getByLabelText('Maximum holders'), '0');
     await user.click(within(form).getByRole('button', { name: 'Save' }));
@@ -333,6 +333,7 @@ describe('BRD-D.2.1.2-MST the Roles page (spec 10 §2.2)', () => {
           isLocked: false,
           isExternal: false,
           channels: ['web'],
+          isAdminTier: false,
         },
       ]);
     });
@@ -390,7 +391,7 @@ describe('BRD-D.2.1.2-MST the Roles page (spec 10 §2.2)', () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole('button', { name: 'New role' }));
     const form = screen.getByRole('dialog', { name: 'New role' });
-    await user.type(within(form).getByLabelText('Name'), 'ASP Team (Ops) 2');
+    await user.type(within(form).getByLabelText('Role name'), 'ASP Team (Ops) 2');
     await user.type(within(form).getByLabelText('What it is for'), 'Runs the provider.');
     await user.click(within(form).getByRole('button', { name: 'Save' }));
     await waitFor(() => {

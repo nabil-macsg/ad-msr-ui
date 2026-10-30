@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { Button } from '../../../shared/ui/button';
 import { CheckboxList } from '../../../shared/ui/checkbox-list';
 import { EntityFormModal } from '../../../shared/ui/entity-form-modal';
 import { Field, SelectField } from '../../../shared/ui/field';
@@ -254,23 +255,44 @@ function ChargeCodeForm({ open, onOpenChange, record, onSaved }: MasterFormProps
           <Controller
             control={form.control}
             name="siteIds"
-            render={({ field }) => (
-              <CheckboxList
-                legend={t('orgs.chargeCodes.form.sites')}
-                options={(options.data?.locations ?? []).map((l) => ({
-                  value: l.id,
-                  label: l.name,
-                }))}
-                selected={field.value}
-                onChange={field.onChange}
-              />
-            )}
+            render={({ field }) => {
+              const sites = options.data?.locations ?? [];
+              const every = sites.length > 0 && field.value.length === sites.length;
+              return (
+                <div className="space-y-1">
+                  <div className="flex justify-end">
+                    <Button
+                      type="button"
+                      variant="link"
+                      onClick={() => field.onChange(every ? [] : sites.map((l) => l.id))}
+                    >
+                      {every
+                        ? t('orgs.chargeCodes.form.clearAll')
+                        : t('orgs.chargeCodes.form.selectAll')}
+                    </Button>
+                  </div>
+                  <CheckboxList
+                    legend={t('orgs.chargeCodes.form.sites')}
+                    options={sites.map((l) => ({ value: l.id, label: l.name }))}
+                    selected={field.value}
+                    onChange={field.onChange}
+                  />
+                  <p className="text-xs text-ink-muted">
+                    {t('orgs.chargeCodes.form.sitesSelected', {
+                      n: field.value.length,
+                      total: sites.length,
+                    })}
+                  </p>
+                </div>
+              );
+            }}
           />
           {errors.siteIds?.message && (
             <p className="mt-1 text-sm text-danger-fg">{errors.siteIds.message}</p>
           )}
         </div>
       )}
+      <p className="text-xs text-ink-secondary">{t('orgs.chargeCodes.form.sitesHelp')}</p>
     </EntityFormModal>
   );
 }

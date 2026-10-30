@@ -205,7 +205,7 @@ describe('SPEC-10-5.3 POB masters on the web: every change goes to a second pers
     renderApp('/admin/muster-points', {
       access: accessWith({ 'admin.muster-points': EDITOR, 'admin.pending-changes': ['view'] }),
     });
-    const table = await screen.findByRole('table', { name: 'Muster Points' });
+    const table = await screen.findByRole('table', { name: 'Muster / Evacuation Point Master' });
     expect(await within(table).findByText('Primary')).toBeInTheDocument();
     expect(within(table).getByText('Unavailable')).toBeInTheDocument();
     expect(within(table).getByText('Muster only')).toBeInTheDocument();
@@ -248,7 +248,7 @@ describe('SPEC-10-5.3 POB masters on the web: every change goes to a second pers
   it('P-57 a point goes out of use at once, with a reason; a waiting record is not edited', async () => {
     const sent = stubPob();
     renderApp('/admin/muster-points', { access: accessWith({ 'admin.muster-points': EDITOR }) });
-    await screen.findByRole('table', { name: 'Muster Points' });
+    await screen.findByRole('table', { name: 'Muster / Evacuation Point Master' });
     const user = userEvent.setup();
     await user.click(
       await screen.findByRole('button', { name: 'Actions for DAS-MC · Muster C — Camp' }),
@@ -287,7 +287,7 @@ describe('SPEC-10-5.3 POB masters on the web: every change goes to a second pers
     expect(await screen.findByText('210')).toBeInTheDocument();
     expect(screen.getByText('70 seats held back (largest craft per location)')).toBeInTheDocument();
     expect(screen.getByText('4 / 5')).toBeInTheDocument();
-    const table = await screen.findByRole('table', { name: 'Lifeboats' });
+    const table = await screen.findByRole('table', { name: 'Lifeboat Capacity Master' });
     expect(await within(table).findByText('Expired')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(
@@ -315,7 +315,7 @@ describe('SPEC-10-5.3 POB masters on the web: every change goes to a second pers
     renderApp('/admin/essential-positions', {
       access: accessWith({ 'admin.essential-positions': EDITOR }),
     });
-    const table = await screen.findByRole('table', { name: 'Essential Positions' });
+    const table = await screen.findByRole('table', { name: 'Essential Position Master' });
     expect(await within(table).findByText('Cook')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New classification' }));
@@ -357,7 +357,7 @@ describe('SPEC-10-5.3 POB masters on the web: every change goes to a second pers
     renderApp('/admin/essential-positions', {
       access: accessWith({ 'admin.essential-positions': ['view'] }),
     });
-    await screen.findByRole('table', { name: 'Essential Positions' });
+    await screen.findByRole('table', { name: 'Essential Position Master' });
     const user = userEvent.setup();
     await user.click(
       await screen.findByRole('button', { name: 'Actions for Cook · Zirku Island' }),

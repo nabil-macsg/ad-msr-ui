@@ -1,3 +1,7 @@
+import { registerDemoBookingCreate } from './demo-booking-create';
+import { registerDemoPob } from './demo-pob';
+import { registerDemoAdmin } from './demo-admin';
+import { registerDemoCore } from './demo-core';
 import { registerEngines } from './engines';
 import { registerGenericMasters } from './generic-masters';
 import { registerModules } from './modules';
@@ -21,4 +25,8 @@ export function registerServices(): void {
   registerEngines();
   registerScheduling();
   registerModules();
+  registerDemoBookingCreate();
+  registerDemoPob();
+  registerDemoAdmin();
+  registerDemoCore();
 }

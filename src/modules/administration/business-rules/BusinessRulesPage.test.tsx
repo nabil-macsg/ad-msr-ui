@@ -238,9 +238,9 @@ describe('BRD-D.2.2.2-MST the Business Rules page (spec 10 §3.2)', () => {
     stubRules();
     renderRules();
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Business Rules' }),
+      await screen.findByRole('heading', { level: 1, name: 'Business Rules Engine' }),
     ).toBeInTheDocument();
-    const table = await screen.findByRole('table', { name: 'Business Rules' });
+    const table = await screen.findByRole('table', { name: 'Business Rules Engine' });
     expect(await within(table).findByText('Approved by D-1 at 10:00 GST')).toBeInTheDocument();
     expect(
       await within(table).findByText('Route type: AUH (onshore) dispatch'),

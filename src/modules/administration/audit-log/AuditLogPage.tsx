@@ -207,6 +207,8 @@ export default function AuditLogPage() {
         />
       </div>
 
+      <p className="text-sm text-ink-secondary">{t('auditLog.immutable')}</p>
+
       {(log.isError || summary.isError) && (
         <Banner tone="danger">{t('auditLog.loadFailed')}</Banner>
       )}
@@ -286,6 +288,8 @@ export default function AuditLogPage() {
           )}
         </div>
       )}
+
+      <p className="text-xs text-ink-muted">{t('auditLog.sourcesNote')}</p>
 
       {retention.data && (
         <section

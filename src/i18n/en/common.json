@@ -105,8 +105,8 @@
     "save": "Change password",
     "cancel": "Cancel",
     "changed": "Your password is changed. Your other sessions have ended.",
-    "title": "My account",
-    "subtitle": "Who MASAR knows you as, what you may do, and where you are signed in.",
+    "title": "My Account",
+    "subtitle": "Your access, as it is held in the platform",
     "profile": "Profile",
     "profileHint": "These details come from your source system and can only be changed there.",
     "personnelNo": "Personnel No.",
@@ -151,7 +151,18 @@
     "preferencesSaved": "Preferences saved.",
     "password": "Password",
     "passwordHint": "You sign in with your email, password and an emailed code.",
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "role": "Role",
+    "approvalTier": "Approval tier",
+    "tier": "Tier {{tier}}",
+    "notApprover": "Not an approver",
+    "locationAccess": "Location access",
+    "everyLocation": "Every location",
+    "passwordSso": "This account signs in through ADNOC single sign-on, so it has no password of its own.",
+    "ssoTitle": "This account signs in with ADNOC single sign-on",
+    "ssoBody": "There is no separate password for this platform, so there is nothing to change here. Your ADNOC password is managed where the rest of your ADNOC access is — changing it there changes it for this platform at the same time.",
+    "somethingWrong": "Something wrong here?",
+    "somethingWrongBody": "Your name, role and access are issued by ADNOC's own systems and cannot be edited in this platform. Changes are raised as an access request."
   },
   "ui": {
     "close": "Close",
@@ -276,8 +287,8 @@
     "exportFailed": "The export could not be downloaded. Try again."
   },
   "users": {
-    "title": "Users",
-    "subtitle": "The directory of everyone who can sign in — how each person signs in, which role and scope they hold, when their access expires and any delegation in place. Users are not created by hand: they arrive from source systems.",
+    "title": "User & Role Management",
+    "subtitle": "User accounts, role assignment, location access and approval tiers. Users are not created by hand: they arrive from source systems.",
     "tabs": {
       "directory": "Directory",
       "analytics": "Usage analytics"
@@ -311,6 +322,7 @@
       "roles": "Roles",
       "scope": "Scope",
       "accessUntil": "Access until",
+      "approvalTier": "Approval tier",
       "status": "Status",
       "lastSignIn": "Last sign-in"
     },
@@ -507,17 +519,20 @@
   },
   "roles": {
     "title": "Roles",
-    "subtitle": "What each role is for, who holds it and how many may.",
+    "subtitle": "The roles people are given, and which of them carry the admin tier.",
     "noun": "role",
     "banner": "A role decides nothing on its own — what it may open and do is set on the Access Rights Matrix.",
     "openMatrix": "Open in the matrix",
+    "openTheMatrix": "Open the matrix",
+    "mayDelete": "May delete",
     "search": "Search by name, code or purpose",
     "columns": {
       "role": "Role",
       "purpose": "What it is for",
       "type": "Type",
       "scopeLevel": "Scope level",
-      "holders": "Holders",
+      "adminTier": "Admin tier",
+      "holders": "People",
       "locked": "Locked"
     },
     "holders": "{{holders}} / {{max}}",
@@ -546,8 +561,12 @@
       "code": "Code",
       "codeHint": "Permanent: the name can change later, the code can’t.",
       "codeHintNew": "Leave empty to make it from the name. Permanent once saved.",
-      "name": "Name",
+      "name": "Role name",
+      "namePlaceholder": "e.g. Marine Focal Point",
       "description": "What it is for",
+      "descriptionPlaceholder": "One line, so the matrix reads as a decision about people rather than a list of names.",
+      "adminTier": "Admin tier",
+      "adminTierHint": "Only roles in the admin tier can be granted delete anywhere in the platform.",
       "type": "Type",
       "scopeLevel": "Scope level",
       "maxHolders": "Maximum holders",
@@ -564,7 +583,7 @@
     "role": "Role",
     "chooseRole": "Choose a role",
     "inactive": "{{name}} (deactivated)",
-    "rules": "Any right brings View. Delete and Reopen are for admin-tier roles only. A module switched off removes every page in it. Changes apply on everyone’s next request, and every save is a new version.",
+    "rules": "A module switched off takes everything inside it with it, whatever the rows beneath say. Delete and Reopen are held by roles marked as the admin tier and are locked everywhere else. Create, edit, delete and export each require view. What each role starts with is a working assumption, not a policy — this page is where the real one is set. Changes apply on everyone’s next request, and every save is a new version.",
     "kpi": {
       "modules": "Modules held",
       "modulesSub": "{{held}} of {{total}}",
@@ -822,8 +841,8 @@
     }
   },
   "rules": {
-    "title": "Business Rules",
-    "subtitle": "Typed rules the modules apply: cut-offs, certificates, limits and bands.",
+    "title": "Business Rules Engine",
+    "subtitle": "Cutoffs for booking submissions per resource category, and the other typed rules the modules apply: certificates, limits and bands.",
     "noun": "rule",
     "search": "Search by rule name, code or type",
     "banner": "Each rule has a type, a condition, typed parameters and a priority (1 first). A change is a new version from its start; high-impact rules change only once a Super Admin approves.",
@@ -943,7 +962,7 @@
   },
   "engine": {
     "title": "Notification Engine",
-    "subtitle": "Who hears of what, how and how often: rules on the modules' events.",
+    "subtitle": "Event, channel, recipients and message templates.",
     "noun": "rule",
     "search": "Search by rule name, code or trigger",
     "banner": "A rule fires on an event, filtered on what the event says, and reaches its recipients with a template per channel. Rules on events from later phases wait until their module publishes them.",
@@ -1066,7 +1085,7 @@
     }
   },
   "reasons": {
-    "title": "Reason Codes",
+    "title": "Reason Code Master",
     "subtitle": "One central list behind every reason dropdown in the platform.",
     "noun": "code",
     "search": "Search by code or description",
@@ -1150,7 +1169,9 @@
   },
   "auditLog": {
     "title": "Audit Log",
-    "subtitle": "Who did what, when, from where, and what changed.",
+    "subtitle": "Every recorded action, across every module.",
+    "immutable": "Entries are never edited or removed. The log is the record of what happened, so a mistake is corrected by a further action rather than by changing what is written here.",
+    "sourcesNote": "Bookings, journeys and people on board write their own history and are restated here. Master-data edits, serviceability toggles, access changes, sign-ins and exports are shown against real records so the log reads in full.",
     "search": "Search actions, records, people or reference IDs",
     "loadFailed": "The audit log could not be loaded. Try again.",
     "empty": "No entries match",
@@ -1551,7 +1572,7 @@
   },
   "resources": {
     "categories": {
-      "title": "Resource Categories",
+      "title": "Resource Category Master",
       "subtitle": "The top-level classes of transport resource: the parent of resource types, the mode filter in dispatch dashboards and reports, and a condition in business rules.",
       "noun": "resource category",
       "search": "Search by code or name"
@@ -1570,6 +1591,8 @@
     },
     "fields": {
       "weightUnit": "Weight unit",
+      "transportMode": "Transport mode",
+      "icon": "Icon",
       "dgClass": "Dangerous-goods class",
       "dgClassHint": "A UN class such as 3 or 2.1; blank for ordinary cargo.",
       "dgClassInvalid": "A UN class such as 3 or 2.1",
@@ -1582,10 +1605,19 @@
     },
     "choices": {
       "kg": "Kilograms (kg)",
-      "lb": "Pounds (lb)"
+      "lb": "Pounds (lb)",
+      "fixed-wing": "Air — fixed wing",
+      "rotary-wing": "Air — rotary wing",
+      "marine": "Marine",
+      "plane": "Plane",
+      "helicopter": "Helicopter",
+      "ship": "Ship",
+      "anchor": "Anchor",
+      "truck": "Truck",
+      "bus": "Bus"
     },
     "types": {
-      "title": "Resource Types",
+      "title": "Resource Type Master",
       "subtitle": "Aircraft and vessel types: capacity, seat-map template, baggage allowance and payload. Recurring schedules may use a type before a tail is assigned.",
       "noun": "resource type",
       "search": "Search by code or name",
@@ -1676,7 +1708,7 @@
       }
     },
     "fleet": {
-      "title": "Fleet",
+      "title": "Fleet Master",
       "subtitle": "Each aircraft, helicopter and vessel, of a resource type and a service provider. Its category, seat map, baggage, payload and helideck needs come from the type; only its seat capacity can be its own. Seat quotas are set in Quotas.",
       "noun": "fleet resource",
       "search": "Search by registration, type or provider",
@@ -1759,7 +1791,7 @@
       }
     },
     "quotas": {
-      "title": "Quotas",
+      "title": "Quota Master",
       "subtitle": "Seats held for a department, location, zone, provider or passenger category on a resource type or route, per flight, day, week or month.",
       "noun": "quota",
       "search": "Search by code",
@@ -1824,7 +1856,7 @@
   },
   "orgs": {
     "providers": {
-      "title": "Service Providers",
+      "title": "Service Provider Master",
       "subtitle": "Aviation, marine and test providers. The code is the prefix on every flight and voyage number the operator runs, so it can’t change. External users see only their own organisation.",
       "noun": "service provider",
       "search": "Search by code or legal name",
@@ -1860,12 +1892,12 @@
       }
     },
     "categories": {
-      "title": "Passenger Categories",
+      "title": "Passenger Category Master",
       "subtitle": "Who is seated first when demand exceeds capacity: lower numbers rank higher. Crew changes go first, then VIP, then the rest by rank.",
       "noun": "passenger category",
       "search": "Search by code or name",
       "columns": {
-        "rank": "Rank",
+        "rank": "Priority",
         "name": "Category",
         "rules": "Seating",
         "mapping": "Source mapping"
@@ -1881,8 +1913,9 @@
         "nameRequired": "Enter a name",
         "icon": "Icon",
         "colour": "Colour",
-        "rank": "Priority rank",
-        "rankHint": "Lower numbers are seated first; one active category per rank.",
+        "rank": "Priority",
+        "rankHint": "Determines who is seated first when demand exceeds capacity. Lower numbers rank higher.",
+        "preview": "Preview",
         "rankInvalid": "A whole number from 1 to 999",
         "seatForward": "Seat forward (e.g. VIP)",
         "crewChange": "Counts as a crew change",
@@ -1912,7 +1945,7 @@
       }
     },
     "chargeCodes": {
-      "title": "Charge Codes",
+      "title": "Charge / Cost Code Master",
       "subtitle": "What travel is charged to: at every site or some, recoverable or not, with validity dates and an owning department.",
       "noun": "charge code",
       "search": "Search by code or description",
@@ -1949,6 +1982,10 @@
         "allSites": "Every site",
         "sites": "Sites",
         "sitesRequired": "Choose at least one site, or every site",
+        "sitesSelected": "{{n}} of {{total}} sites selected",
+        "selectAll": "Select all",
+        "clearAll": "Clear all",
+        "sitesHelp": "A charge code is one record listing the sites it belongs to. The originating site of a trip is the one that owns the charge, so a booking is offered the codes belonging to the site it departs from.",
         "recoverability": "Recoverability",
         "validFrom": "Valid from",
         "validTo": "Valid to",
@@ -2082,8 +2119,8 @@
       "unavailableReason": "Unavailable because"
     },
     "muster": {
-      "title": "Muster Points",
-      "subtitle": "Each location’s muster points: its primary and alternates, how many each holds and how people leave from it.",
+      "title": "Muster / Evacuation Point Master",
+      "subtitle": "Where people assemble at each location, and which of those points they leave from.",
       "noun": "muster point",
       "search": "Search by code, name or location",
       "columns": {
@@ -2126,8 +2163,9 @@
       }
     },
     "lifeboats": {
-      "title": "Lifeboats",
-      "subtitle": "Each craft, where it serves and its certificate. Capacity counts craft in service, less the largest while that rule is on.",
+      "title": "Lifeboat Capacity Master",
+      "subtitle": "Lifeboats per complex, and the capacity counted on for an evacuation (N+1: the largest craft is held back).",
+      "notCovered": "Not covered by this master: {{locations}}. The client restricts lifeboat capacity to complexes, so these locations state no evacuation capacity rather than a capacity of zero.",
       "noun": "craft",
       "search": "Search by code, name or location",
       "kpi": {
@@ -2174,8 +2212,8 @@
       }
     },
     "essential": {
-      "title": "Essential Positions",
-      "subtitle": "Whether each designation is essential at each site. Changes apply from today or later; past classifications are kept.",
+      "title": "Essential Position Master",
+      "subtitle": "Which positions are essential when a site is downmanned, and where that differs by location. Changes apply from today or later; past classifications are kept.",
       "noun": "classification",
       "search": "Search by designation or location",
       "tabs": {

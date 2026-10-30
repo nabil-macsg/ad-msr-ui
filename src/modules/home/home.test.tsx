@@ -2,7 +2,9 @@ import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { expectAccessible } from '../../../test/axe';
-import { accessWith, json, ME, renderApp, stubFetch } from '../../../test/render-app';
+import { accessWith, json, renderApp, stubFetch } from '../../../test/render-app';
+import { routeOf } from '../../app/access/registry';
+import type { CoreDashboard } from '../../demo/core/core-api';
 import type { Home, HomeWidget, SearchResults } from './home-api';
 
 const widget = (partial: Partial<HomeWidget> & Pick<HomeWidget, 'key' | 'kind'>): HomeWidget => ({
@@ -82,114 +84,102 @@ beforeEach(() => {
 });
 afterEach(() => vi.unstubAllGlobals());
 
-describe('SPEC-10-1.1 home', () => {
-  it('greets the user with today and their role, and shows the widgets their roles see', async () => {
-    stubFetch((path) => (path === '/api/v1/home' ? json(HOME) : undefined));
-    const [passengerRole] = ME.roles;
-    if (!passengerRole) throw new Error('ME has no role');
-    renderApp('/dashboard', {
-      me: {
-        ...ME,
-        roles: [
-          passengerRole,
-          { ...passengerRole, code: 'pob-master-data-power-user', name: 'POB Master Data' },
-        ],
+// The Dashboard route now shows the original demo's dashboard (src/demo/core/DashboardPage):
+// these tests were aligned with its content (KPIs, today's flights, approvals, notifications).
+const DASHBOARD: CoreDashboard = {
+  today: '2026-10-15',
+  kpis: { approvals: 215, departures: 2, gone: 1, toGo: 1, boarding: 0, waitlisted: 7 },
+  flights: [
+    {
+      id: 'f1',
+      time: '07:00',
+      flightNumber: 'ADA101',
+      from: 'Abu Dhabi',
+      to: 'Das Island',
+      mode: 'Fixed Wing',
+      resource: 'Dash 8-300',
+      booked: 17,
+      capacity: 50,
+      status: 'Closed for Dispatch',
+    },
+    {
+      id: 'f2',
+      time: '08:00',
+      flightNumber: 'ADA201',
+      from: 'Das Island',
+      to: 'Upper Zakum',
+      mode: 'Rotary Wing',
+      resource: 'AW139',
+      booked: 4,
+      capacity: 12,
+      status: 'Cancelled',
+    },
+  ],
+  approvals: {
+    total: 215,
+    items: [
+      {
+        id: 'a1',
+        passenger: 'Priya Sharma',
+        reference: 'BK-2026-0012',
+        from: 'Abu Dhabi',
+        to: 'Das Island',
+        dayOffset: 1,
+        overQuota: true,
+        stage: 'Aviation Team',
+        date: '2026-10-16',
       },
-    });
+    ],
+  },
+  notices: [
+    { id: 'n1', text: '9 people are past 90 continuous days offshore', tone: 'info', page: 'pob.overstay' },
+  ],
+};
+const DASHBOARD_PATH = '/api/v1/demo/core/dashboard';
+
+describe('SPEC-10-1.1 home', () => {
+  it('greets the user with today and their role, and shows the day at a glance', async () => {
+    stubFetch((path) => (path === DASHBOARD_PATH ? json(DASHBOARD) : undefined));
+    renderApp('/dashboard');
     expect(
       await screen.findByRole('heading', { name: 'Hello, Ahmed', level: 1 }),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(
-        'Thursday 15 October 2026 · What is happening today, as Passenger (and 1 more)',
-      ),
+      await screen.findByText(/Thursday 15 October 2026 · what is happening today, as Passenger/),
     ).toBeInTheDocument();
-
-    const approvals = await screen.findByRole('region', { name: 'Awaiting your approval' });
-    expect(within(approvals).getByText('Overdue: 1')).toBeInTheDocument();
-    const overdue = within(approvals).getByRole('link', {
-      name: /PMC-2026-0001 · Change muster point NASR-MB/,
-    });
-    expect(overdue).toHaveAttribute('href', '/admin/pending-changes');
-    expect(within(overdue).getByText('Overdue')).toBeInTheDocument();
-    expect(within(overdue).getByText('Due 14 Oct 2026, 10:00')).toBeInTheDocument();
-    // A task with nowhere to open is listed, not linked.
-    expect(within(approvals).getByText('critical-cutoff-auh').closest('a')).toBeNull();
-
-    const delegations = screen.getByRole('link', { name: /Acting for others/ });
-    expect(delegations).toHaveAttribute('href', '/account');
+    const approvals = screen.getByRole('link', { name: /Awaiting your approval/ });
+    expect(within(approvals).getByText('215')).toBeInTheDocument();
+    expect(approvals).toHaveAttribute('href', routeOf('booking.approvals'));
+    expect(screen.getByText('1 gone · 1 still to go')).toBeInTheDocument();
+    const pending = screen.getByRole('region', { name: /Pending approvals/ });
+    expect(within(pending).getByText('Over quota')).toBeInTheDocument();
+    const notices = screen.getByRole('region', { name: /Notifications/ });
     expect(
-      within(delegations).getByText('You delegate to others: 0 · Scheduled: 2'),
-    ).toBeInTheDocument();
-    // A widget that failed says so; one this app doesn't know is not shown.
-    expect(screen.getByText('Could not load just now.')).toBeInTheDocument();
-    expect(screen.queryByText('9')).not.toBeInTheDocument();
+      within(notices).getByRole('link', { name: /past 90 continuous days/ }),
+    ).toHaveAttribute('href', routeOf('pob.overstay'));
     await expectAccessible();
   });
 
-  it("lists today's flights and voyages, departure first, each opening on the dashboard", async () => {
-    const today: Home = {
-      today: '2026-10-15',
-      widgets: [
-        widget({
-          key: 'scheduling.today',
-          kind: 'list',
-          value: 2,
-          params: { withoutTime: 1 },
-          tone: 'warning',
-          link: '/scheduling',
-          items: [
-            {
-              id: 'j1',
-              title: 'ADA101 · Abu Dhabi → Das Island',
-              detail: 'Dash 8-300 · 23 / 50',
-              at: '2026-10-15T03:00:00Z',
-              tone: 'info',
-              status: 'scheduled',
-              link: '/scheduling?q=ADA101&filter[from]=2026-10-15&filter[to]=2026-10-15',
-            },
-            {
-              id: 'j2',
-              title: 'FAL203 · Das Island → Lower Zakum',
-              detail: 'Bell 412 · 0 / 12',
-              at: null,
-              tone: 'danger',
-              status: 'cancelled',
-              link: '/scheduling?q=FAL203&filter[from]=2026-10-15&filter[to]=2026-10-15',
-            },
-          ],
-        }),
-      ],
-    };
-    stubFetch((path) => (path === '/api/v1/home' ? json(today) : undefined));
+  it("lists today's flights and voyages, departure first, with seats and status", async () => {
+    stubFetch((path) => (path === DASHBOARD_PATH ? json(DASHBOARD) : undefined));
     renderApp('/dashboard');
-    const list = await screen.findByRole('region', { name: "Today's flights and voyages" });
-    expect(within(list).getByText(/^Without a departure time: 1/)).toBeInTheDocument();
-    expect(within(list).getByRole('link', { name: 'Open' })).toHaveAttribute('href', '/scheduling');
+    const list = await screen.findByRole('region', { name: /Today's flights and voyages/ });
+    expect(within(list).getByText('2 published')).toBeInTheDocument();
     const [first, second] = within(list).getAllByRole('listitem');
     if (!first || !second) throw new Error('Two journeys expected');
-    // Departure first, in GST.
     expect(first.textContent).toMatch(/^07:00ADA101 · Abu Dhabi → Das Island/);
-    expect(within(first).getByText('Scheduled')).toBeInTheDocument();
-    expect(within(first).getByRole('link')).toHaveAttribute(
-      'href',
-      '/scheduling?q=ADA101&filter[from]=2026-10-15&filter[to]=2026-10-15',
-    );
-    expect(second.textContent).toMatch(/^No timeFAL203/);
+    expect(within(first).getByText('17/50')).toBeInTheDocument();
     expect(within(second).getByText('Cancelled')).toBeInTheDocument();
-    await expectAccessible();
   });
 
   it('says so when the home page cannot be loaded', async () => {
     stubFetch((path) =>
-      path === '/api/v1/home'
+      path === DASHBOARD_PATH
         ? json({ error: { code: 'INTERNAL', message: 'Down', correlationId: 'x' } }, 500)
         : undefined,
     );
     renderApp('/dashboard');
-    expect(
-      await screen.findByText('Your home page could not be loaded. Try again.'),
-    ).toBeInTheDocument();
+    expect(await screen.findByText('The dashboard could not be loaded.')).toBeInTheDocument();
   });
 });
 

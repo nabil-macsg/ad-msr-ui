@@ -19,6 +19,8 @@ export interface CategoryRow {
   name: string;
   weightUnit: WeightUnit;
   baseMode: BaseMode;
+  /** The icon the category shows with (original demo: Plane, Helicopter, Ship…). */
+  icon?: string;
   isActive: boolean;
   deactivatedReason: string | null;
   version: number;
@@ -88,6 +90,7 @@ export const CATEGORY_SEED: CategoryRow[] = [
   {
     id: idFor('resource-category', 'FIXED-WING'),
     code: 'FIXED-WING',
+    icon: 'plane',
     name: 'Fixed Wing',
     weightUnit: 'kg',
     baseMode: 'fixed-wing',
@@ -96,6 +99,7 @@ export const CATEGORY_SEED: CategoryRow[] = [
   {
     id: idFor('resource-category', 'ROTARY-WING'),
     code: 'ROTARY-WING',
+    icon: 'helicopter',
     name: 'Rotary Wing',
     weightUnit: 'kg',
     baseMode: 'rotary-wing',
@@ -104,6 +108,7 @@ export const CATEGORY_SEED: CategoryRow[] = [
   {
     id: idFor('resource-category', 'MARINE'),
     code: 'MARINE',
+    icon: 'ship',
     name: 'Vessel / Boat',
     weightUnit: 'kg',
     baseMode: 'marine',
@@ -216,13 +221,13 @@ export const FUEL_SEED: Schemas['FuelStation'][] = (
 
 const PASSENGER_CATEGORY_NAMES: Record<string, string> = {
   VIP: 'VIP',
-  EP: 'Essential Personnel',
+  EP: 'EP',
   DH: 'Direct Hire',
-  'EST-POS': 'Essential Position',
+  'EST-POS': 'Established Position',
   CON: 'Contractor',
   VIS: 'Visitor',
   GEN: 'General',
-  RADAR: 'Radar Operations',
+  RADAR: 'Radar-NGCPA',
 };
 
 interface QuotaSeed {

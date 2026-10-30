@@ -65,6 +65,12 @@ function Lifeboats() {
   const items = capacity.data?.items ?? [];
   const sum = (pick: (c: (typeof items)[number]) => number) =>
     items.reduce((total, c) => total + pick(c), 0);
+  // Locations with no lifeboat record state no evacuation capacity (rather than zero).
+  const covered = new Set(items.map((c) => c.location.id));
+  const notCovered =
+    items.length > 0
+      ? (options.data?.locations ?? []).filter((l) => !covered.has(l.id)).map((l) => l.name)
+      : [];
   const kpis = (
     <div className="space-y-2">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -99,6 +105,11 @@ function Lifeboats() {
               }),
             )
             .join(' · ')}
+        </p>
+      )}
+      {notCovered.length > 0 && (
+        <p className="text-xs text-ink-secondary">
+          {t('pob.lifeboats.notCovered', { locations: notCovered.join(', ') })}
         </p>
       )}
     </div>

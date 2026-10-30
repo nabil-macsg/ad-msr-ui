@@ -29,6 +29,7 @@ export function RoleForm({ open, onOpenChange, record, onSaved }: MasterFormProp
       code: z.string().trim(),
       name: z.string().trim().min(1, t('roles.form.nameRequired')).max(100),
       description: z.string().trim().min(1, t('roles.form.descriptionRequired')).max(500),
+      isAdminTier: z.boolean(),
       type: z.enum(ROLE_TYPES),
       scopeLevel: z.enum(SCOPE_LEVELS),
       // Empty for no limit, otherwise 1–100,000 as the API allows.
@@ -52,6 +53,7 @@ export function RoleForm({ open, onOpenChange, record, onSaved }: MasterFormProp
       code: record?.code ?? '',
       name: record?.name ?? '',
       description: record?.description ?? '',
+      isAdminTier: record?.isAdminTier ?? false,
       type: record?.type ?? 'module',
       scopeLevel: record?.scopeLevel ?? 'site',
       maxHolders: record?.maxHolders === null || !record ? '' : String(record.maxHolders),
@@ -75,6 +77,7 @@ export function RoleForm({ open, onOpenChange, record, onSaved }: MasterFormProp
         isLocked: record?.isLocked ?? false,
         isExternal: record?.isExternal ?? false,
         channels: record?.channels ?? ['web'],
+        isAdminTier: values.isAdminTier,
       });
       onSaved();
     } catch (error) {
@@ -107,15 +110,28 @@ export function RoleForm({ open, onOpenChange, record, onSaved }: MasterFormProp
         </div>
         <Field
           label={t('roles.form.name')}
+          placeholder={t('roles.form.namePlaceholder')}
           error={errors.name?.message}
           {...form.register('name')}
         />
         <Field
           className="md:col-span-2"
           label={t('roles.form.description')}
+          placeholder={t('roles.form.descriptionPlaceholder')}
           error={errors.description?.message}
           {...form.register('description')}
         />
+        <div className="space-y-1 md:col-span-2">
+          <label className="flex min-h-9 items-center gap-2 text-sm text-ink">
+            <input
+              type="checkbox"
+              className="size-4 accent-primary"
+              {...form.register('isAdminTier')}
+            />
+            {t('roles.form.adminTier')}
+          </label>
+          <p className="text-xs text-ink-muted">{t('roles.form.adminTierHint')}</p>
+        </div>
         <SelectField label={t('roles.form.type')} {...form.register('type')}>
           {ROLE_TYPES.map((type) => (
             <option key={type} value={type}>

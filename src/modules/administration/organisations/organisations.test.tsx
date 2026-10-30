@@ -135,7 +135,7 @@ describe('SPEC-10-5.1 organisation masters on the web', () => {
     renderApp('/admin/service-providers', {
       access: accessWith({ 'admin.service-providers': EDITOR }),
     });
-    const table = await screen.findByRole('table', { name: 'Service Providers' });
+    const table = await screen.findByRole('table', { name: 'Service Provider Master' });
     expect(await within(table).findByText('ops@fal.masar.example')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New service provider' }));
@@ -169,7 +169,7 @@ describe('SPEC-10-5.1 organisation masters on the web', () => {
     renderApp('/admin/passenger-categories', {
       access: accessWith({ 'admin.passenger-categories': EDITOR }),
     });
-    const table = await screen.findByRole('table', { name: 'Passenger Categories' });
+    const table = await screen.findByRole('table', { name: 'Passenger Category Master' });
     expect(await within(table).findByText('Crew change')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New passenger category' }));
@@ -178,7 +178,7 @@ describe('SPEC-10-5.1 organisation masters on the web', () => {
     await user.type(within(form).getByLabelText('Name'), 'Medical');
     await user.selectOptions(within(form).getByLabelText('Icon'), 'stethoscope');
     await user.selectOptions(within(form).getByLabelText('Colour'), '#DC2626');
-    await user.type(within(form).getByLabelText('Priority rank'), '9');
+    await user.type(within(form).getByLabelText('Priority'), '9');
     await user.click(within(form).getByRole('button', { name: 'Save' }));
     await waitFor(() => {
       expect(sent).toContainEqual(
@@ -199,7 +199,7 @@ describe('SPEC-10-5.1 organisation masters on the web', () => {
   it('BRD-D.3.1.11-MST a charge code covers every site, or the sites chosen', async () => {
     const sent = stubOrgs();
     renderApp('/admin/charge-codes', { access: accessWith({ 'admin.charge-codes': EDITOR }) });
-    const table = await screen.findByRole('table', { name: 'Charge Codes' });
+    const table = await screen.findByRole('table', { name: 'Charge / Cost Code Master' });
     expect(await within(table).findByText('All sites')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New charge code' }));

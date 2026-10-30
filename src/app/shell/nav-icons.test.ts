@@ -17,6 +17,8 @@ describe('PROMPT-4.2 navigation icons', () => {
     const unmapped = sidebar
       .filter((p) => !p.key.startsWith('reports.') && pageIcon(p.key) === FileText)
       .filter((p) => p.key !== 'pob.report' && p.key !== 'asp.audits')
+      // Demo-only pages take their icon from the original menu (demo-nav.ts).
+      .filter((p) => !p.key.startsWith('demo.'))
       .map((p) => p.key);
     expect(unmapped).toEqual([]);
     expect(pageIcon('reports.no-show')).toBe(ChartNoAxesColumn);

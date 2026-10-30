@@ -11,12 +11,12 @@ describe('PROMPT-4.2 web shell', () => {
   it('PROMPT-4.2 menus differ by role: a passenger sees Booking only', async () => {
     renderApp('/dashboard', { access: accessWith({ 'booking.bookings': ['view'] }) });
     const nav = await screen.findByRole('navigation', { name: 'Main navigation' });
-    expect(within(nav).getByText('PEOPLE LOGISTICS')).toBeInTheDocument();
+    expect(within(nav).getByText('People Logistics')).toBeInTheDocument();
     expect(within(nav).getByRole('link', { name: 'Bookings' })).toHaveAttribute(
       'href',
       '/booking/my-bookings',
     );
-    expect(within(nav).queryByText('POB TRACKING')).toBeNull();
+    expect(within(nav).queryByText('POB Tracking')).toBeNull();
     expect(within(nav).queryByRole('link', { name: 'Administration' })).toBeNull();
   });
 
@@ -25,7 +25,7 @@ describe('PROMPT-4.2 web shell', () => {
       access: accessWith({ 'pob.dashboard': ['view'], 'admin.users': ['view'] }),
     });
     const nav = await screen.findByRole('navigation', { name: 'Main navigation' });
-    expect(within(nav).getByText('POB TRACKING')).toBeInTheDocument();
+    expect(within(nav).getByText('POB Tracking')).toBeInTheDocument();
     expect(within(nav).getByRole('link', { name: 'Administration' })).toHaveAttribute(
       'href',
       '/admin/users',
@@ -39,7 +39,7 @@ describe('PROMPT-4.2 web shell', () => {
       'href',
       '/dashboard',
     );
-    expect(within(nav).getByText('ACCESS CONTROL')).toBeInTheDocument();
+    expect(within(nav).getByText('Access Control')).toBeInTheDocument();
     expect(screen.queryByRole('navigation', { name: 'Main navigation' })).toBeNull();
     // Each entry carries its reference icon, as the main sidebar's do.
     for (const link of within(nav).getAllByRole('link')) {

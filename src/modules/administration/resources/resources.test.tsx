@@ -217,7 +217,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
     renderApp('/admin/resource-categories', {
       access: accessWith({ 'admin.resource-categories': ADMIN }),
     });
-    const table = await screen.findByRole('table', { name: 'Resource Categories' });
+    const table = await screen.findByRole('table', { name: 'Resource Category Master' });
     expect(await within(table).findByText('Pounds (lb)')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New resource category' }));
@@ -230,7 +230,12 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
         expect.objectContaining({
           method: 'POST',
           path: '/api/v1/masters/resource-categories',
-          body: { code: 'HOVERCRAFT', name: 'Hovercraft', weightUnit: 'kg' },
+          // Aligned with the original demo: the form also sets transport mode and icon.
+          body: expect.objectContaining({
+            code: 'HOVERCRAFT',
+            name: 'Hovercraft',
+            weightUnit: 'kg',
+          }),
         }),
       );
     });
@@ -241,7 +246,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
     renderApp('/admin/resource-categories', {
       access: accessWith({ 'admin.resource-categories': ADMIN }),
     });
-    const table = await screen.findByRole('table', { name: 'Resource Categories' });
+    const table = await screen.findByRole('table', { name: 'Resource Category Master' });
     expect(await within(table).findByText('Pounds (lb)')).toBeInTheDocument();
     const user = userEvent.setup();
     // An added category offers Delete and Deactivate.
@@ -254,8 +259,8 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
     expect(screen.queryByRole('menuitem', { name: 'Deactivate' })).not.toBeInTheDocument();
     await user.click(screen.getByRole('menuitem', { name: 'Edit' }));
     const form = await screen.findByRole('dialog', { name: 'Edit Rotary wing' });
-    // The page shows the BRD's fields only: no base mode.
-    expect(within(form).queryByLabelText('Base mode')).not.toBeInTheDocument();
+    // Aligned with the original demo: the category carries its transport mode.
+    expect(within(form).getByLabelText('Transport mode')).toBeInTheDocument();
     await user.selectOptions(within(form).getByLabelText('Weight unit'), 'kg');
     await user.click(within(form).getByRole('button', { name: 'Save' }));
     await waitFor(() => {
@@ -263,7 +268,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
         expect.objectContaining({
           method: 'PATCH',
           path: `/api/v1/masters/resource-categories/${id(50)}`,
-          body: { name: 'Rotary wing', weightUnit: 'kg' },
+          body: expect.objectContaining({ name: 'Rotary wing', weightUnit: 'kg' }),
         }),
       );
     });
@@ -273,7 +278,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
   it('BRD-D.3.1.8-MST resource types show their seat map; a marine-based type seats openly', async () => {
     const sent = stubResources();
     renderApp('/admin/resource-types', { access: accessWith({ 'admin.resource-types': EDITOR }) });
-    const table = await screen.findByRole('table', { name: 'Resource Types' });
+    const table = await screen.findByRole('table', { name: 'Resource Type Master' });
     expect(await within(table).findByText('13 × 4, aisle after 2')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New resource type' }));
@@ -347,7 +352,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
   it('BRD-D.3.2.1-MST a fleet unit shows its own seat capacity; a retired one is never bookable', async () => {
     const sent = stubResources();
     renderApp('/admin/fleet', { access: accessWith({ 'admin.fleet': EDITOR }) });
-    const table = await screen.findByRole('table', { name: 'Fleet' });
+    const table = await screen.findByRole('table', { name: 'Fleet Master' });
     expect(await within(table).findByText('(own value)')).toBeInTheDocument();
     expect(within(table).getByText('Available')).toBeInTheDocument();
     expect(within(table).getByText(/Fixed wing · Air/)).toBeInTheDocument();
@@ -507,7 +512,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
   it('BRD-D.3.2.1-MST a viewer sees a unit read-only, its specifications from the type', async () => {
     stubResources();
     renderApp('/admin/fleet', { access: accessWith({ 'admin.fleet': ['view'] }) });
-    const table = await screen.findByRole('table', { name: 'Fleet' });
+    const table = await screen.findByRole('table', { name: 'Fleet Master' });
     expect(screen.queryByRole('button', { name: 'New fleet resource' })).not.toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(
@@ -529,7 +534,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
     expect(
       await screen.findByText('Quotas apply to fixed-wing services only.'),
     ).toBeInTheDocument();
-    const table = await screen.findByRole('table', { name: 'Quotas' });
+    const table = await screen.findByRole('table', { name: 'Quota Master' });
     expect(await within(table).findByText('1 seats · warn at 80%')).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: 'New quota' }));

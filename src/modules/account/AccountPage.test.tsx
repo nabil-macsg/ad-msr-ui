@@ -98,14 +98,16 @@ describe('spec-10-1.5 My account', () => {
     stubAccount();
     renderApp('/account', { access: accessWith() });
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'My account' }),
+      await screen.findByRole('heading', { level: 1, name: 'My Account' }),
     ).toBeInTheDocument();
     expect(screen.getByText('VIA SAP')).toBeInTheDocument();
     expect(screen.getByText('Own records')).toBeInTheDocument();
     expect(await screen.findByText('Fatima Al Hashimi')).toBeInTheDocument();
     expect(await screen.findByText('iPhone 16')).toBeInTheDocument();
     expect(await screen.findByLabelText('Email for Security alerts')).toBeDisabled();
-    expect(screen.queryByRole('heading', { name: 'Password' })).not.toBeInTheDocument();
+    // Aligned with the original demo: an SSO account shows a Password card explaining it has none.
+    expect(screen.getByRole('heading', { name: 'Password' })).toBeInTheDocument();
+    expect(screen.getByText(/signs in through ADNOC single sign-on/)).toBeInTheDocument();
     await expectAccessible();
   });
 

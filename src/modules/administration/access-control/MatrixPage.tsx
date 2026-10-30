@@ -39,8 +39,11 @@ type Notice = { tone: 'success' | 'danger'; text: string; reload?: boolean } | n
 export default function MatrixPage() {
   const { t } = useTranslation();
   const [search, setSearch] = useSearchParams();
-  const roleId = search.get('role');
   const options = useMatrixOptions();
+  // Demo: like the original, the matrix opens on a role (Super Admin) rather than an empty page.
+  const roles = options.data?.roles ?? [];
+  const fallback = roles.find((r) => r.code === 'super-admin') ?? roles.find((r) => r.isActive);
+  const roleId = search.get('role') ?? fallback?.id ?? null;
   const matrix = useRoleMatrix(roleId);
   const { data: access } = useMyAccess();
   const queryClient = useQueryClient();
@@ -101,8 +104,8 @@ export default function MatrixPage() {
             setSearch(e.target.value ? { role: e.target.value } : {}, { replace: true });
           }}
         >
-          <option value="">{t('matrix.chooseRole')}</option>
-          {(options.data?.roles ?? []).map((r) => (
+          {!roleId && <option value="">{t('matrix.chooseRole')}</option>}
+          {roles.map((r) => (
             <option key={r.id} value={r.id}>
               {r.isActive ? r.name : t('matrix.inactive', { name: r.name })}
             </option>

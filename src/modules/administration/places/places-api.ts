@@ -8,9 +8,21 @@ type Schemas = components['schemas'];
 export type Location = Schemas['Location'];
 export type LocationInput = Schemas['LocationInput'];
 export type LocationUpdate = Schemas['LocationUpdate'];
-export type Installation = Schemas['Installation'];
-export type InstallationInput = Schemas['InstallationInput'];
-export type InstallationUpdate = Schemas['InstallationUpdate'];
+/** Whether an aircraft model may land on an installation (the client's helideck list). */
+export type LandingPermission = 'permitted' | 'restricted' | 'none';
+/** Helideck register fields of the original demo, kept beside MASAR's installation (demo mock). */
+export interface InstallationRegister {
+  hllStatus: 'Open' | 'OpenR' | 'Closed' | null;
+  position: string | null;
+  acceptanceUntil: string | null;
+  landing: Record<string, LandingPermission>;
+  limitations: string[];
+  notes: string | null;
+}
+/** Partial: records saved before the register fields existed simply lack them. */
+export type Installation = Schemas['Installation'] & Partial<InstallationRegister>;
+export type InstallationInput = Schemas['InstallationInput'] & Partial<InstallationRegister>;
+export type InstallationUpdate = Schemas['InstallationUpdate'] & Partial<InstallationRegister>;
 export type Route = Schemas['Route'];
 export type RouteInput = Schemas['RouteInput'];
 export type RouteUpdate = Schemas['RouteUpdate'];
@@ -111,14 +123,19 @@ export const installationsResource: MasterResource<Installation> = {
   queryKey: [...INSTALLATIONS_KEY],
   path: '/api/v1/masters/installations',
   list: async (query) =>
-    unwrap(await api.GET('/api/v1/masters/installations', { params: { query } })),
+    unwrap(await api.GET('/api/v1/masters/installations', { params: { query } })) as {
+      items: Installation[];
+      total: number;
+      page: number;
+      pageSize: number;
+    },
   deactivate: async (record, reason) =>
     unwrap(
       await api.POST('/api/v1/masters/installations/{id}/deactivate', {
         params: { path: { id: record.id }, header: ifMatch(record.version) },
         body: { reason },
       }),
-    ),
+    ) as Installation,
   // Reactivation goes through activation, which checks the required values again.
   reactivate: async (record, reason) => activateInstallation(record, reason),
   remove: async (record, reason) => {
@@ -148,9 +165,9 @@ export async function saveInstallation(
         params: { path: { id: record.id }, header: ifMatch(record.version) },
         body: update,
       }),
-    );
+    ) as Installation;
   }
-  return unwrap(await api.POST('/api/v1/masters/installations', { body: create }));
+  return unwrap(await api.POST('/api/v1/masters/installations', { body: create })) as Installation;
 }
 
 export async function activateInstallation(
@@ -162,7 +179,7 @@ export async function activateInstallation(
       params: { path: { id: record.id }, header: ifMatch(record.version) },
       body: reason ? { reason } : {},
     }),
-  );
+  ) as Installation;
 }
 
 export async function syncInstallationCoordinates(record: Installation): Promise<Installation> {
@@ -170,7 +187,7 @@ export async function syncInstallationCoordinates(record: Installation): Promise
     await api.POST('/api/v1/masters/installations/{id}/coordinates/sync', {
       params: { path: { id: record.id }, header: ifMatch(record.version) },
     }),
-  );
+  ) as Installation;
 }
 
 export async function setInstallationServiceability(
@@ -182,7 +199,7 @@ export async function setInstallationServiceability(
       params: { path: { id: record.id }, header: ifMatch(record.version) },
       body: change,
     }),
-  );
+  ) as Installation;
 }
 
 export function useInstallationOptions() {
@@ -285,7 +302,11 @@ export async function saveRoute(
 export function useRouteOptions() {
   return useQuery({
     queryKey: [...ROUTES_KEY, 'options'],
-    queryFn: async () => unwrap(await api.GET('/api/v1/masters/routes/options')),
+    queryFn: async () =>
+      unwrap(await api.GET('/api/v1/masters/routes/options')) as Schemas['RouteOptions'] & {
+        // Demo mock: each location's point, for the live great-circle distance.
+        locations: { id: string; point?: { lat: number; lng: number } | null }[];
+      },
     staleTime: 60_000,
   });
 }

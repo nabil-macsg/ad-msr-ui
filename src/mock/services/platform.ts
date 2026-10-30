@@ -216,7 +216,8 @@ function holders(code: string): number {
 }
 const roleView = (r: Role): Role => ({ ...r, holders: holders(r.code) });
 
-function summaryOf(u: UserRow): S['UserSummary'] {
+// Demo: the list also shows each person's approval tier (original User & Role Management).
+function summaryOf(u: UserRow): S['UserSummary'] & { approvalTier: number | null } {
   const live = liveAssignments(u.id);
   const ends = live.map((a) => a.validUntil);
   return {
@@ -245,6 +246,7 @@ function summaryOf(u: UserRow): S['UserSummary'] {
             .at(-1) ?? null)
         : null,
     lastSignInAt: u.lastSignInAt,
+    approvalTier: u.approvalTier,
     version: u.version,
   };
 }
@@ -822,12 +824,23 @@ function registerRoles(): void {
       const code = required(body.code, 'code').toLowerCase();
       if (!/^[a-z][a-z0-9-]{1,39}$/.test(code))
         invalid({ code: 'Use lower-case letters, digits and hyphens' });
-      return { code, ...fields(body), holders: 0, isAdminTier: false, deactivatedReason: null };
+      return {
+        code,
+        ...fields(body),
+        holders: 0,
+        // Demo: the Roles form sets the admin tier (original Roles screen).
+        isAdminTier: body.isAdminTier === true,
+        deactivatedReason: null,
+      };
     },
     update: (current, body) => {
       requireRight('admin.roles', 'edit');
       guardLocked(current);
-      return { ...current, ...fields(body, current) };
+      return {
+        ...current,
+        ...fields(body, current),
+        isAdminTier: typeof body.isAdminTier === 'boolean' ? body.isAdminTier : current.isAdminTier,
+      };
     },
   });
   route('GET', '/api/v1/access/roles/export', (req) =>

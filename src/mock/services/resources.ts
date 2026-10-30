@@ -120,6 +120,7 @@ function registerCategories() {
         name: text(b.name),
         weightUnit: b.weightUnit ?? 'kg',
         baseMode: b.baseMode ?? 'fixed-wing',
+        icon: b.icon ?? 'plane',
         deactivatedReason: null,
       }),
     },

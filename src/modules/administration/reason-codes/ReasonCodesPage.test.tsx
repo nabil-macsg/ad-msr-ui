@@ -116,9 +116,9 @@ describe('BRD-D.2.2.4-MST the Reason Codes page (spec 10 §3.4)', () => {
     stubReasons();
     renderReasons();
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Reason Codes' }),
+      await screen.findByRole('heading', { level: 1, name: 'Reason Code Master' }),
     ).toBeInTheDocument();
-    const table = await screen.findByRole('table', { name: 'Reason Codes' });
+    const table = await screen.findByRole('table', { name: 'Reason Code Master' });
     expect(
       await within(table).findByText('Reason required · Comment required'),
     ).toBeInTheDocument();

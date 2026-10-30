@@ -8,6 +8,7 @@ import { formatGst, formatGstDate } from '../../shared/time/format';
 import { Banner } from '../../shared/ui/banner';
 import { Button } from '../../shared/ui/button';
 import { ConfirmDialog } from '../../shared/ui/confirm-dialog';
+import { Modal, ModalFooter } from '../../shared/ui/modal';
 import { PageHeader } from '../../shared/ui/page-header';
 import { ProvenanceChip } from '../../shared/ui/provenance-chip';
 import { Spinner } from '../../shared/ui/spinner';
@@ -28,6 +29,13 @@ import {
 } from './account-api';
 
 const CHANNELS = ['email', 'sms', 'push'] as const;
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase())
+    .filter((_, i, all) => i === 0 || i === all.length - 1)
+    .join('');
 const DELEGATION_TONE = {
   scheduled: 'info',
   active: 'success',
@@ -86,8 +94,10 @@ export default function AccountPage() {
   if (!me) return <Spinner label={t('loading')} />;
   const lastDay = (validTo: string) => formatGstDate(new Date(new Date(validTo).getTime() - 1));
   const deviceName = (d: MyDevice) => d.model ?? d.platform;
+  const locationAccess = me.roles.some((r) => r.scope.allLocations)
+    ? t('account.everyLocation')
+    : [...new Set(me.roles.map((r) => scopeText(r.scope)))].join('; ') || t('users.scope.none');
   const facts: [string, string | null][] = [
-    [t('account.email'), me.email],
     [t('account.organisation'), me.company],
     [t('account.department'), me.department],
     [t('account.designation'), me.designation],
@@ -135,47 +145,87 @@ export default function AccountPage() {
     <section aria-labelledby="page-title" className="space-y-6">
       <PageHeader title={t('account.title')} subtitle={t('account.subtitle')} />
 
-      <Section id="account-profile" title={t('account.profile')} hint={t('account.profileHint')}>
-        <div className="flex flex-wrap items-center gap-2">
-          <p className="text-lg font-semibold text-ink">{me.displayName}</p>
-          <span className="text-sm text-ink-secondary">
-            {t('account.personnelNo')} {me.personnelNo}
-          </span>
-          <ProvenanceChip source={PROVENANCE[me.source]} />
-        </div>
-        <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1 text-sm">
-          {facts
-            .filter(([, value]) => value !== null)
-            .map(([label, value]) => (
-              <div key={label} className="contents">
-                <dt className="text-ink-secondary">{label}</dt>
-                <dd className="text-ink">{value}</dd>
+      <div className="grid items-start gap-6 lg:grid-cols-3">
+        <section
+          aria-labelledby="account-profile"
+          className="space-y-4 rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2"
+        >
+          <h2 id="account-profile" className="sr-only">
+            {t('account.profile')}
+          </h2>
+          <div className="flex flex-wrap items-center gap-3">
+            <span
+              aria-hidden
+              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary-subtle text-base font-semibold text-primary"
+            >
+              {initials(me.displayName)}
+            </span>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-lg font-semibold text-ink">{me.displayName}</p>
+                <ProvenanceChip source={PROVENANCE[me.source]} />
               </div>
-            ))}
-        </dl>
-      </Section>
-
-      <Section id="account-roles" title={t('account.roles')}>
-        {me.roles.length === 0 ? (
-          <p className="text-sm text-ink-secondary">{t('account.noRoles')}</p>
-        ) : (
-          <ul className="divide-y divide-border">
-            {me.roles.map((role) => (
-              <li key={role.code} className="flex flex-wrap justify-between gap-2 py-2 text-sm">
-                <div>
-                  <p className="font-medium text-ink">{role.name}</p>
-                  <p className="text-ink-secondary">{scopeText(role.scope)}</p>
+              <p className="text-sm text-ink-secondary">{me.email}</p>
+            </div>
+          </div>
+          <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1 text-sm">
+            <dt className="text-ink-secondary">{t('account.role')}</dt>
+            <dd className="text-ink">
+              {me.roles.length === 0 ? (
+                t('account.noRoles')
+              ) : (
+                <ul>
+                  {me.roles.map((role) => (
+                    <li key={role.code}>
+                      {role.name}
+                      {role.validTo && (
+                        <span className="ml-2 text-xs text-ink-secondary">
+                          {t('account.until', { day: lastDay(role.validTo) })}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </dd>
+            <dt className="text-ink-secondary">{t('account.approvalTier')}</dt>
+            <dd className="text-ink">
+              {me.approvalTier === null
+                ? t('account.notApprover')
+                : t('account.tier', { tier: me.approvalTier })}
+            </dd>
+            <dt className="text-ink-secondary">{t('account.locationAccess')}</dt>
+            <dd className="text-ink">{locationAccess}</dd>
+            <dt className="text-ink-secondary">{t('account.personnelNo')}</dt>
+            <dd className="text-ink">{me.personnelNo}</dd>
+            {facts
+              .filter(([, value]) => value !== null)
+              .map(([label, value]) => (
+                <div key={label} className="contents">
+                  <dt className="text-ink-secondary">{label}</dt>
+                  <dd className="text-ink">{value}</dd>
                 </div>
-                <p className="text-ink-secondary">
-                  {role.validTo
-                    ? t('account.until', { day: lastDay(role.validTo) })
-                    : t('account.noExpiry')}
-                </p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Section>
+              ))}
+          </dl>
+          <p className="text-xs text-ink-muted">{t('account.profileHint')}</p>
+        </section>
+
+        <div className="space-y-6">
+          <Section id="account-password" title={t('account.password')}>
+            <p className="text-sm text-ink-secondary">
+              {me.isExternal ? t('account.passwordHint') : t('account.passwordSso')}
+            </p>
+            <div>
+              <Button variant="secondary" onClick={() => setChangingPassword(true)}>
+                {t('account.changePassword')}
+              </Button>
+            </div>
+          </Section>
+          <Section id="account-wrong" title={t('account.somethingWrong')}>
+            <p className="text-sm text-ink-secondary">{t('account.somethingWrongBody')}</p>
+          </Section>
+        </div>
+      </div>
 
       <Section id="account-delegations" title={t('account.delegations')}>
         {!me.isExternal && (
@@ -242,20 +292,6 @@ export default function AccountPage() {
 
       <PreferencesSection />
 
-      {me.isExternal && (
-        <Section
-          id="account-password"
-          title={t('account.password')}
-          hint={t('account.passwordHint')}
-        >
-          <div>
-            <Button variant="secondary" onClick={() => setChangingPassword(true)}>
-              {t('account.changePassword')}
-            </Button>
-          </div>
-        </Section>
-      )}
-
       {creating && (
         <DelegationForm
           scope="mine"
@@ -296,7 +332,24 @@ export default function AccountPage() {
           await refresh();
         }}
       />
-      <ChangePasswordDialog open={changingPassword} onOpenChange={setChangingPassword} />
+      {me.isExternal ? (
+        <ChangePasswordDialog open={changingPassword} onOpenChange={setChangingPassword} />
+      ) : (
+        <Modal
+          open={changingPassword}
+          onOpenChange={setChangingPassword}
+          title={t('account.changePasswordTitle')}
+          description={me.email}
+        >
+          <div className="space-y-2">
+            <h3 className="text-base font-semibold text-ink">{t('account.ssoTitle')}</h3>
+            <p className="text-sm text-ink-secondary">{t('account.ssoBody')}</p>
+          </div>
+          <ModalFooter>
+            <Button onClick={() => setChangingPassword(false)}>{t('ui.close')}</Button>
+          </ModalFooter>
+        </Modal>
+      )}
     </section>
   );
 }

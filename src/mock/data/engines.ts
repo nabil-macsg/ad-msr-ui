@@ -1295,6 +1295,10 @@ function rule(
 const PLACEHOLDER = 'Placeholder values, pending Aviation Technical confirmation.';
 
 export const ruleSeeds = (): RuleRow[] => [
+  // The original demo's one rule: same-day bookings close at 14:00 GST, for every category.
+  rule('same-day-booking-cutoff', 'Same-Day Booking Cutoff', 'CRITICAL_CUTOFF', [
+    { parameters: { daysBefore: 0, time: '14:00' }, fromDays: 120 },
+  ]),
   rule('hse-min-validity', 'HSE passport valid beyond travel', 'HSE_MIN_VALIDITY_DAYS', [
     { parameters: { days: 15 }, fromDays: 120 },
   ]),
@@ -2017,7 +2021,38 @@ export const notificationRuleSeeds = (): NotificationRuleRow[] => [
       },
     },
   ),
+  // The original demo's SMS rules, whose texts Flight Dispatch sends.
+  smsRule('flight-confirmed', 'pl.booking.confirmed', 'Flight Confirmed', {
+    people: ['passenger'],
+    body: 'Your flight {{flightNo}} from {{origin}} is confirmed. Departure: {{departure}}. Please be at the gate 30 min early.',
+  }),
+  smsRule('delay-notification', 'pl.journey.delayed', 'Delay Notification', {
+    people: ['passengers'],
+    severity: 'warning',
+    body: 'Your flight {{flightNo}} has been delayed. New departure time will be communicated shortly. Please stand by.',
+  }),
+  smsRule('flight-cancelled', 'pl.booking.cancelled', 'Cancellation', {
+    people: ['passenger'],
+    severity: 'warning',
+    body: 'Your flight {{flightNo}} has been cancelled. Please contact the Booking Office to rebook.',
+  }),
 ];
+
+/** An SMS-only rule whose message is sent as written, without the MASAR prefix. */
+function smsRule(
+  code: string,
+  trigger: TriggerKey,
+  name: string,
+  opts: { people: string[]; body: string; severity?: NotificationRuleRow['severity'] },
+): NotificationRuleRow {
+  const row = notificationRule(code, trigger, name, {
+    people: opts.people,
+    channels: ['sms'],
+    ...(opts.severity ? { severity: opts.severity } : {}),
+    text: { title: name, body: opts.body },
+  });
+  return { ...row, templates: { sms: { body: opts.body } } };
+}
 
 export type DeliveryRow = S['NotificationDelivery'];
 const SEEDED_RULES = notificationRuleSeeds();

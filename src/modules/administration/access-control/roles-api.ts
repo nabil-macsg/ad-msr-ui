@@ -4,7 +4,8 @@ import type { components } from '../../../api/schema';
 import type { MasterResource } from '../masters/master-resource';
 
 export type Role = components['schemas']['Role'];
-export type RoleInput = components['schemas']['RoleInput'];
+/** Demo: the form also sets the admin tier (original Roles screen); the mock API stores it. */
+export type RoleInput = components['schemas']['RoleInput'] & { isAdminTier?: boolean };
 
 export const ROLE_TYPES = ['system', 'module', 'end_user'] as const;
 export const SCOPE_LEVELS = [
@@ -69,6 +70,7 @@ export async function saveRole(role: Role | null, body: RoleInput): Promise<Role
           isLocked: body.isLocked,
           isExternal: body.isExternal,
           channels: body.channels,
+          ...(body.isAdminTier === undefined ? {} : { isAdminTier: body.isAdminTier }),
         },
       }),
     );

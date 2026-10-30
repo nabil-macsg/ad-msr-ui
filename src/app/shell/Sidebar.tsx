@@ -1,17 +1,4 @@
-import {
-  ChartColumn,
-  ChevronDown,
-  ClipboardCheck,
-  LayoutDashboard,
-  LifeBuoy,
-  LogOut,
-  type LucideIcon,
-  Plane,
-  Settings,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from 'lucide-react';
+import { ChevronDown, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
@@ -19,20 +6,8 @@ import { cn } from '../../shared/lib/cn';
 import { BrandLogo } from '../../shared/ui/brand-logo';
 import { useAuth } from '../auth/auth-context';
 import { mainMenu, type MenuGroup, type MenuItem, type MenuSection } from '../access/menu';
-import type { ModuleKey } from '../access/registry';
 import { useMyAccess } from '../session/queries';
-import { pageIcon } from './nav-icons';
 import { NAV_ICON, navLinkClass } from './nav-link-class';
-
-/** Group icons: the reference's for its modules, the nearest Lucide icon for the others. */
-const GROUP_ICON: Partial<Record<ModuleKey, LucideIcon>> = {
-  'people-logistics': Plane,
-  pob: Users,
-  helideck: ClipboardCheck,
-  'aviation-compliance': ShieldCheck,
-  reporting: ChartColumn,
-  ai: Sparkles,
-};
 
 export function Brand() {
   const { t } = useTranslation();
@@ -55,7 +30,7 @@ export function Sections({ sections }: { sections: readonly MenuSection[] }) {
       </p>
       <ul>
         {section.items.map((entry: MenuItem) => {
-          const Icon = pageIcon(entry.key);
+          const Icon = entry.icon;
           // As in the reference: a label that wraps keeps its icon beside the first line.
           return (
             <li key={entry.key}>
@@ -73,8 +48,8 @@ export function Sections({ sections }: { sections: readonly MenuSection[] }) {
 
 function Group({ group }: { group: MenuGroup }) {
   const [open, setOpen] = useState(true);
-  const id = `nav-${group.module}`;
-  const Icon = GROUP_ICON[group.module] ?? LayoutDashboard;
+  const id = `nav-${group.label.toLowerCase().replace(/[^a-z]+/g, '-')}`;
+  const Icon = group.icon;
   return (
     <li className="pt-1">
       <button
@@ -124,26 +99,26 @@ export function Sidebar() {
       <div className="nav-scroll flex-1 space-y-0.5 overflow-y-auto px-2 py-3">
         {menu.home && (
           <NavLink to={menu.home.route} end className={navLinkClass}>
-            <LayoutDashboard className={NAV_ICON} aria-hidden />
+            <menu.home.icon className={NAV_ICON} aria-hidden />
             {menu.home.label}
           </NavLink>
         )}
         <ul>
           {menu.groups.map((group) => (
-            <Group key={group.module} group={group} />
+            <Group key={group.label} group={group} />
           ))}
         </ul>
       </div>
       <div className="shrink-0 space-y-0.5 border-t border-nav-divider px-2 pt-1 pb-2">
         {menu.administration && (
           <NavLink to={menu.administration.route} className={navLinkClass}>
-            <Settings className={NAV_ICON} aria-hidden />
+            <menu.administration.icon className={NAV_ICON} aria-hidden />
             {t('shell.administration')}
           </NavLink>
         )}
         {menu.support && (
           <NavLink to={menu.support.route} className={navLinkClass}>
-            <LifeBuoy className={NAV_ICON} aria-hidden />
+            <menu.support.icon className={NAV_ICON} aria-hidden />
             {menu.support.label}
           </NavLink>
         )}

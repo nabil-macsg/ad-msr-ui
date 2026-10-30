@@ -682,6 +682,29 @@ function installationValues(current: Installation, b: Body, creating: boolean): 
   }
   if (has(b, 'lastOpsSurveyOn'))
     next.lastOpsSurveyOn = dateOf(b.lastOpsSurveyOn, 'lastOpsSurveyOn');
+  // The helideck register fields of the original demo (HLL status, landing matrix, limitations).
+  if (has(b, 'acceptanceUntil'))
+    next.acceptanceUntil = dateOf(b.acceptanceUntil, 'acceptanceUntil');
+  if (has(b, 'position')) next.position = text(b.position);
+  if (has(b, 'notes')) next.notes = text(b.notes);
+  if (has(b, 'hllStatus')) {
+    next.hllStatus =
+      b.hllStatus === null
+        ? null
+        : oneOf(b.hllStatus, 'hllStatus', ['Open', 'OpenR', 'Closed'] as const);
+  }
+  if (b.landing && typeof b.landing === 'object') {
+    next.landing = Object.fromEntries(
+      Object.entries(b.landing as Record<string, unknown>).map(([model, value]) => [
+        model,
+        oneOf(value, 'landing', ['permitted', 'restricted', 'none'] as const),
+      ]),
+    );
+  }
+  if (Array.isArray(b.limitations))
+    next.limitations = (b.limitations as unknown[])
+      .filter((l): l is string => typeof l === 'string' && /^[A-P]$/.test(l))
+      .sort();
   next.coordinates = editedCoordinates(
     current.coordinates,
     b.coordinates,
@@ -746,6 +769,12 @@ const blankInstallation = (code: string): Installation => ({
   attachments: 0,
   version: 1,
   updatedAt: now(),
+  hllStatus: null,
+  position: null,
+  acceptanceUntil: null,
+  landing: {},
+  limitations: [],
+  notes: null,
 });
 
 const installationAudit = (i: Installation) => ({ id: i.id, ref: i.code, label: i.name });
@@ -1084,7 +1113,12 @@ function registerRoutes(): void {
       locations: all<Location>('locations')
         .filter((l) => l.isActive)
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map((l) => ({ ...refOf(l), hasCoordinates: l.coordinates !== null })),
+        .map((l) => ({
+          ...refOf(l),
+          hasCoordinates: l.coordinates !== null,
+          // Demo: lets the route form show the great-circle distance as stops are chosen.
+          point: l.coordinates ? { lat: l.coordinates.lat, lng: l.coordinates.lng } : null,
+        })),
       categories: categories(),
     }),
   });

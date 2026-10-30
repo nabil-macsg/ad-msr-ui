@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router';
 import { can, routeOf } from '../../../app/access/registry';
 import { useMe, useMyAccess } from '../../../app/session/queries';
 import { Banner } from '../../../shared/ui/banner';
+import { Button } from '../../../shared/ui/button';
 import { FilterSelect } from '../../../shared/ui/filter-select';
+import { StatusPill } from '../../../shared/ui/status-pill';
 import { MasterPage } from '../masters/master-page';
 import { RoleForm } from './RoleForm';
 import { ROLE_TYPES, rolesResource, SCOPE_LEVELS } from './roles-api';
@@ -28,7 +30,16 @@ export default function RolesPage() {
       form={RoleForm}
       editable={(r) => !held.has(r.code)}
       defaultSort={{ field: 'name', dir: 'asc' }}
-      kpis={<Banner tone="info">{t('roles.banner')}</Banner>}
+      kpis={
+        <Banner tone="info">
+          {t('roles.banner')}{' '}
+          {can(access, 'admin.access-rights') && (
+            <Button variant="link" onClick={() => void navigate(routeOf('admin.access-rights'))}>
+              {t('roles.openTheMatrix')}
+            </Button>
+          )}
+        </Banner>
+      }
       columns={[
         {
           id: 'role',
@@ -62,6 +73,12 @@ export default function RolesPage() {
           id: 'scopeLevel',
           header: t('roles.columns.scopeLevel'),
           cell: (r) => t(`roles.scopeLevel.${r.scopeLevel}`),
+        },
+        {
+          id: 'adminTier',
+          header: t('roles.columns.adminTier'),
+          cell: (r) =>
+            r.isAdminTier ? <StatusPill tone="info">{t('roles.mayDelete')}</StatusPill> : '—',
         },
         {
           id: 'holders',

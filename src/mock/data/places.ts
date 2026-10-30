@@ -25,7 +25,20 @@ export type Zone = S['Zone'];
 export type LocationType = S['LocationType'];
 export type InstallationType = S['InstallationType'];
 export type Location = S['Location'];
-export type Installation = S['Installation'];
+/** Whether an aircraft model may land on an installation (the client's helideck list). */
+export type LandingPermission = 'permitted' | 'restricted' | 'none';
+/** Helideck register fields the original demo keeps beside MASAR's installation record. */
+export type InstallationRegister = {
+  hllStatus: 'Open' | 'OpenR' | 'Closed' | null;
+  position: string | null;
+  acceptanceUntil: string | null;
+  /** By aircraft model code; empty when not recorded. */
+  landing: Record<string, LandingPermission>;
+  /** Helideck limitations list letters (A–P). */
+  limitations: string[];
+  notes: string | null;
+};
+export type Installation = S['Installation'] & InstallationRegister;
 export type Route = S['Route'];
 export type Attachment = S['Attachment'];
 export type Department = S['Department'];
@@ -206,11 +219,25 @@ export const ZONES: Zone[] = (zonesJson as readonly { code: string; name: string
   ...master,
 }));
 
-const LOCATION_TYPE_SEEDS = [
+const LOCATION_TYPE_SEEDS: readonly {
+  code: string;
+  name: string;
+  offshore?: boolean;
+  mobile: boolean;
+  deactivated?: string;
+}[] = [
   ...(locationTypesJson as readonly { code: string; name: string; offshore?: boolean }[]).map(
     (t) => ({ ...t, mobile: false }),
   ),
-  { code: 'MOBILE-RIG', name: 'Mobile rig / barge', offshore: true, mobile: true },
+  { code: 'PLATFORM', name: 'Platform', offshore: true, mobile: false },
+  {
+    code: 'RIG',
+    name: 'Rig',
+    offshore: true,
+    mobile: true,
+    deactivated: 'Rigs are recorded as Platform or Vessel locations',
+  },
+  { code: 'VESSEL', name: 'Vessel', offshore: true, mobile: true },
 ];
 
 export const LOCATION_TYPES: LocationType[] = LOCATION_TYPE_SEEDS.map((t) => ({
@@ -220,12 +247,22 @@ export const LOCATION_TYPES: LocationType[] = LOCATION_TYPE_SEEDS.map((t) => ({
   isMobile: t.mobile,
   isOffshore: t.offshore === true,
   ...master,
+  isActive: t.deactivated === undefined,
+  deactivatedReason: t.deactivated ?? null,
 }));
 
 export const INSTALLATION_TYPES: InstallationType[] = [
   { code: 'HELIDECK', name: 'Helideck' },
   { code: 'HELIPAD', name: 'Helipad' },
-].map((t) => ({ id: idFor('installation-type', t.code), ...t, ...master }));
+  { code: 'RUNWAY', name: 'Runway', deactivated: 'Airstrips are kept in the aviation register' },
+  { code: 'PORT-JETTY', name: 'Port / Jetty' },
+].map(({ deactivated, ...t }) => ({
+  id: idFor('installation-type', t.code),
+  ...t,
+  ...master,
+  isActive: deactivated === undefined,
+  deactivatedReason: deactivated ?? null,
+}));
 
 // ── Locations ─────────────────────────────────────────────────────────────────
 
@@ -347,6 +384,57 @@ export const INSTALLATION_FILES: InstallationFileRow[] = [
   download: null,
 }));
 
+/** The aircraft models the landing matrix covers, in the client's column order. */
+export const LANDING_MODELS = ['BELL-412', 'AW169', 'AW139', 'AW189'] as const;
+const LANDING: Readonly<Record<string, LandingPermission>> = {
+  P: 'permitted',
+  R: 'restricted',
+  N: 'none',
+};
+/** Code, position, acceptance until, HLL status, landing (P/R/N per model) and remarks. */
+const REGISTER: readonly [string, string | null, string | null, string | null, string, string | null][] = [
+  ["GHWEIFAT", "BH-01", "2026-10-31", "Open", "PPPR", "25 00.32 N / 052 57.16 E (BUHASER FLD)"],
+  ["OML-JACOB-HLV", "BH-01", "2026-08-31", "Open", "PPPP", "25 00.2 N / 052 57.1 E (BUHASER FLD)"],
+  ["ADNOC-AB-01", null, "2026-12-27", null, "PPPP", null],
+  ["ADNOC-AB-02", "DC - 06(Seebah Island)", "2027-06-25", "Open", "PPPP", "24 31.396 N / 52 53.675 E (Ghasha Field)"],
+  ["ALLIANZ-INST", "DC - 04(Jzool Island)", "2026-10-01", "Open", "PPPP", "24 34.662 N / 52 56.89 E (Ghasha Field)"],
+  ["ALLIANZ-CMDR", "DC - 04(Jzool Island)", "2027-02-28", "Open", "PPPP", "24 34.55 N / 052 56.79 E (Ghasha Field )"],
+  ["AMS-REEM", "DC - 01(Reeah Island)", "2027-01-27", "Open", "PPPP", "24 37.40 N / 052 59.98 E (Ghasha Field)"],
+  ["CHANANIZ", "Ghasha Fld", "2027-04-16", "Open", "PPPP", "24 30.700 N / 052 57.067 E (Ghasha Field ) HEMS ONLY"],
+  ["CREST-STN-1", null, "2026-10-04", null, "PPPR", null],
+  ["DLS-4200", "Ghasha Fld", "2027-04-03", "Open", "PPPP", "24 30.43 N / 052 57.10 E ROPES ATTACHED TO BARGE, TAKE NOTE FOR DROP DOWN (South Of GOP Island)"],
+  ["ADNOC-AB-03", null, "2027-05-21", null, "PPPP", null],
+  ["SAIPEM-ENDV", "Near Hail Island", "2027-04-29", "OpenR", "PPNN", "24 24.51 N / 053 21.56 E (Near HAIL ISLAND)"],
+  ["AL-DANAT", "UAS", "2027-01-26", "Open", "PPPP", "24 59.066 N / 052 15.33 E (Umm Al Salsal Field)"],
+  ["AL-GURM", null, "2027-01-26", null, "PPPP", null],
+  ["AL-MARMAR", "STW - 01", "2027-01-26", "Open", "PPPP", "24 55.387 N / 052 33.280 E SATAH FIELD"],
+  ["LEEN", "STW - 03", "2026-10-16", "Open", "PPPR", "24 55.53 N 052 35.01 E SATAH FIELD"],
+  ["AL-SHUWEHAT", "SARB WHT01", "2026-12-09", "Open", "PPPP", "24 45.4 N / 053 11.1 E (SARB FIELD)"],
+  ["AL-QATIA", "Sarb N", "2026-08-21", "Open", "PPPP", "Landing on Elevated Helideck only"],
+  ["BU-SIKEEN", "SarbS", "2026-08-21", "Open", "PPPP", "Landing on Elevated Helideck only"],
+  ["UAD-CPC", "Complex", "2027-01-27", "Open", "PPPP", null],
+  ["AL-BZOOM", null, "2027-02-08", null, "PPNN", null],
+  ["DAS-HD-A", null, null, null, "", "Max AUW 12,500 kg. Night ops restricted below 3 km vis."],
+  ["DAS-HD-B", null, null, null, "", "Max AUW 11,200 kg. No S-92 ops."],
+  ["ZRK-HD", null, null, null, "", "Max AUW 12,500 kg. Turbulence caution from flare stack."],
+  ["UZ-HUB-HD", null, null, null, "", "Max AUW 13,600 kg. Crane ops restrict NW approach."],
+];
+function registerOf(code: string): InstallationRegister {
+  const row = REGISTER.find(([c]) => c === code);
+  const [, position = null, acceptanceUntil = null, hll = null, landing = '', notes = null] =
+    row ?? [];
+  return {
+    position,
+    acceptanceUntil,
+    hllStatus: hll as InstallationRegister['hllStatus'],
+    landing: Object.fromEntries(
+      [...landing].map((letter, n) => [LANDING_MODELS[n] ?? '', LANDING[letter] ?? 'none']),
+    ),
+    limitations: [],
+    notes,
+  };
+}
+
 export const INSTALLATIONS: Installation[] = SEED_INSTALLATIONS.map((i, n) => {
   const location = SEED_LOCATIONS.find((l) => l.code === i.location);
   const type = INSTALLATION_TYPES.find((t) => t.code === i.type);
@@ -396,6 +484,7 @@ export const INSTALLATIONS: Installation[] = SEED_INSTALLATIONS.map((i, n) => {
     ).length,
     version: 1,
     updatedAt: SEEDED_AT,
+    ...registerOf(i.code),
   };
   return { ...record, activationMissing: activationMissing(record) };
 });

@@ -1,11 +1,17 @@
 import { type ComponentType, type LazyExoticComponent, lazy } from 'react';
 import type { PageKey } from '../access/registry';
+import { BOOKING_CREATE_PAGES } from '../../demo/booking-create/pages';
+import { POB_PAGES } from '../../demo/pob/pages';
+import { ADMIN_PAGES } from '../../demo/admin/pages';
+import { CORE_PAGES } from '../../demo/core/pages';
 
 /**
  * Pages that are built. Each module adds its pages here as its phase delivers them; every
  * other registry route shows "In scope, not built yet" (PROMPT §0, plan P0-14).
  */
-export const BUILT_PAGES: Partial<Record<PageKey, LazyExoticComponent<ComponentType>>> = {
+export type BuiltPages = Partial<Record<PageKey, LazyExoticComponent<ComponentType>>>;
+
+const MASAR_PAGES: BuiltPages = {
   // Shared pages
   home: lazy(() => import('../../modules/home/HomePage')),
   account: lazy(() => import('../../modules/account/AccountPage')),
@@ -130,4 +136,16 @@ export const BUILT_PAGES: Partial<Record<PageKey, LazyExoticComponent<ComponentT
       default: m.CompaniesPage,
     })),
   ),
+};
+
+/**
+ * Demo: screens aligned with the original ADNOC LMS demo (src/demo/<area>/pages.ts). A demo
+ * screen replaces MASAR's page of the same key.
+ */
+export const BUILT_PAGES: BuiltPages = {
+  ...MASAR_PAGES,
+  ...BOOKING_CREATE_PAGES,
+  ...POB_PAGES,
+  ...ADMIN_PAGES,
+  ...CORE_PAGES,
 };
