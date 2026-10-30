@@ -167,7 +167,7 @@ describe('SPEC-10-1.1 home', () => {
     expect(within(list).getByText('2 published')).toBeInTheDocument();
     const [first, second] = within(list).getAllByRole('listitem');
     if (!first || !second) throw new Error('Two journeys expected');
-    expect(first.textContent).toMatch(/^07:00ADA101 · Abu Dhabi → Das Island/);
+    expect(first.textContent).toMatch(/^07:00ADA101 ·Abu Dhabi.*Das Island/);
     expect(within(first).getByText('17/50')).toBeInTheDocument();
     expect(within(second).getByText('Cancelled')).toBeInTheDocument();
   });

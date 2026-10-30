@@ -1,15 +1,24 @@
+import {
+  ArrowRight,
+  CircleAlert,
+  Clock,
+  Hourglass,
+  Info,
+  Plane,
+  SquareCheckBig,
+} from 'lucide-react';
 import { Link } from 'react-router';
 import { routeOf } from '../../app/access/registry';
 import { useMe } from '../../app/session/queries';
 import type { FlightStatus } from '../../mock/data/demo-core';
 import { formatGstDate, formatGstLongDay, gstDayKey } from '../../shared/time/format';
 import { firstName } from '../../shared/time/gst';
+import { cn } from '../../shared/lib/cn';
 import { Banner } from '../../shared/ui/banner';
-import { Button } from '../../shared/ui/button';
 import { Spinner } from '../../shared/ui/spinner';
-import { StatCard } from '../../shared/ui/stat-card';
 import { StatusPill } from '../../shared/ui/status-pill';
 import type { Tone } from '../../shared/ui/tone';
+import { ModeLabel, RouteStops } from '../../shared/ui/transport';
 import { useCoreDashboard } from './core-api';
 
 const STATUS_TONE: Readonly<Record<FlightStatus, Tone>> = {
@@ -21,11 +30,47 @@ const STATUS_TONE: Readonly<Record<FlightStatus, Tone>> = {
   'Closed for Boarding': 'neutral',
 };
 
-const NOTICE_DOT: Readonly<Record<'danger' | 'warning' | 'info', string>> = {
-  danger: 'bg-danger-fg',
-  warning: 'bg-warning-fg',
-  info: 'bg-info-fg',
+const NOTICE: Readonly<
+  Record<'danger' | 'warning' | 'info', { card: string; icon: typeof CircleAlert }>
+> = {
+  danger: { card: 'border-danger-border bg-danger-bg/70 text-danger-fg', icon: CircleAlert },
+  warning: { card: 'border-warning-border bg-warning-bg/70 text-warning-fg', icon: Clock },
+  info: { card: 'border-info-border bg-info-bg/70 text-info-fg', icon: Info },
 };
+
+/** A KPI tile as in the reference: small capitals, an icon in the corner, a large figure. */
+function Tile({
+  title,
+  value,
+  sub,
+  icon: Icon,
+  to,
+  warn,
+}: {
+  title: string;
+  value: number;
+  sub: string;
+  icon: typeof Clock;
+  to: string;
+  warn?: boolean;
+}) {
+  return (
+    <Link
+      to={to}
+      className="group relative block rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-raised focus-visible:outline-2 focus-visible:outline-primary"
+    >
+      <Icon
+        className="absolute end-5 top-5 size-5 text-ink-muted transition-colors group-hover:text-primary"
+        aria-hidden
+      />
+      <p className="pe-8 text-xs font-semibold tracking-wider text-ink-muted uppercase">{title}</p>
+      <p className={cn('type-kpi mt-3', warn ? 'text-warning-fg' : 'text-brand-dark-blue')}>
+        {value}
+      </p>
+      <p className="type-kpi-label mt-2 text-ink-secondary">{sub}</p>
+    </Link>
+  );
+}
 
 function Card({
   id,
@@ -41,15 +86,22 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section aria-labelledby={id} className="space-y-3 rounded-xl border border-border bg-card p-4">
-      <div className="flex items-center justify-between gap-3">
+    <section
+      aria-labelledby={id}
+      className="overflow-hidden rounded-xl border border-border bg-card"
+    >
+      <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
         <h2 id={id} className="text-base font-semibold text-ink">
-          {title} <span className="ms-1 text-sm font-normal text-ink-muted">{count}</span>
+          {title} <span className="ms-1.5 text-sm font-normal text-ink-muted">{count}</span>
         </h2>
         {action && (
-          <Button asChild variant="secondary">
-            <Link to={action.to}>{action.label}</Link>
-          </Button>
+          <Link
+            to={action.to}
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+          >
+            {action.label}
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
         )}
       </div>
       {children}
@@ -72,10 +124,10 @@ export default function DashboardPage() {
   return (
     <section aria-labelledby="page-title" className="space-y-6">
       <header className="space-y-1">
-        <h1 id="page-title" className="text-title leading-tight font-semibold text-ink">
+        <h1 id="page-title" className="type-page-title text-brand-dark-blue">
           {me ? `Hello, ${firstName(me.displayName)}` : 'Hello'}
         </h1>
-        <p className="text-sm text-ink-muted">
+        <p className="type-intro text-ink-secondary">
           {formatGstLongDay(data?.today ?? gstDayKey(new Date()))} · what is happening today
           {role ? `, as ${role}` : ''}
         </p>
@@ -85,30 +137,35 @@ export default function DashboardPage() {
       {data && (
         <>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <StatCard
+            <Tile
               title="Awaiting your approval"
               value={data.kpis.approvals}
-              subline="Bookings on your desk"
+              sub="Bookings on your desk"
+              icon={SquareCheckBig}
               to={approvals}
+              warn={data.kpis.approvals > 0}
             />
-            <StatCard
+            <Tile
               title="Today's departures"
               value={data.kpis.departures}
-              subline={`${data.kpis.gone} gone · ${data.kpis.toGo} still to go`}
+              sub={`${data.kpis.gone} gone · ${data.kpis.toGo} still to go`}
+              icon={Plane}
               to={dispatch}
             />
-            <StatCard
+            <Tile
               title="Boarding now"
               value={data.kpis.boarding}
-              subline="Gates open"
+              sub="Gates open"
+              icon={Clock}
               to={dispatch}
             />
-            <StatCard
+            <Tile
               title="Waitlisted today"
               value={data.kpis.waitlisted}
-              subline="Waiting for a seat"
-              {...(data.kpis.waitlisted > 0 ? { tone: 'warning' as const } : {})}
+              sub="Waiting for a seat"
+              icon={Hourglass}
               to={routeOf('dispatch.quick-add')}
+              warn={data.kpis.waitlisted > 0}
             />
           </div>
 
@@ -120,25 +177,26 @@ export default function DashboardPage() {
                 count={`${data.flights.length} published`}
                 action={{ label: 'Dispatch', to: dispatch }}
               >
-                <ul className="divide-y divide-border">
+                <ul className="max-h-[36rem] divide-y divide-border overflow-y-auto">
                   {data.flights.map((f) => (
                     <li key={f.id}>
                       <Link
                         to={dispatch}
-                        className="flex items-center gap-3 rounded-sm py-2 hover:bg-surface-muted"
+                        className="flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-table-row-hover"
                       >
-                        <span className="w-12 shrink-0 font-mono text-xs text-ink-muted">
+                        <span className="w-12 shrink-0 font-mono text-sm text-ink-muted">
                           {f.time}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block truncate text-sm font-medium text-ink">
-                            {f.flightNumber} · {f.from} → {f.to}
+                          <span className="flex flex-wrap items-center gap-x-1.5 text-sm font-medium text-ink">
+                            {f.flightNumber} ·
+                            <RouteStops stops={[f.from, f.to]} />
                           </span>
-                          <span className="block truncate text-xs text-ink-secondary">
-                            {f.mode} · {f.resource}
+                          <span className="mt-0.5 block truncate text-xs text-ink-secondary">
+                            <ModeLabel mode={f.mode} /> · {f.resource}
                           </span>
                         </span>
-                        <span className="shrink-0 text-xs text-ink-muted tabular-nums">
+                        <span className="shrink-0 text-sm text-ink-secondary tabular-nums">
                           {f.booked}/{f.capacity}
                         </span>
                         <StatusPill tone={STATUS_TONE[f.status]}>{f.status}</StatusPill>
@@ -159,7 +217,7 @@ export default function DashboardPage() {
                     <li key={a.id}>
                       <Link
                         to={approvals}
-                        className="flex items-center gap-3 rounded-sm py-2 hover:bg-surface-muted"
+                        className="flex items-center gap-3 px-5 py-3 transition-colors hover:bg-table-row-hover"
                       >
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-medium text-ink">
@@ -181,30 +239,45 @@ export default function DashboardPage() {
 
             <div className="space-y-6">
               <Card id="dash-notices" title="Notifications" count={String(data.notices.length)}>
-                <ul className="divide-y divide-border">
-                  {data.notices.map((n) => (
-                    <li key={n.id}>
-                      <Link
-                        to={routeOf(n.page)}
-                        className="flex items-start gap-3 rounded-sm py-2 text-sm text-ink hover:bg-surface-muted"
-                      >
-                        <span
-                          aria-hidden
-                          className={`mt-1.5 size-2 shrink-0 rounded-full ${NOTICE_DOT[n.tone]}`}
-                        />
-                        {n.text}
-                      </Link>
-                    </li>
-                  ))}
+                <ul className="space-y-2.5 p-4">
+                  {data.notices.map((n) => {
+                    const notice = NOTICE[n.tone];
+                    return (
+                      <li key={n.id}>
+                        <Link
+                          to={routeOf(n.page)}
+                          className={cn(
+                            'flex items-start gap-3 rounded-lg border px-3.5 py-3 text-sm transition-all hover:-translate-y-px hover:shadow-raised',
+                            notice.card,
+                          )}
+                        >
+                          <notice.icon className="mt-0.5 size-4 shrink-0" aria-hidden />
+                          {n.text}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </Card>
-              <StatCard
-                title="Departed"
-                value={data.kpis.gone}
-                subline={`of ${data.kpis.departures} today`}
-                tone="success"
-                to={dispatch}
-              />
+              <Card id="dash-to-go" title="Still to go today" count={String(data.kpis.toGo)}>
+                <Link
+                  to={dispatch}
+                  className="grid grid-cols-2 divide-x divide-border py-5 text-center transition-colors hover:bg-table-row-hover rtl:divide-x-reverse"
+                >
+                  <span>
+                    <span className="type-kpi block text-brand-dark-blue">{data.kpis.gone}</span>
+                    <span className="mt-1.5 block text-xs font-semibold tracking-wider text-ink-muted uppercase">
+                      Departed
+                    </span>
+                  </span>
+                  <span>
+                    <span className="type-kpi block text-brand-dark-blue">{data.kpis.toGo}</span>
+                    <span className="mt-1.5 block text-xs font-semibold tracking-wider text-ink-muted uppercase">
+                      Yet to leave
+                    </span>
+                  </span>
+                </Link>
+              </Card>
             </div>
           </div>
         </>

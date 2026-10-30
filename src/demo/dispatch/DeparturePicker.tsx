@@ -71,7 +71,7 @@ export interface DeparturePickerProps {
   readonly extra?: (d: DemoRow, refresh: () => Promise<void>) => ReactNode;
 }
 
-const FIELD = 'space-y-1.5 text-sm font-medium text-ink-secondary';
+const FIELD = 'space-y-1.5 text-label font-medium text-ink-secondary';
 
 export function waitingBadge(d: DemoRow): ReactNode {
   return num(d.waiting) > 0 ? (

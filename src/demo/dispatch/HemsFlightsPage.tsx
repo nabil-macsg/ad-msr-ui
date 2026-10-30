@@ -14,7 +14,7 @@ import { str } from './DeparturePicker';
 
 const CONTROL = `${BASE} min-h-touch w-full px-3`;
 
-const LABEL = 'space-y-1.5 text-sm font-medium text-ink-secondary';
+const LABEL = 'space-y-1.5 text-label font-medium text-ink-secondary';
 const Req = () => <span className="text-danger-fg"> *</span>;
 const EMPTY = {
   patient: '',
