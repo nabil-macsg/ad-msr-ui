@@ -255,7 +255,7 @@ function PersonDrawer({ person: p, onClose }: { person: OverstayPerson; onClose:
                     )}
                   >
                     {stay.site}
-                    <span className="ml-1.5 text-ink-muted">{stay.days}d</span>
+                    <span className="ms-1.5 text-ink-muted">{stay.days}d</span>
                   </span>
                 </span>
               );
@@ -286,12 +286,12 @@ function PersonDrawer({ person: p, onClose }: { person: OverstayPerson; onClose:
             <div className="overflow-hidden rounded-lg border border-border">
               <table className="w-full text-sm">
                 <caption className="sr-only">Stays in this period offshore</caption>
-                <thead className="bg-surface-muted text-left text-xs text-ink-secondary">
+                <thead className="bg-surface-muted text-start text-xs text-ink-secondary">
                   <tr>
                     <th className="px-3 py-2 font-medium">Site</th>
                     <th className="px-3 py-2 font-medium">Arrived</th>
                     <th className="px-3 py-2 font-medium">Left</th>
-                    <th className="px-3 py-2 text-right font-medium">Days</th>
+                    <th className="px-3 py-2 text-end font-medium">Days</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
@@ -302,7 +302,7 @@ function PersonDrawer({ person: p, onClose }: { person: OverstayPerson; onClose:
                       <td className="px-3 py-2 text-ink-secondary">
                         {stay.leftOn ? dateText(stay.leftOn) : 'On site now'}
                       </td>
-                      <td className="px-3 py-2 text-right text-ink tabular-nums">{stay.days}</td>
+                      <td className="px-3 py-2 text-end text-ink tabular-nums">{stay.days}</td>
                     </tr>
                   ))}
                 </tbody>

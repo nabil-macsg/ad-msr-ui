@@ -20,9 +20,8 @@ import {
   listJourneys,
   usePlanningBoard,
 } from './scheduling-api';
+import { TAB } from '../../../shared/ui/tab-styles';
 
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary aria-pressed:border-primary aria-pressed:text-ink';
 const JOURNEYS_PATH = '/api/v1/scheduling/journeys';
 const UNTIMED_PAGE = 8;
 const routeOf = (j: Journey) => j.route.stops.map((s) => s.code).join(' → ');
@@ -89,7 +88,7 @@ export default function PlanningBoardPage() {
         </Banner>
       )}
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border">
-        <div role="group" aria-label={t('scheduling.dashboard.modes')} className="flex gap-2">
+        <div role="group" aria-label={t('scheduling.dashboard.modes')} className="flex gap-1">
           {/* All first, then every active category by name, as on the dashboard. */}
           {[
             { code: 'all', name: t('scheduling.dashboard.all') },
@@ -99,7 +98,7 @@ export default function PlanningBoardPage() {
               key={c.code}
               type="button"
               aria-pressed={(category ?? 'all') === c.code}
-              className={TAB_CLASS}
+              className={TAB}
               onClick={() => {
                 setCategory(c.code === 'all' ? undefined : c.code);
                 setUntimedPage(1);
@@ -109,13 +108,13 @@ export default function PlanningBoardPage() {
             </button>
           ))}
         </div>
-        <div role="group" aria-label={t('scheduling.board.view')} className="flex gap-2">
+        <div role="group" aria-label={t('scheduling.board.view')} className="flex gap-1">
           {(['month', 'week'] as const).map((v) => (
             <button
               key={v}
               type="button"
               aria-pressed={view === v}
-              className={TAB_CLASS}
+              className={TAB}
               onClick={() => setView(v)}
             >
               {t(`scheduling.board.${v}`)}

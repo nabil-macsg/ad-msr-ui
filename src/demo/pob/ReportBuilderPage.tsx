@@ -261,7 +261,10 @@ function DefinitionModal({
   const [error, setError] = useState<string | null>(null);
   const [failure, setFailure] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const { name: _name, format: _format, ...include } = draft;
+  // The count only depends on the filters, not on the report's name or file format.
+  const include = Object.fromEntries(
+    Object.entries(draft).filter(([key]) => key !== 'name' && key !== 'format'),
+  );
   const count = usePobQuery<{ rows: number }>(`/reports/definitions/count?${searchOf(include)}`);
   const set = (patch: Partial<Draft>) => setDraft((d) => ({ ...d, ...patch }));
 

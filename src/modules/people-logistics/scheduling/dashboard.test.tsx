@@ -141,7 +141,7 @@ describe('SPEC-20-2.1 the Scheduling Dashboard', () => {
 
     // The tabs are the master's active categories by name, All first; one with no journeys too.
     const tabs = within(screen.getByRole('group', { name: 'Modes' }));
-    expect(tabs.getAllByRole('button').map((b) => b.textContent)).toEqual([
+    expect(tabs.getAllByRole('button').map((b) => b.textContent.replace(/\d+$/, ''))).toEqual([
       'All',
       'Fixed wing',
       'Hovercraft',
@@ -162,5 +162,37 @@ describe('SPEC-20-2.1 the Scheduling Dashboard', () => {
       expect(asked.at(-1)).toContain('filter[category]=HOVERCRAFT');
     });
     await expectAccessible();
+  });
+
+  it('lists the first three conflicts, the rest behind "Show all", and collapses', async () => {
+    const conflicts = ['ADA101', 'ADA102', 'ADA103', 'ADA104', 'ADA105'].map((flight, i) => ({
+      kind: 'maintenance' as const,
+      fleet: { id: id(20 + i), registration: `A6-AD${String(i)}` },
+      serviceDate: '2026-10-18',
+      journeys: [{ id: id(30 + i), flightNumber: flight }],
+    }));
+    stubFetch((path) => {
+      if (path === '/api/v1/scheduling/dashboard') return json({ ...dashboard, conflicts });
+      if (path === '/api/v1/scheduling/journeys')
+        return json({ items: [], total: 0, page: 1, pageSize: 20 });
+      return undefined;
+    });
+    renderApp('/scheduling', { access: accessWith({ 'scheduling.dashboard': ['view'] }) });
+    const user = userEvent.setup();
+    const toggle = await screen.findByRole('button', {
+      name: /Fleet conflicts in the next 14 days/,
+    });
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByText(/ADA103 on 18 Oct 2026/)).toBeInTheDocument();
+    expect(screen.queryByText(/ADA104 on 18 Oct 2026/)).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /Show all 5/ }));
+    expect(screen.getByText(/ADA105 on 18 Oct 2026/)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /Show fewer/ }));
+    expect(screen.queryByText(/ADA104 on 18 Oct 2026/)).not.toBeInTheDocument();
+
+    await user.click(toggle);
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByText(/ADA101 on 18 Oct 2026/)).not.toBeInTheDocument();
   });
 });

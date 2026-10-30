@@ -96,12 +96,17 @@ export function DataTable<T extends object>({
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card">
+    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-card">
       <div className="flex flex-wrap items-center gap-3 border-b border-border px-4 py-2.5">
-        <p className="text-xs text-ink-muted" aria-live="polite">
-          {total !== undefined && t('ui.table.count', { shown: rows?.length ?? 0, total })}
+        <p className="text-xs font-medium text-ink-secondary" aria-live="polite">
+          {total !== undefined && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-muted px-2.5 py-1">
+              <span className="size-1.5 rounded-full bg-primary" aria-hidden />
+              {t('ui.table.count', { shown: rows?.length ?? 0, total })}
+            </span>
+          )}
         </p>
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ms-auto flex items-center gap-3">
           {toolbar}
           {deactivatedToggle && (
             <label className="flex min-h-touch cursor-pointer items-center gap-1.5 text-xs text-ink-secondary">
@@ -165,15 +170,16 @@ export function DataTable<T extends object>({
                         sorted ? (sorted === 'asc' ? 'ascending' : 'descending') : undefined
                       }
                       className={cn(
-                        'h-11 px-4 py-2 text-left text-xs font-semibold whitespace-nowrap text-on-table-head',
-                        column?.align === 'right' && 'text-right',
+                        'h-11 px-4 py-2 text-start text-label font-bold whitespace-nowrap text-on-table-head',
+                        column?.align === 'right' && 'text-end',
+                        sorted && 'text-primary',
                       )}
                     >
                       {column?.sortField ? (
                         <button
                           type="button"
                           onClick={() => toggleSort(column.sortField ?? '')}
-                          className="-mx-1 inline-flex items-center gap-1 rounded-sm px-1 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-primary"
+                          className="group -mx-1 inline-flex items-center gap-1 rounded-sm px-1 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-primary"
                           aria-label={t('ui.table.sortBy', { column: label })}
                         >
                           {label}
@@ -182,7 +188,10 @@ export function DataTable<T extends object>({
                           ) : sorted === 'desc' ? (
                             <ArrowDown className="size-3.5" aria-hidden />
                           ) : (
-                            <ArrowUpDown className="size-3.5 opacity-50" aria-hidden />
+                            <ArrowUpDown
+                              className="size-3.5 opacity-40 transition-opacity group-hover:opacity-80"
+                              aria-hidden
+                            />
                           )}
                         </button>
                       ) : (
@@ -195,13 +204,25 @@ export function DataTable<T extends object>({
             ))}
           </thead>
           <tbody>
-            {loading && !rows?.length && (
-              <tr>
-                <td colSpan={columns.length} className="px-4 py-10 text-center text-ink-muted">
-                  {t('ui.table.loading')}
-                </td>
-              </tr>
-            )}
+            {/* Skeleton rows while the first page loads; the words are for screen readers. */}
+            {loading &&
+              !rows?.length &&
+              [0, 1, 2, 3, 4].map((i) => (
+                <tr key={i} className="border-b border-border/60 last:border-0">
+                  {columns.map((c, j) => (
+                    <td key={c.id} className="h-12 px-4 py-2">
+                      {i === 0 && j === 0 && (
+                        <span className="sr-only">{t('ui.table.loading')}</span>
+                      )}
+                      <span
+                        className="block h-3 animate-pulse rounded-full bg-surface-muted"
+                        style={{ width: `${String(45 + ((i * 7 + j * 13) % 45))}%` }}
+                        aria-hidden
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
             {!loading && rows?.length === 0 && (
               <tr>
                 <td colSpan={columns.length}>
@@ -217,8 +238,9 @@ export function DataTable<T extends object>({
                 key={row.id}
                 className={cn(
                   'border-b border-border/60 transition-colors last:border-0 hover:bg-table-row-hover',
+                  // Clickable rows: a brand-colour bar on the leading edge marks the row in hand.
                   onRowClick &&
-                    'cursor-pointer hover:bg-table-row-hover focus-visible:bg-table-row-hover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
+                    'cursor-pointer hover:bg-table-row-hover hover:shadow-[inset_3px_0_0_var(--color-primary)] focus-visible:bg-table-row-hover focus-visible:shadow-[inset_3px_0_0_var(--color-primary)] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
                 )}
                 {...(onRowClick
                   ? {
@@ -240,7 +262,7 @@ export function DataTable<T extends object>({
                         // (monospace) never break mid-code.
                         'h-12 px-4 py-2 align-middle text-ink-body [&_.font-mono]:whitespace-nowrap',
                         // Figures and dates stay on one line ("152.4 km", "510 min").
-                        column?.align === 'right' && 'text-right whitespace-nowrap tabular-nums',
+                        column?.align === 'right' && 'text-end whitespace-nowrap tabular-nums',
                         column?.className,
                       )}
                     >
@@ -255,7 +277,7 @@ export function DataTable<T extends object>({
           </tbody>
         </table>
       </div>
-      <div className="flex flex-wrap items-center justify-end gap-3 border-t border-border px-4 py-2 text-xs text-ink-muted">
+      <div className="flex flex-wrap items-center justify-end gap-3 border-t border-border bg-surface-muted/50 px-4 py-2 text-xs text-ink-secondary">
         <label className="flex items-center gap-2">
           {t('ui.table.pageSize')}
           <select
@@ -270,23 +292,30 @@ export function DataTable<T extends object>({
             ))}
           </select>
         </label>
-        <span>{t('ui.table.pageOf', { page: params.page, pages })}</span>
-        <Button
-          variant="ghost"
-          aria-label={t('ui.table.previous')}
-          disabled={params.page <= 1}
-          onClick={() => onParamsChange({ page: params.page - 1 })}
-        >
-          <ChevronLeft className="size-4" aria-hidden />
-        </Button>
-        <Button
-          variant="ghost"
-          aria-label={t('ui.table.nextPage')}
-          disabled={params.page >= pages}
-          onClick={() => onParamsChange({ page: params.page + 1 })}
-        >
-          <ChevronRight className="size-4" aria-hidden />
-        </Button>
+        <span className="font-medium text-ink tabular-nums">
+          {t('ui.table.pageOf', { page: params.page, pages })}
+        </span>
+        <div className="flex overflow-hidden rounded-lg border border-border bg-card">
+          <Button
+            variant="ghost"
+            className="rounded-none"
+            aria-label={t('ui.table.previous')}
+            disabled={params.page <= 1}
+            onClick={() => onParamsChange({ page: params.page - 1 })}
+          >
+            <ChevronLeft className="size-4" aria-hidden />
+          </Button>
+          <span className="w-px bg-border" aria-hidden />
+          <Button
+            variant="ghost"
+            className="rounded-none"
+            aria-label={t('ui.table.nextPage')}
+            disabled={params.page >= pages}
+            onClick={() => onParamsChange({ page: params.page + 1 })}
+          >
+            <ChevronRight className="size-4" aria-hidden />
+          </Button>
+        </div>
       </div>
     </div>
   );

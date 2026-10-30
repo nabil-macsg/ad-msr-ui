@@ -227,11 +227,15 @@ function TableEditor({
         <thead>
           <tr>
             {columns.map((c) => (
-              <th key={c.key} scope="col" className="px-1 text-left font-medium text-ink-secondary">
+              <th
+                key={c.key}
+                scope="col"
+                className="px-1 text-start font-medium text-ink-secondary"
+              >
                 {withUnit(c)}
               </th>
             ))}
-            <th scope="col" className="px-1 text-right font-medium text-ink-secondary">
+            <th scope="col" className="px-1 text-end font-medium text-ink-secondary">
               {t('rules.params.row')}
             </th>
           </tr>
@@ -273,7 +277,7 @@ function TableEditor({
                   </td>
                 );
               })}
-              <td className="px-1 py-1 text-right">
+              <td className="px-1 py-1 text-end">
                 <Button
                   variant="ghost"
                   aria-label={t('rules.params.removeRow', { row: index + 1 })}

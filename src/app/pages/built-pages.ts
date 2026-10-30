@@ -18,22 +18,42 @@ const MASAR_PAGES: BuiltPages = {
   notifications: lazy(() => import('../../modules/account/NotificationsPage')),
   support: lazy(() => import('../../modules/support/SupportPage')),
   // Demo only: representative screens for modules MASAR hasn't built yet (src/demo).
-  'booking.dashboard': lazy(() =>
-    import('../../demo/screens').then((m) => ({ default: m.BookingDashboardScreen })),
-  ),
+  'booking.dashboard': lazy(() => import('../../demo/BookingDashboardPage')),
+  'booking.passengers': lazy(() => import('../../demo/PassengersPage')),
+  'booking.approvals': lazy(() => import('../../demo/ApprovalsPage')),
+  'booking.rotation': lazy(() => import('../../demo/RotationTemplatePage')),
   'booking.bookings': lazy(() =>
     import('../../demo/screens').then((m) => ({ default: m.BookingsScreen })),
   ),
-  'dispatch.dashboard': lazy(() =>
-    import('../../demo/screens').then((m) => ({ default: m.DispatchScreen })),
+  'dispatch.dashboard': lazy(() => import('../../demo/DispatchDashboardPage')),
+  'dispatch.manifest': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({
+      default: m.ManifestConfirmationPage,
+    })),
   ),
+  'dispatch.quick-add': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({ default: m.QuickAddPage })),
+  ),
+  'dispatch.flight': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({ default: m.FlightDispatchPage })),
+  ),
+  'dispatch.status': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({ default: m.StatusUpdatePage })),
+  ),
+  'dispatch.cargo': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({ default: m.CargoTransferPage })),
+  ),
+  'dispatch.hub-arrivals': lazy(() =>
+    import('../../demo/dispatch/DispatchPages').then((m) => ({ default: m.HubArrivalsPage })),
+  ),
+  'dispatch.freight-receipt': lazy(() => import('../../demo/dispatch/FreightReceiptPage')),
+  'hems.flights': lazy(() => import('../../demo/dispatch/HemsFlightsPage')),
+  'terminal.kiosk-portal': lazy(() => import('../../demo/terminal/TerminalPortalPage')),
+  'terminal.fids': lazy(() => import('../../demo/terminal/FidsPage')),
+  'terminal.boarding-pass': lazy(() => import('../../demo/terminal/BoardingPassPage')),
   'pob.dashboard': lazy(() => import('../../demo/screens').then((m) => ({ default: m.PobScreen }))),
-  'helideck.dashboard': lazy(() =>
-    import('../../demo/screens').then((m) => ({ default: m.HelideckScreen })),
-  ),
-  'reports.executive-summary': lazy(() =>
-    import('../../demo/screens').then((m) => ({ default: m.ReportsScreen })),
-  ),
+  'helideck.dashboard': lazy(() => import('../../demo/HelideckDashboardPage')),
+  'reports.executive-summary': lazy(() => import('../../demo/ExecutiveSummaryPage')),
   // Phase 2 — Scheduling (spec 20 §2)
   'scheduling.dashboard': lazy(
     () => import('../../modules/people-logistics/scheduling/SchedulingDashboardPage'),

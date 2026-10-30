@@ -7,7 +7,7 @@ import { CONTROL, LABEL } from './control-styles';
  * screen readers learn "required" from the control itself.
  */
 const labelClass = (required: boolean | undefined) =>
-  cn(LABEL, required && "after:ml-0.5 after:text-danger-fg after:content-['*']");
+  cn(LABEL, required && "after:ms-0.5 after:text-danger-fg after:content-['*']");
 
 export function Input({ className, ...props }: ComponentProps<'input'>) {
   return <input className={cn('min-h-touch w-full px-3 py-2', CONTROL, className)} {...props} />;

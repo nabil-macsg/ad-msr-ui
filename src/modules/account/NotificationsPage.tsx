@@ -20,9 +20,8 @@ import { PageHeader } from '../../shared/ui/page-header';
 import { Spinner } from '../../shared/ui/spinner';
 import { StatusPill } from '../../shared/ui/status-pill';
 import { ACCOUNT_KEY, myPreferences } from './account-api';
+import { TAB, TAB_LIST } from '../../shared/ui/tab-styles';
 
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary data-[state=active]:border-primary data-[state=active]:text-ink';
 const SEVERITY = { info: 'info', warning: 'warning', critical: 'danger' } as const;
 type Category = NonNullable<
   NonNullable<paths['/api/v1/notifications']['get']['parameters']['query']>['category']
@@ -81,14 +80,11 @@ export default function NotificationsPage() {
         onValueChange={(v) => setTab(v as NotificationTab)}
         className="space-y-4"
       >
-        <Tabs.List
-          className="flex gap-2 border-b border-border"
-          aria-label={t('notificationsPage.title')}
-        >
-          <Tabs.Trigger value="alerts" className={TAB_CLASS}>
+        <Tabs.List className={TAB_LIST} aria-label={t('notificationsPage.title')}>
+          <Tabs.Trigger value="alerts" className={TAB}>
             {t('notificationsPage.tabs.alerts')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="emails" className={TAB_CLASS}>
+          <Tabs.Trigger value="emails" className={TAB}>
             {t('notificationsPage.tabs.emails')}
           </Tabs.Trigger>
         </Tabs.List>

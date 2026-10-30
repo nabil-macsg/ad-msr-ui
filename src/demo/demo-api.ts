@@ -16,12 +16,17 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const datasetKey = (name: string) => ['demo', name] as const;
 
-export function useDataset(name: string, query: Record<string, string | number | boolean>) {
+export function useDataset(
+  name: string,
+  query: Record<string, string | number | boolean>,
+  enabled = true,
+) {
   const search = new URLSearchParams(Object.entries(query).map(([k, v]) => [k, String(v)]));
   return useQuery({
     queryKey: [...datasetKey(name), 'list', search.toString()],
     queryFn: () => call<ListPage<DemoRow>>(`${BASE}/${name}?${search.toString()}`),
     placeholderData: keepPreviousData,
+    enabled,
   });
 }
 
@@ -37,4 +42,20 @@ export const changeBookingStatus = (id: string, status: string) =>
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ status }),
+  });
+
+/** Changes fields on a demo row (dispatch statuses, freight receipt). */
+export const updateRow = (name: string, id: string, patch: Partial<DemoRow>) =>
+  call<DemoRow>(`${BASE}/${name}/${id}`, {
+    method: 'PATCH',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(patch),
+  });
+
+/** Adds a row to a demo list (a new HEMS flight). */
+export const createRow = (name: string, row: Partial<DemoRow>) =>
+  call<DemoRow>(`${BASE}/${name}`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(row),
   });

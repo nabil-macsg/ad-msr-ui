@@ -179,7 +179,7 @@ export default function AccountPage() {
                     <li key={role.code}>
                       {role.name}
                       {role.validTo && (
-                        <span className="ml-2 text-xs text-ink-secondary">
+                        <span className="ms-2 text-xs text-ink-secondary">
                           {t('account.until', { day: lastDay(role.validTo) })}
                         </span>
                       )}
@@ -265,7 +265,7 @@ export default function AccountPage() {
                 <p className="font-medium text-ink">
                   {deviceName(d)}
                   {d.current && (
-                    <span className="ml-2 text-xs text-ink-secondary">
+                    <span className="ms-2 text-xs text-ink-secondary">
                       {t('account.thisDevice')}
                     </span>
                   )}
@@ -397,7 +397,7 @@ function PreferencesSection() {
         <caption className="sr-only">{t('account.preferences')}</caption>
         <thead>
           <tr className="border-b border-border">
-            <th scope="col" className="py-2 text-left font-semibold text-ink-secondary">
+            <th scope="col" className="py-2 text-start font-semibold text-ink-secondary">
               {t('notificationsPage.category')}
             </th>
             {CHANNELS.map((channel) => (
@@ -414,10 +414,10 @@ function PreferencesSection() {
         <tbody>
           {current.categories.map((category) => (
             <tr key={category.key} className="border-b border-border last:border-0">
-              <th scope="row" className="py-2 text-left font-normal text-ink">
+              <th scope="row" className="py-2 text-start font-normal text-ink">
                 {category.label}
                 {category.mandatory && (
-                  <span className="ml-2 text-xs text-ink-muted">{t('account.mandatory')}</span>
+                  <span className="ms-2 text-xs text-ink-muted">{t('account.mandatory')}</span>
                 )}
               </th>
               {CHANNELS.map((channel) => (

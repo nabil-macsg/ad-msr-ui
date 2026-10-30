@@ -87,7 +87,7 @@ export default function PremanifestPage() {
                   type="button"
                   aria-current={journeyId === j.id ? 'true' : undefined}
                   onClick={() => pick({ journey: j.id })}
-                  className="w-full py-2 text-left aria-[current=true]:font-semibold"
+                  className="w-full py-2 text-start aria-[current=true]:font-semibold"
                 >
                   <span className="flex items-center justify-between gap-2">
                     <span className="font-mono text-sm text-ink">{j.flightNumber}</span>
@@ -273,7 +273,7 @@ function JourneyPremanifest({ journeyId }: { journeyId: string }) {
           <table className="w-full border-collapse text-sm">
             <caption className="sr-only">{t('scheduling.premanifest.table')}</caption>
             <thead>
-              <tr className="border-b border-border bg-surface-muted/60 text-left text-xs uppercase text-ink-secondary">
+              <tr className="border-b border-border bg-surface-muted/60 text-start text-xs uppercase text-ink-secondary">
                 <th scope="col" className="px-3 py-2">
                   #
                 </th>

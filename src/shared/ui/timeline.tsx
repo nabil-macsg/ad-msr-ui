@@ -17,12 +17,12 @@ export function Timeline({ title, entries }: { title: string; entries: readonly 
   return (
     <section aria-label={title}>
       <h2 className="mb-3 text-base font-semibold text-ink">{title}</h2>
-      <ol className="relative space-y-4 border-l border-border pl-5">
+      <ol className="relative space-y-4 border-s border-border ps-5">
         {entries.map((entry) => (
           <li key={entry.id} className="relative">
             <span
               className={cn(
-                'absolute top-1.5 -left-[25px] size-2.5 rounded-pill ring-4 ring-card',
+                'absolute top-1.5 -start-[25px] size-2.5 rounded-pill ring-4 ring-card',
                 TONE_DOT[entry.tone ?? 'neutral'],
               )}
               aria-hidden

@@ -58,7 +58,7 @@ function Navigation({
   const { t } = useTranslation();
   return (
     <div className="mb-3 flex items-center gap-2">
-      <h2 className="mr-auto text-lg font-semibold text-ink" aria-live="polite">
+      <h2 className="me-auto text-lg font-semibold text-ink" aria-live="polite">
         {label}
       </h2>
       <Button variant="secondary" onClick={onToday}>
@@ -84,7 +84,7 @@ function EventChip({ event, onSelect }: { event: CalendarEvent; onSelect?: (id: 
       title={`${time} ${event.title}`}
       onClick={() => onSelect?.(event.id)}
       className={cn(
-        'block w-full truncate rounded-sm border px-1.5 py-0.5 text-left text-xs',
+        'block w-full truncate rounded-sm border px-1.5 py-0.5 text-start text-xs',
         TONE_PILL[event.tone ?? 'info'],
       )}
     >

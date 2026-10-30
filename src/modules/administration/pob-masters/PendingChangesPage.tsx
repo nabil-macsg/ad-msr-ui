@@ -272,7 +272,7 @@ function Changes({ change }: { change: PendingChange }) {
     <table className="w-full text-sm">
       <caption className="sr-only">{t('pob.changes.values')}</caption>
       <thead>
-        <tr className="text-left text-ink-secondary">
+        <tr className="text-start text-ink-secondary">
           <th scope="col" className="py-1 font-medium">
             {t('pob.changes.field')}
           </th>
@@ -289,10 +289,10 @@ function Changes({ change }: { change: PendingChange }) {
       <tbody>
         {keys.map((key) => (
           <tr key={key} className="border-t border-border">
-            <th scope="row" className="py-1 pr-2 text-left font-normal text-ink-secondary">
+            <th scope="row" className="py-1 pe-2 text-start font-normal text-ink-secondary">
               {isField(key) ? t(`pob.fields.${key}`) : key}
             </th>
-            {change.before && <td className="py-1 pr-2">{show(change.before[key])}</td>}
+            {change.before && <td className="py-1 pe-2">{show(change.before[key])}</td>}
             <td className="py-1 font-medium text-ink">{show(change.after[key])}</td>
           </tr>
         ))}

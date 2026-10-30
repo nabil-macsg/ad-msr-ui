@@ -231,7 +231,7 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
           method: 'POST',
           path: '/api/v1/masters/resource-categories',
           // Aligned with the original demo: the form also sets transport mode and icon.
-          body: expect.objectContaining({
+          body: (expect.objectContaining as (o: object) => unknown)({
             code: 'HOVERCRAFT',
             name: 'Hovercraft',
             weightUnit: 'kg',
@@ -268,7 +268,10 @@ describe('SPEC-10-5.1 resource masters on the web', () => {
         expect.objectContaining({
           method: 'PATCH',
           path: `/api/v1/masters/resource-categories/${id(50)}`,
-          body: expect.objectContaining({ name: 'Rotary wing', weightUnit: 'kg' }),
+          body: (expect.objectContaining as (o: object) => unknown)({
+            name: 'Rotary wing',
+            weightUnit: 'kg',
+          }),
         }),
       );
     });

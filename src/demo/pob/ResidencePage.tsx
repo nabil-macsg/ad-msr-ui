@@ -84,10 +84,8 @@ export default function ResidencePage() {
   const max = Math.max(1, ...(s?.bySite.map((b) => b.days) ?? []));
 
   const setFilter = (name: string, value: string | undefined) => {
-    const filters = { ...params.filters };
-    if (value) filters[name] = value;
-    else delete filters[name];
-    update({ filters });
+    const rest = Object.fromEntries(Object.entries(params.filters).filter(([key]) => key !== name));
+    update({ filters: value ? { ...rest, [name]: value } : rest });
   };
 
   return (

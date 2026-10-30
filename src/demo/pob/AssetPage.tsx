@@ -235,14 +235,12 @@ export default function AssetPage() {
               type="button"
               onClick={() => choose(s.code)}
               className={cn(
-                'rounded-xl border bg-card p-4 text-left transition-all hover:border-primary/40 hover:shadow-raised',
+                'rounded-xl border bg-card p-4 text-start transition-all hover:border-primary/40 hover:shadow-raised',
                 s.code === code ? 'border-primary' : 'border-border',
               )}
             >
               <span className="text-xs font-medium text-primary">{s.name}</span>
-              <span className="mt-1 block text-kpi leading-none font-semibold text-ink">
-                {s.pob}
-              </span>
+              <span className="mt-1 block type-kpi text-ink">{s.pob}</span>
               <span className="mt-1 block text-xs text-ink-muted">
                 on board · {s.pob - s.aboardVessels} on site
                 {s.aboardVessels > 0 && `, ${String(s.aboardVessels)} aboard vessels`}

@@ -24,7 +24,7 @@ describe('PROMPT-4.2 full-screen layouts have no sidebar', () => {
     renderApp('/dispatch/boarding-pass', {
       access: accessWith({ 'terminal.boarding-pass': ['view'] }),
     });
-    expect(await screen.findByText('In scope, not built yet')).toBeInTheDocument();
+    expect(await screen.findByText('Loading…')).toBeInTheDocument();
     expect(screen.queryByRole('navigation')).toBeNull();
   });
 });

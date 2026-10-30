@@ -17,6 +17,7 @@ import { FilterBar } from '../../../shared/ui/filter-bar';
 import { PageHeader } from '../../../shared/ui/page-header';
 import { StatusPill } from '../../../shared/ui/status-pill';
 import type { MasterRecord, MasterResource } from './master-resource';
+import { TAB, TAB_LIST } from '../../../shared/ui/tab-styles';
 
 /** The create / edit form a master page opens; the master owns its fields (react-hook-form + zod). */
 export interface MasterFormProps<T> {
@@ -71,9 +72,6 @@ export interface MasterPageProps<T extends MasterRecord> {
     readonly others: readonly { value: string; label: string; content: ReactNode }[];
   };
 }
-
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary data-[state=active]:border-primary data-[state=active]:text-ink';
 
 export interface LifecycleText<T> {
   readonly menu: string;
@@ -270,12 +268,12 @@ export function MasterPage<T extends MasterRecord>({
       />
       {tabs ? (
         <Tabs.Root defaultValue="list" className="space-y-4">
-          <Tabs.List className="flex gap-2 border-b border-border" aria-label={title}>
-            <Tabs.Trigger value="list" className={TAB_CLASS}>
+          <Tabs.List className={TAB_LIST} aria-label={title}>
+            <Tabs.Trigger value="list" className={TAB}>
               {tabs.label}
             </Tabs.Trigger>
             {tabs.others.map((tab) => (
-              <Tabs.Trigger key={tab.value} value={tab.value} className={TAB_CLASS}>
+              <Tabs.Trigger key={tab.value} value={tab.value} className={TAB}>
                 {tab.label}
               </Tabs.Trigger>
             ))}

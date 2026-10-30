@@ -33,7 +33,7 @@ export function UserMenu() {
           <span className="flex size-8 shrink-0 items-center justify-center rounded-pill bg-primary text-on-primary">
             <User className="size-4" aria-hidden />
           </span>
-          <span className="hidden text-left lg:block">
+          <span className="hidden text-start lg:block">
             <span className="block text-xs leading-tight font-medium text-on-header">
               {me.displayName}
             </span>

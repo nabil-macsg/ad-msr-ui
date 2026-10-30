@@ -380,7 +380,7 @@ function JourneyStep({
         <span>
           {m.stops.join(' → ')}
           {m.stops.length > 2 && (
-            <StatusPill tone="info" className="ml-1.5">
+            <StatusPill tone="info" className="ms-1.5">
               Multi-stop
             </StatusPill>
           )}
@@ -414,7 +414,10 @@ function JourneyStep({
     },
   ];
 
-  const tabs = [['', 'All', allCount] as const, ...(options.data?.modes ?? []).map((m) => [m, m, counts[m] ?? 0] as const)];
+  const tabs = [
+    ['', 'All', allCount] as const,
+    ...(options.data?.modes ?? []).map((m) => [m, m, counts[m] ?? 0] as const),
+  ];
 
   return (
     <section className="space-y-4">
@@ -475,9 +478,7 @@ function JourneyStep({
           ))}
         </SelectField>
       </div>
-      <p className="text-xs text-ink-muted">
-        Showing movements with ≥ {group} available seats
-      </p>
+      <p className="text-xs text-ink-muted">Showing movements with ≥ {group} available seats</p>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-ink-muted">
           Seats are committed on approval. Pending requests do not hold a seat.
@@ -500,7 +501,9 @@ function JourneyStep({
               role="tab"
               aria-selected={active}
               onClick={() =>
-                list.update({ filters: withFilter(list.params.filters, 'mode', value || undefined) })
+                list.update({
+                  filters: withFilter(list.params.filters, 'mode', value || undefined),
+                })
               }
               className={cn(
                 '-mb-px border-b-2 px-3 py-2 text-sm transition-colors',
@@ -729,7 +732,12 @@ function ReviewStep({
 
   const columns: Column<DemoPassenger>[] = [
     { id: 'n', header: '#', cell: (p) => people.indexOf(p) + 1 },
-    { id: 'name', header: 'Passenger', sortField: 'name', cell: (p) => <PassengerCell p={p} sub={p.optimaId} /> },
+    {
+      id: 'name',
+      header: 'Passenger',
+      sortField: 'name',
+      cell: (p) => <PassengerCell p={p} sub={p.optimaId} />,
+    },
     {
       id: 'category',
       header: 'Category',
@@ -881,8 +889,7 @@ function ReviewStep({
           className={cn('min-h-touch px-2.5 py-2', CONTROL)}
           value=""
           onChange={(e) =>
-            e.target.value &&
-            onCodes(Object.fromEntries(people.map((p) => [p.id, e.target.value])))
+            e.target.value && onCodes(Object.fromEntries(people.map((p) => [p.id, e.target.value])))
           }
         >
           <option value="">Choose a code…</option>

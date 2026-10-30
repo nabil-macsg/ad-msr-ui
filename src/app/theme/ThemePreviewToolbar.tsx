@@ -116,7 +116,7 @@ export function ThemePreviewToolbar() {
         disabled={isDefault}
         className={cn(
           control,
-          'ml-auto shrink-0 text-white/80 hover:bg-white/10 hover:text-white disabled:opacity-40',
+          'ms-auto shrink-0 text-white/80 hover:bg-white/10 hover:text-white disabled:opacity-40',
         )}
       >
         <RotateCcw className="size-3.5" aria-hidden />

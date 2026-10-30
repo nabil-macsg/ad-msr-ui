@@ -14,9 +14,8 @@ import { StatusPill } from '../../../shared/ui/status-pill';
 import type { Tone } from '../../../shared/ui/tone';
 import { setFilter } from '../../administration/masters/filters';
 import { listUnscheduled, type UnscheduledRequest, UNSCHEDULED_PATH } from './scheduling-api';
+import { TAB } from '../../../shared/ui/tab-styles';
 
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary aria-pressed:border-primary aria-pressed:text-ink';
 const KINDS = ['no-route', 'no-movement'] as const;
 const CRITICALITY_TONE: Readonly<Record<UnscheduledRequest['criticality'], Tone>> = {
   normal: 'neutral',
@@ -163,13 +162,13 @@ export default function UnscheduledRequestsPage() {
         subtitle={t('scheduling.requests.subtitle')}
       />
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border">
-        <div role="group" aria-label={t('scheduling.requests.missing')} className="flex gap-2">
+        <div role="group" aria-label={t('scheduling.requests.missing')} className="flex gap-1">
           {(['all', ...KINDS] as const).map((k) => (
             <button
               key={k}
               type="button"
               aria-pressed={(params.filters.kind ?? 'all') === k}
-              className={TAB_CLASS}
+              className={TAB}
               onClick={() => setFilter(listParams, 'kind', k === 'all' ? undefined : k)}
             >
               {k === 'all' ? t('scheduling.dashboard.all') : t(`scheduling.requests.kind.${k}`)}

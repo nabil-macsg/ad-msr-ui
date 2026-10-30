@@ -5,6 +5,7 @@ import { dayPart, firstName } from '../../shared/time/gst';
 import { can, routeOf } from '../access/registry';
 import { runtimeConfig } from '../config';
 import { useMe, useMyAccess } from '../session/queries';
+import { LanguageSwitch } from './LanguageSwitch';
 import { NotificationBell } from './NotificationBell';
 import { SearchButton } from './SearchButton';
 import { UserMenu } from './UserMenu';
@@ -25,6 +26,7 @@ export function Header() {
         <SearchButton />
       </div>
       <div className="flex items-center gap-2">
+        <LanguageSwitch />
         <NotificationBell />
         {aiEnabled && (
           <Link

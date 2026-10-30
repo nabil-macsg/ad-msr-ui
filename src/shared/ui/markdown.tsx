@@ -77,7 +77,7 @@ export function Markdown({ text, className }: { text: string; className?: string
         const lines = block.split('\n');
         if (lines.every((l) => BULLET.test(l))) {
           return (
-            <ul key={key} className="list-disc space-y-1 pl-5">
+            <ul key={key} className="list-disc space-y-1 ps-5">
               {lines.map((l, j) => (
                 <li key={`${key}.${j}`}>{inline(l.replace(BULLET, ''), `${key}.${j}`)}</li>
               ))}
@@ -86,7 +86,7 @@ export function Markdown({ text, className }: { text: string; className?: string
         }
         if (lines.every((l) => NUMBER.test(l))) {
           return (
-            <ol key={key} className="list-decimal space-y-1 pl-5">
+            <ol key={key} className="list-decimal space-y-1 ps-5">
               {lines.map((l, j) => (
                 <li key={`${key}.${j}`}>{inline(l.replace(NUMBER, ''), `${key}.${j}`)}</li>
               ))}

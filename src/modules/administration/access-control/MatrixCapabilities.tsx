@@ -47,7 +47,7 @@ export function MatrixCapabilities({
               </span>
             </label>
             {granted && capability.locationScoped && (
-              <fieldset className="mt-3 space-y-2 pl-7">
+              <fieldset className="mt-3 space-y-2 ps-7">
                 <legend className="sr-only">
                   {t('matrix.capability.locations', { capability: capability.label })}
                 </legend>

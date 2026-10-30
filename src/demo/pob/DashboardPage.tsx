@@ -1,8 +1,21 @@
-import { FileWarning, Map as MapIcon } from 'lucide-react';
+import {
+  ArrowDownToLine,
+  ArrowUpFromLine,
+  FileWarning,
+  Gauge,
+  LifeBuoy,
+  Map as MapIcon,
+  ShieldAlert,
+  ShieldX,
+  UserCheck,
+  Users,
+} from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { routeOf } from '../../app/access/registry';
 import { cn } from '../../shared/lib/cn';
+import { CONTROL } from '../../shared/ui/control-styles';
+import { type AttentionItem, AttentionPanel, KpiGroup } from '../../shared/ui/attention-panel';
 import { buttonVariants } from '../../shared/ui/button-variants';
 import { DonutChart } from '../../shared/ui/donut-chart';
 import { PageHeader } from '../../shared/ui/page-header';
@@ -64,8 +77,7 @@ const NO_FILTERS: Filters = {
   essential: '',
 };
 
-const SELECT =
-  'min-h-touch rounded-lg border border-border bg-card px-2.5 py-2 text-sm text-ink focus-visible:outline-2 focus-visible:outline-primary';
+const SELECT = `${CONTROL} min-h-touch px-2.5`;
 
 function Segmented({
   label,
@@ -121,9 +133,7 @@ function SiteCard({ site, filtered }: { site: PobSiteStats; filtered: boolean })
         <StatusPill tone={statusTone(site.status)}>{site.status}</StatusPill>
       </div>
       <div>
-        <p className="text-kpi leading-none font-semibold text-ink tabular-nums">
-          {filtered ? site.matching : site.pob}
-        </p>
+        <p className="type-kpi text-ink tabular-nums">{filtered ? site.matching : site.pob}</p>
         {filtered && <p className="mt-1 text-xs text-ink-muted">Total: {site.pob}</p>}
         {site.aboardVessels > 0 && (
           <p className="mt-1 text-xs text-ink-muted">
@@ -176,18 +186,47 @@ function SiteCard({ site, filtered }: { site: PobSiteStats; filtered: boolean })
         </div>
         <div className="flex justify-between gap-2">
           <span className="text-ink-muted">Focal point</span>
-          <span className="text-right text-ink">
+          <span className="text-end text-ink">
             {site.focalPoint}
             <span className="block text-ink-muted">{site.focalEmail}</span>
           </span>
         </div>
         <div className="flex justify-between gap-2">
           <span className="text-ink-muted">Conditions</span>
-          <span className="text-right text-ink">{site.conditions}</span>
+          <span className="text-end text-ink">{site.conditions}</span>
         </div>
       </div>
     </Link>
   );
+}
+
+/** A site at 80% or more of its POB limit, not Normal, or with more people than lifeboat seats. */
+function siteAttention(site: PobSiteStats): AttentionItem | null {
+  const pct = utilisation(site);
+  const lifeboatShort = site.lifeboat !== null && site.pob > site.lifeboat;
+  if (pct < 80 && site.status === 'Normal' && !lifeboatShort) return null;
+  const reasons = [
+    `${String(pct)}% of POB limit`,
+    ...(site.status === 'Normal' ? [] : [`Status ${site.status}`]),
+    ...(lifeboatShort ? [`Lifeboat seats for ${String(site.lifeboat)} only`] : []),
+  ];
+  const danger = pct >= 90 || site.status === 'Critical' || lifeboatShort;
+  return {
+    key: site.code,
+    icon: lifeboatShort ? LifeBuoy : Gauge,
+    tone: danger ? 'danger' : 'warning',
+    text: `${site.name} — ${String(site.pob)} / ${String(site.limit)} POB`,
+    detail: `${site.zoneName} · ${reasons.join(' · ')}`,
+    pill:
+      pct > 100
+        ? 'Over limit'
+        : lifeboatShort
+          ? 'Lifeboat'
+          : site.status === 'Normal'
+            ? 'Near limit'
+            : site.status,
+    to: `${routeOf('pob.asset')}?location=${encodeURIComponent(site.code)}`,
+  };
 }
 
 /** POB Dashboard: everybody on board across the offshore sites, filterable, per zone. */
@@ -202,6 +241,11 @@ export default function DashboardPage() {
     (k) => filters[k as keyof Filters] !== '',
   );
   const n = (v: number | undefined) => (v ?? 0).toLocaleString('en');
+  const attention = (data?.zones ?? [])
+    .flatMap((z) => z.sites)
+    // Fullest first, so the sites closest to their limit lead the list.
+    .sort((a, b) => utilisation(b) - utilisation(a))
+    .flatMap((site) => siteAttention(site) ?? []);
 
   return (
     <div className="space-y-6">
@@ -227,9 +271,21 @@ export default function DashboardPage() {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="grid gap-4 sm:grid-cols-3">
-          <StatCard title="Total POB — All Sites" value={n(data?.total)} />
-          <StatCard title="Arrivals Today" value={n(data?.arrivedToday)} />
-          <StatCard title="Departures Today" value={n(data?.departedToday)} />
+          <StatCard
+            title="Total POB — All Sites"
+            value={n(data?.total)}
+            icon={<Users className="size-4" aria-hidden />}
+          />
+          <StatCard
+            title="Arrivals Today"
+            value={n(data?.arrivedToday)}
+            icon={<ArrowDownToLine className="size-4" aria-hidden />}
+          />
+          <StatCard
+            title="Departures Today"
+            value={n(data?.departedToday)}
+            icon={<ArrowUpFromLine className="size-4" aria-hidden />}
+          />
         </div>
         <div className="rounded-xl border border-border bg-card p-4">
           <DonutChart
@@ -243,6 +299,8 @@ export default function DashboardPage() {
           />
         </div>
       </div>
+
+      <AttentionPanel title="Sites needing attention" items={attention} />
 
       <section
         aria-label="Filter"
@@ -282,7 +340,12 @@ export default function DashboardPage() {
           </select>
         </label>
         <Segmented label="Crew Type" options={CREW} value={filters.crew} onChange={set('crew')} />
-        <Segmented label="Gender" options={GENDER} value={filters.gender} onChange={set('gender')} />
+        <Segmented
+          label="Gender"
+          options={GENDER}
+          value={filters.gender}
+          onChange={set('gender')}
+        />
         <select
           aria-label="Nationality"
           className={SELECT}
@@ -331,29 +394,32 @@ export default function DashboardPage() {
             </option>
           ))}
         </select>
-        <span className="ml-auto text-xs text-ink-muted" aria-live="polite">
+        <span className="ms-auto text-xs text-ink-muted" aria-live="polite">
           {n(data?.matching)} of {n(data?.total)} people
         </span>
       </section>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <KpiGroup label="Compliance & readiness" className="md:grid-cols-3">
         <StatCard
           title="HSE Passport expired"
           value={data?.hseExpired ?? 0}
           tone="danger"
           subline="Offshore now with a certificate that has run out"
+          icon={<ShieldX className="size-4" aria-hidden />}
         />
         <StatCard
           title="HSE Passport expiring"
           value={data?.hseExpiring ?? 0}
           tone="warning"
           subline="Due to expire within 30 days"
+          icon={<ShieldAlert className="size-4" aria-hidden />}
         />
         <StatCard
           title="Would stay on site if it were downmanned"
           value={`${n(data?.essential)} of ${n(data?.matching)}`}
+          icon={<UserCheck className="size-4" aria-hidden />}
         />
-      </div>
+      </KpiGroup>
 
       {data?.zones.map((zone) => (
         <section key={zone.code} aria-label={`${zone.name} Zone`} className="space-y-3">

@@ -23,7 +23,7 @@ export function Drawer({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-overlay" />
         <Dialog.Content
-          className="fixed inset-y-0 right-0 z-50 flex w-[min(32rem,92vw)] flex-col border-l border-border bg-card shadow-modal"
+          className="fixed inset-y-0 end-0 z-50 flex w-[min(32rem,92vw)] flex-col border-s border-border bg-card shadow-modal"
           {...(description ? {} : { 'aria-describedby': undefined })}
         >
           <div className="flex shrink-0 items-start justify-between gap-4 border-b border-border px-5 py-4">

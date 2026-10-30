@@ -1,4 +1,5 @@
 import { Pie, PieChart } from 'recharts';
+import { cn } from '../lib/cn';
 import { type Tone } from './tone';
 
 export interface DonutSlice {
@@ -16,20 +17,25 @@ const FILL: Record<Tone, string> = {
   accent: 'var(--color-accent-fg)',
 };
 
-/** A donut with its total in the middle and a legend that carries the numbers (Recharts). */
+/**
+ * A donut with its total in the middle and a legend that carries the numbers (Recharts).
+ * `stacked` fits a narrow card: the title sits inside the ring and the legend goes underneath.
+ */
 export function DonutChart({
   title,
   slices,
   size = 180,
+  stacked = false,
 }: {
   title: string;
   slices: readonly DonutSlice[];
   size?: number;
+  stacked?: boolean;
 }) {
   const total = slices.reduce((sum, s) => sum + s.value, 0);
   const summary = `${title}: ${slices.map((s) => `${s.label} ${s.value}`).join(', ')}`;
   return (
-    <figure className="flex items-center gap-6">
+    <figure className={stacked ? 'flex flex-col items-center gap-4' : 'flex items-center gap-6'}>
       <div
         className="relative"
         style={{ width: size, height: size }}
@@ -52,21 +58,28 @@ export function DonutChart({
           className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
           aria-hidden
         >
+          {stacked && <span className="text-xs text-ink-muted">{title}</span>}
           <span className="text-2xl font-bold text-ink">{total}</span>
         </div>
       </div>
-      <figcaption>
-        <p className="mb-2 text-sm font-semibold text-ink">{title}</p>
-        <ul className="space-y-1 text-sm">
+      <figcaption className={stacked ? 'w-full' : undefined}>
+        <p className={stacked ? 'sr-only' : 'mb-2 text-sm font-semibold text-ink'}>{title}</p>
+        <ul
+          className={stacked ? 'grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs' : 'space-y-1 text-sm'}
+        >
           {slices.map((s) => (
-            <li key={s.label} className="flex items-center gap-2 text-ink-secondary">
+            <li key={s.label} className="flex min-w-0 items-center gap-1.5 text-ink-secondary">
               <span
-                className="size-2.5 rounded-pill"
+                className={cn('shrink-0 rounded-pill', stacked ? 'size-2' : 'size-2.5')}
                 style={{ background: FILL[s.tone] }}
                 aria-hidden
               />
-              {s.label}
-              <span className="ml-auto pl-4 font-semibold text-ink">{s.value}</span>
+              <span className="truncate">{s.label}</span>
+              <span
+                className={cn('ms-auto font-semibold text-ink tabular-nums', !stacked && 'ps-4')}
+              >
+                {s.value}
+              </span>
             </li>
           ))}
         </ul>

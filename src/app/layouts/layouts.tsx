@@ -56,14 +56,18 @@ export function KioskLayout() {
   );
 }
 
-function GstClock() {
+/** The FIDS board's live clock, in GST. */
+export function GstClock({ className }: { className?: string }) {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(timer);
   }, []);
   return (
-    <time dateTime={now.toISOString()} className="font-mono text-3xl text-fids-highlight">
+    <time
+      dateTime={now.toISOString()}
+      className={className ?? 'font-mono text-3xl text-fids-highlight'}
+    >
       {format(new TZDate(now, GST), 'HH:mm:ss')} GST
     </time>
   );
@@ -73,11 +77,8 @@ function GstClock() {
 export function FidsLayout() {
   const { t } = useTranslation();
   return (
-    <main className="min-h-screen bg-fids-background p-8 text-fids-text">
-      <header className="mb-8 flex items-center justify-between">
-        <p className="text-2xl font-bold">{t('appName')}</p>
-        <GstClock />
-      </header>
+    <main className="min-h-screen bg-fids-background text-fids-text">
+      <h1 className="sr-only">{t('appName')}</h1>
       <Outlet />
     </main>
   );

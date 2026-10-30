@@ -217,7 +217,7 @@ function AffectedJourneys({ locationId }: { locationId: string }) {
   const booked = items.filter((j) => j.booked).length;
   return (
     <Banner tone="warning" title={t('places.service.journeys', { count: items.length })}>
-      <ul className="max-h-40 list-disc space-y-0.5 overflow-y-auto pl-5">
+      <ul className="max-h-40 list-disc space-y-0.5 overflow-y-auto ps-5">
         {items.map((j) => (
           <li key={j.id}>
             {j.flightNumber} · {shortDay(j.serviceDate)}

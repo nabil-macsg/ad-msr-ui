@@ -466,7 +466,7 @@ function JourneyStep({
                 aria-pressed={active}
                 onClick={() => onChange({ movement: m })}
                 className={cn(
-                  'flex items-center gap-4 rounded-lg border bg-card px-4 py-3 text-left transition-colors hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-primary',
+                  'flex items-center gap-4 rounded-lg border bg-card px-4 py-3 text-start transition-colors hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-primary',
                   active ? 'border-primary bg-primary-subtle' : 'border-border',
                 )}
               >
@@ -483,7 +483,7 @@ function JourneyStep({
                     {m.departure} → {m.arrival} · {m.quota.reduce((a, b) => a + b, 0)}-seat
                   </p>
                 </div>
-                <div className="text-right text-sm">
+                <div className="text-end text-sm">
                   <p className="text-ink">{m.available} seats free</p>
                   {m.status === 'Delayed' && <StatusPill tone="warning">Delayed</StatusPill>}
                 </div>
@@ -659,17 +659,19 @@ function DoneStep({
       <CircleCheckBig className="mx-auto size-10 text-success-fg" aria-hidden />
       <div>
         <h2 className="text-lg font-semibold text-ink">Booking Submitted!</h2>
-        <p className="text-sm text-ink-muted">Your travel request is now moving through approval.</p>
+        <p className="text-sm text-ink-muted">
+          Your travel request is now moving through approval.
+        </p>
       </div>
       <p className="font-mono text-xl font-semibold text-ink">{booking.reference}</p>
-      <div className="space-y-1 rounded-lg bg-surface-muted p-4 text-left">
+      <div className="space-y-1 rounded-lg bg-surface-muted p-4 text-start">
         <p className="text-xs font-semibold text-ink-muted">Travel Summary</p>
         <p className="text-ink">{booking.route}</p>
         <p className="text-xs text-ink-muted">
           Travel date: {booking.travelDate} · Passenger: {passenger.name}
         </p>
       </div>
-      <div className="space-y-2 text-left">
+      <div className="space-y-2 text-start">
         <p className="text-xs font-semibold text-ink-muted">Approval Chain</p>
         <p className="text-xs text-ink-muted">Standard Booking Approval</p>
         <ApprovalChain

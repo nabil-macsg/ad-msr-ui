@@ -78,7 +78,7 @@ export function PersonPicker({
             <li key={person.userId}>
               <button
                 type="button"
-                className="flex w-full min-h-10 flex-col items-start px-3 py-1 text-left text-sm hover:bg-surface-muted"
+                className="flex w-full min-h-10 flex-col items-start px-3 py-1 text-start text-sm hover:bg-surface-muted"
                 aria-label={t('delegation.choose', { name: person.name })}
                 onClick={() => onChange(person)}
               >

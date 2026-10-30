@@ -31,7 +31,7 @@ export function SearchButton() {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="flex min-h-8 w-full max-w-72 items-center gap-2 rounded-lg bg-header-search px-3 py-1.5 text-left text-sm text-on-header-search transition-colors hover:bg-header-border focus-visible:outline-2 focus-visible:outline-primary"
+          className="flex min-h-8 w-full max-w-72 items-center gap-2 rounded-lg bg-header-search px-3 py-1.5 text-start text-sm text-on-header-search transition-colors hover:bg-header-border focus-visible:outline-2 focus-visible:outline-primary"
         >
           <Search className="size-[15px] shrink-0" aria-hidden />
           <span className="flex-1 truncate">{t('shell.search')}</span>
@@ -46,7 +46,7 @@ export function SearchButton() {
           <Dialog.Title className="sr-only">{t('shell.searchTitle')}</Dialog.Title>
           <Dialog.Description className="sr-only">{t('shell.search')}</Dialog.Description>
           <Dialog.Close
-            className="absolute top-3 right-3 rounded-lg p-1.5 text-ink-muted hover:bg-surface-muted hover:text-ink-secondary"
+            className="absolute top-3 end-3 rounded-lg p-1.5 text-ink-muted hover:bg-surface-muted hover:text-ink-secondary"
             aria-label={t('ui.close')}
           >
             <X className="size-4" aria-hidden />

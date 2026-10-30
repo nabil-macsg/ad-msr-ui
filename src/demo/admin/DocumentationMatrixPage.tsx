@@ -75,10 +75,7 @@ function DocumentCounts() {
         {(counts.data ?? []).map((count) => (
           <li key={count.assetType} className="rounded-lg bg-surface-muted p-3">
             <p className="text-sm text-ink">
-              <span className="text-kpi leading-none font-semibold tabular-nums">
-                {count.required}
-              </span>{' '}
-              {count.assetType}
+              <span className="type-kpi">{count.required}</span> {count.assetType}
             </p>
             <p className="mt-1 text-xs text-ink-muted">{count.mandatory} mandatory</p>
           </li>

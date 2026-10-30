@@ -1,14 +1,19 @@
 import { bodyOf, json, MockError, notFound, text } from '../core/http';
 import { listRows } from '../core/list';
 import { route } from '../core/router';
-import { all, find, replace, seed } from '../core/store';
-import { BOOKING_MOVES, DATASETS, type DemoRow } from '../data/modules';
+import { all, find, insert, newId, replace, seed } from '../core/store';
+import { BOOKING_MOVES, DATASETS, type DemoRow, type DemoValue } from '../data/modules';
 
 export interface DemoKpi {
   label: string;
   value: string | number;
   subline?: string;
+  tone?: 'warning' | 'danger';
 }
+
+/** A KPI that turns amber or red only when there is something to look at. */
+const flagged = (label: string, value: number, tone: 'warning' | 'danger'): DemoKpi =>
+  value > 0 ? { label, value, tone } : { label, value };
 
 const count = (rows: DemoRow[], field: string, value: string) =>
   rows.filter((r) => r[field] === value).length;
@@ -19,7 +24,7 @@ const SUMMARIES: Readonly<Record<string, (rows: DemoRow[]) => DemoKpi[]>> = {
   bookings: (rows) => [
     { label: 'Bookings', value: rows.length, subline: 'Next 10 days' },
     { label: 'Confirmed', value: count(rows, 'status', 'Confirmed') },
-    { label: 'Pending approval', value: count(rows, 'status', 'Pending approval') },
+    flagged('Pending approval', count(rows, 'status', 'Pending approval'), 'warning'),
     { label: 'Waitlisted', value: count(rows, 'status', 'Waitlisted') },
   ],
   departures: (rows) => [
@@ -67,6 +72,14 @@ const SUMMARIES: Readonly<Record<string, (rows: DemoRow[]) => DemoKpi[]>> = {
   },
 };
 
+/** Fields the list's search box looks in, per dataset (the default is code and name). */
+const SEARCH: Readonly<Record<string, (row: DemoRow) => string[]>> = {
+  passengers: (r) =>
+    ['name', 'optima', 'personnelNo', 'employer', 'department', 'designation'].map((f) =>
+      String(r[f] ?? ''),
+    ),
+};
+
 /** `GET /api/v1/demo/datasets/:name[/summary|/:id]` and a booking's status change. */
 export function registerModules(): void {
   for (const [name, rows] of Object.entries(DATASETS)) seed(`demo:${name}`, rows);
@@ -76,7 +89,30 @@ export function registerModules(): void {
   };
 
   route('GET', '/api/v1/demo/datasets/:name', (req) =>
-    json(listRows(all<DemoRow>(known(req.params.name)), req.query, { hasActive: false })),
+    json(
+      listRows(all<DemoRow>(known(req.params.name)), req.query, {
+        hasActive: false,
+        ...(SEARCH[req.params.name ?? ''] ? { search: SEARCH[req.params.name ?? ''] } : {}),
+      }),
+    ),
+  );
+  // Demo writes: a field change on any row, and a new row (HEMS flights).
+  route('PATCH', '/api/v1/demo/datasets/:name/:id', (req) => {
+    const name = known(req.params.name);
+    const row = find<DemoRow>(name, req.params.id ?? '');
+    if (!row) return notFound();
+    return json(
+      replace<DemoRow>(name, { ...row, ...(bodyOf(req) as Record<string, DemoValue>), id: row.id }),
+    );
+  });
+  route('POST', '/api/v1/demo/datasets/:name', (req) =>
+    json(
+      insert<DemoRow>(known(req.params.name), {
+        ...(bodyOf(req) as Record<string, DemoValue>),
+        id: newId(),
+      }),
+      201,
+    ),
   );
   route('GET', '/api/v1/demo/datasets/:name/:id', (req) => {
     const row = find<DemoRow>(known(req.params.name), req.params.id ?? '');

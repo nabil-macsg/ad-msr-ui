@@ -19,7 +19,7 @@ export function LiveTicker({ items }: { items: readonly TickerItem[] }) {
     items.map((item) => (
       <li
         key={`${hidden ? 'b' : 'a'}-${item.id}`}
-        className="flex shrink-0 items-center gap-2 pr-10"
+        className="flex shrink-0 items-center gap-2 pe-10"
         aria-hidden={hidden || undefined}
       >
         <span className={cn('size-2 rounded-pill', TONE_DOT[item.tone ?? 'info'])} aria-hidden />

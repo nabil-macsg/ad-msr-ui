@@ -1,7 +1,21 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import {
+  CalendarCheck,
+  CalendarRange,
+  CalendarX2,
+  Clock,
+  Plane,
+  Route,
+  ShieldAlert,
+  SquarePlus,
+  Wrench,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { cn } from '../../../shared/lib/cn';
 import { useListParams } from '../../../shared/lists/list-params';
 import { formatGst, formatGstDate, formatGstTime, gstDayKey } from '../../../shared/time/format';
+import { ModeIcon, ModeLabel, RouteStops } from '../../../shared/ui/transport';
+import { type AttentionItem, AttentionPanel, KpiGroup } from '../../../shared/ui/attention-panel';
 import { Banner } from '../../../shared/ui/banner';
 import { type Column, DataTable } from '../../../shared/ui/data-table';
 import { Field } from '../../../shared/ui/field';
@@ -11,9 +25,8 @@ import { StatusPill } from '../../../shared/ui/status-pill';
 import type { Tone } from '../../../shared/ui/tone';
 import { setFilter } from '../../administration/masters/filters';
 import { type Journey, listJourneys, useSchedulingDashboard } from './scheduling-api';
+import { TAB } from '../../../shared/ui/tab-styles';
 
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary aria-pressed:border-primary aria-pressed:text-ink';
 const STATUS_TONE: Partial<Record<Journey['status'], Tone>> = {
   scheduled: 'info',
   delayed: 'warning',
@@ -29,7 +42,9 @@ const FLAG_TONE: Readonly<Record<Journey['flags'][number], Tone>> = {
   'resource-overlap': 'danger',
 };
 const day = (iso: string) => formatGstDate(`${iso}T12:00:00+04:00`);
-
+/** A card only turns amber when there is something to look at. */
+const warnIf = (count: number | undefined) =>
+  (count ?? 0) > 0 ? { tone: 'warning' as const } : {};
 /**
  * Scheduling Dashboard (spec 20 §2.1): what is published for Booking, by day and mode, departure
  * first, with the fleet conflicts that need a look (SCH-R8).
@@ -47,10 +62,33 @@ export default function SchedulingDashboardPage() {
     queryFn: () => listJourneys(apiQuery),
     placeholderData: keepPreviousData,
   });
+  // The day's journeys in every category, for the counts on the mode tabs.
+  const dayJourneys = useQuery({
+    queryKey: ['/api/v1/scheduling/journeys', 'counts', date],
+    queryFn: () =>
+      listJourneys({ page: 1, pageSize: 100, 'filter[from]': date, 'filter[to]': date }),
+  });
+  const countOf = (code: string) =>
+    code === 'all'
+      ? (dayJourneys.data?.total ?? 0)
+      : (dayJourneys.data?.items.filter((j) => j.category === code).length ?? 0);
   const k = dashboard.data?.kpis;
   const listParams = { params, update };
   const setDay = (value: string) =>
     update({ filters: { ...params.filters, from: value || today, to: value || today } });
+
+  // The fleet conflicts (SCH-R8) that need a look.
+  const conflicts = (dashboard.data?.conflicts ?? []).map((c): AttentionItem => ({
+    key: `${c.kind}-${c.fleet.id}-${c.serviceDate}`,
+    icon: c.kind === 'maintenance' ? Wrench : CalendarX2,
+    tone: c.kind === 'maintenance' ? 'danger' : 'warning',
+    text: t(`scheduling.dashboard.conflict.${c.kind}`, {
+      fleet: c.fleet.registration,
+      date: day(c.serviceDate),
+      journeys: c.journeys.map((j) => j.flightNumber).join(', '),
+    }),
+    pill: t(`scheduling.dashboard.conflictKind.${c.kind}`),
+  }));
 
   const columns: readonly Column<Journey>[] = [
     {
@@ -108,9 +146,9 @@ export default function SchedulingDashboardPage() {
       header: t('scheduling.columns.route'),
       cell: (j) => (
         <div>
-          <p className="text-ink">{j.route.stops.map((s) => s.code).join(' → ')}</p>
-          <p className="text-xs text-ink-secondary">
-            {t(`scheduling.mode.${j.mode}`)}
+          <RouteStops stops={j.route.stops.map((s) => s.code)} className="font-medium text-ink" />
+          <p className="mt-0.5 text-xs text-ink-secondary">
+            <ModeLabel mode={j.mode} label={t(`scheduling.mode.${j.mode}`)} />
             {j.fleet ? ` · ${j.fleet.registration}` : ''}
           </p>
         </div>
@@ -127,7 +165,18 @@ export default function SchedulingDashboardPage() {
       align: 'right',
       cell: (j) => (
         <div>
-          <p>
+          <p
+            className={cn(
+              'font-semibold',
+              j.seats.capacity === null
+                ? 'text-ink'
+                : j.seats.booked >= j.seats.capacity
+                  ? 'text-danger-fg'
+                  : j.seats.booked >= j.seats.capacity * 0.85
+                    ? 'text-warning-fg'
+                    : 'text-success-fg',
+            )}
+          >
             {j.seats.booked} / {j.seats.capacity ?? '—'}
           </p>
           {(j.seats.pending > 0 || j.seats.waitlisted > 0) && (
@@ -169,81 +218,95 @@ export default function SchedulingDashboardPage() {
         title={t('scheduling.dashboard.title')}
         subtitle={t('scheduling.dashboard.subtitle')}
       />
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        <StatCard
-          title={t('scheduling.dashboard.kpi.schedules')}
-          value={k?.activeRecurringSchedules ?? '—'}
-          to="/scheduling/recurring"
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.adhoc')}
-          value={k?.activeAdhocMovements ?? '—'}
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.unassignedFleet')}
-          value={k?.unassignedFleetResources ?? '—'}
-          subline={t('scheduling.dashboard.kpi.nextWeek')}
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.published')}
-          value={k?.movementsPublished ?? '—'}
-          subline={t('scheduling.dashboard.kpi.horizon')}
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.withoutTime')}
-          value={k?.journeysWithoutDepartureTime ?? '—'}
-          to="/scheduling/board"
-          {...((k?.journeysWithoutDepartureTime ?? 0) > 0 ? { tone: 'warning' as const } : {})}
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.needingRoute')}
-          value={k?.requestsNeedingRoute ?? '—'}
-          subline={t('scheduling.dashboard.kpi.needingRouteHint')}
-          to="/scheduling/requests?filter[kind]=no-route"
-          {...((k?.requestsNeedingRoute ?? 0) > 0 ? { tone: 'warning' as const } : {})}
-        />
-        <StatCard
-          title={t('scheduling.dashboard.kpi.compatibility')}
-          value={k?.compatibilityFlags ?? '—'}
-          subline={t('scheduling.dashboard.kpi.compatibilityHint')}
-          {...((k?.compatibilityFlags ?? 0) > 0 ? { tone: 'warning' as const } : {})}
-        />
+      <div className="space-y-5">
+        <KpiGroup label={t('scheduling.dashboard.overview')} className="sm:grid-cols-3">
+          <StatCard
+            title={t('scheduling.dashboard.kpi.schedules')}
+            value={k?.activeRecurringSchedules ?? '—'}
+            icon={<CalendarRange className="size-4" aria-hidden />}
+            to="/scheduling/recurring"
+          />
+          <StatCard
+            title={t('scheduling.dashboard.kpi.adhoc')}
+            value={k?.activeAdhocMovements ?? '—'}
+            icon={<SquarePlus className="size-4" aria-hidden />}
+          />
+          <StatCard
+            title={t('scheduling.dashboard.kpi.published')}
+            value={k?.movementsPublished ?? '—'}
+            subline={t('scheduling.dashboard.kpi.horizon')}
+            icon={<CalendarCheck className="size-4" aria-hidden />}
+          />
+        </KpiGroup>
+        <KpiGroup
+          label={t('scheduling.dashboard.attention')}
+          className="sm:grid-cols-2 xl:grid-cols-4"
+        >
+          <StatCard
+            title={t('scheduling.dashboard.kpi.unassignedFleet')}
+            value={k?.unassignedFleetResources ?? '—'}
+            subline={t('scheduling.dashboard.kpi.nextWeek')}
+            icon={<Plane className="size-4" aria-hidden />}
+            {...warnIf(k?.unassignedFleetResources)}
+          />
+          <StatCard
+            title={t('scheduling.dashboard.kpi.withoutTime')}
+            value={k?.journeysWithoutDepartureTime ?? '—'}
+            icon={<Clock className="size-4" aria-hidden />}
+            to="/scheduling/board"
+            {...warnIf(k?.journeysWithoutDepartureTime)}
+          />
+          <StatCard
+            title={t('scheduling.dashboard.kpi.needingRoute')}
+            value={k?.requestsNeedingRoute ?? '—'}
+            subline={t('scheduling.dashboard.kpi.needingRouteHint')}
+            icon={<Route className="size-4" aria-hidden />}
+            to="/scheduling/requests?filter[kind]=no-route"
+            {...warnIf(k?.requestsNeedingRoute)}
+          />
+          <StatCard
+            title={t('scheduling.dashboard.kpi.compatibility')}
+            value={k?.compatibilityFlags ?? '—'}
+            subline={t('scheduling.dashboard.kpi.compatibilityHint')}
+            icon={<ShieldAlert className="size-4" aria-hidden />}
+            {...warnIf(k?.compatibilityFlags)}
+          />
+        </KpiGroup>
       </div>
-      {(dashboard.data?.conflicts.length ?? 0) > 0 && (
-        <Banner tone="warning" title={t('scheduling.dashboard.conflicts')}>
-          <ul className="list-disc space-y-1 pl-5">
-            {dashboard.data?.conflicts.slice(0, 8).map((c) => (
-              <li key={`${c.kind}-${c.fleet.id}-${c.serviceDate}`}>
-                {t(`scheduling.dashboard.conflict.${c.kind}`, {
-                  fleet: c.fleet.registration,
-                  date: day(c.serviceDate),
-                  journeys: c.journeys.map((j) => j.flightNumber).join(', '),
-                })}
-              </li>
-            ))}
-          </ul>
-        </Banner>
-      )}
+      <AttentionPanel title={t('scheduling.dashboard.conflicts')} items={conflicts} />
       <div className="space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border">
-          <div role="group" aria-label={t('scheduling.dashboard.modes')} className="flex gap-2">
+          <div role="group" aria-label={t('scheduling.dashboard.modes')} className="flex gap-1">
             {/* All first, then every active category by name, with journeys today or not. */}
             {[
-              { code: 'all', name: t('scheduling.dashboard.all') },
+              { code: 'all', name: t('scheduling.dashboard.all'), baseMode: null },
               ...(dashboard.data?.categories ?? []),
-            ].map((c) => (
-              <button
-                key={c.code}
-                type="button"
-                aria-pressed={(params.filters.category ?? 'all') === c.code}
-                className={TAB_CLASS}
-                onClick={() =>
-                  setFilter(listParams, 'category', c.code === 'all' ? undefined : c.code)
-                }
-              >
-                {c.name}
-              </button>
-            ))}
+            ].map((c) => {
+              const active = (params.filters.category ?? 'all') === c.code;
+              return (
+                <button
+                  key={c.code}
+                  type="button"
+                  aria-pressed={active}
+                  className={TAB}
+                  onClick={() =>
+                    setFilter(listParams, 'category', c.code === 'all' ? undefined : c.code)
+                  }
+                >
+                  {c.baseMode && <ModeIcon mode={c.baseMode} className="size-4" />}
+                  {c.name}
+                  <span
+                    className={cn(
+                      'min-w-5 rounded-full px-1.5 text-center text-xs leading-5 font-semibold tabular-nums',
+                      active ? 'bg-primary text-on-primary' : 'bg-surface-muted text-ink-muted',
+                    )}
+                    aria-hidden
+                  >
+                    {countOf(c.code)}
+                  </span>
+                </button>
+              );
+            })}
           </div>
           <div className="pb-2">
             <Field

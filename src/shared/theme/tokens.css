@@ -145,17 +145,24 @@
   --color-scrollbar-thumb-hover: #6b6b6b;
 
   /*
-   * ADNOC Sans is the brand typeface (pp. 11–15) but no licensed web font is available; the
-   * guidelines' system typeface for applications is Arial (p. 14). A reviewer with ADNOC Sans
-   * installed sees it.
+   * Typefaces (ADNOC Energy for Life Visual Guidelines, Typography 1.1–1.5). The licensed fonts
+   * come first in each stack, so a machine or build that has them uses them; the open-source
+   * stand-ins after them (src/fonts.ts) are temporary and not ADNOC-approved substitutes.
+   *  - brand:  ADNOC Sans → Barlow → Arial. Page and section headings, KPI figures.
+   *  - sans:   Arial, the guidelines' system typeface. General application text.
+   *  - serif:  Martina Plantijn → Source Serif 4 → Georgia. Introductory and KPI copy.
+   *  - arabic: Greta Arabic → IBM Plex Sans Arabic → Arial. Arabic text.
    */
-  --font-sans: 'ADNOC Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --font-brand: 'ADNOC Sans', 'Barlow', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --font-sans: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --font-serif: 'Martina Plantijn', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-arabic: 'Greta Arabic', 'IBM Plex Sans Arabic', Arial, sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   --text-2xs: 0.625rem;
   --text-caption: 0.6875rem;
-  --text-menu: 0.8125rem;
+  --text-menu: 0.875rem;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -167,9 +174,11 @@
    * Application scale (the guidelines' hierarchy, pp. 16–22, adapted to dense screens): page
    * title 22, card title 16, body and table 14, labels 13, table headers and helper text 12.
    */
-  --text-title: 1.375rem;
+  --text-title: 1.75rem;
+  --text-section: 1.25rem;
+  --text-intro: 1rem;
   --text-label: 0.8125rem;
-  --text-kpi: 1.75rem;
+  --text-kpi: 2rem;
   --text-kiosk: 1.375rem;
   --font-weight-regular: 400;
   --font-weight-medium: 500;

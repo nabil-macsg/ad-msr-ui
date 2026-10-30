@@ -93,7 +93,7 @@ export default function MapPage() {
                 </div>
                 <StatusPill tone={statusTone(site.status)}>{site.status}</StatusPill>
               </div>
-              <p className="text-kpi leading-none font-semibold text-ink">{site.pob}</p>
+              <p className="type-kpi text-ink">{site.pob}</p>
               <p className="text-xs text-ink-muted">
                 {site.pob} / {site.limit} · POB Limit: {utilisation(site)}% utilization
               </p>

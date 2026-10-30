@@ -1,8 +1,10 @@
 import { useQueryClient } from '@tanstack/react-query';
+import { Hourglass, type LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { setFilter } from '../modules/administration/masters/filters';
 import { useListParams } from '../shared/lists/list-params';
+import { AttentionPanel } from '../shared/ui/attention-panel';
 import { Banner } from '../shared/ui/banner';
 import { Button } from '../shared/ui/button';
 import { type Column, DataTable } from '../shared/ui/data-table';
@@ -14,12 +16,13 @@ import { StatCard } from '../shared/ui/stat-card';
 import { StatusPill } from '../shared/ui/status-pill';
 import type { Tone } from '../shared/ui/tone';
 import { BOOKING_MOVES, type DemoRow, type DemoValue } from '../mock/data/modules';
+import { ModeLabel, RouteStops } from '../shared/ui/transport';
 import { changeBookingStatus, datasetKey, useDataset, useSummary } from './demo-api';
 
 export interface DemoColumn {
   readonly field: string;
   readonly header: string;
-  readonly kind?: 'text' | 'mono' | 'number' | 'percent' | 'date' | 'status';
+  readonly kind?: 'text' | 'mono' | 'number' | 'percent' | 'date' | 'status' | 'mode' | 'route';
   readonly sortable?: boolean;
 }
 
@@ -36,6 +39,16 @@ export interface DemoScreen {
   readonly defaultSort?: { field: string; dir: 'asc' | 'desc' };
   /** Bookings can change status from the drawer. */
   readonly statusActions?: boolean;
+  /** An icon per KPI card, in the summary's order. */
+  readonly kpiIcons?: readonly LucideIcon[];
+  /** Rows that need a look, listed in a collapsible panel above the table. */
+  readonly attention?: {
+    readonly title: string;
+    readonly filters: Readonly<Record<string, string>>;
+    readonly sort: string;
+    /** The line under the row's label. */
+    readonly detail: (row: DemoRow) => string;
+  };
 }
 
 const TONE: Readonly<Record<string, Tone>> = {
@@ -73,6 +86,8 @@ function show(value: DemoValue, kind: DemoColumn['kind'] = 'text') {
     });
   }
   if (kind === 'mono') return <span className="font-mono text-sm">{String(value)}</span>;
+  if (kind === 'mode') return <ModeLabel mode={String(value)} />;
+  if (kind === 'route') return <RouteStops stops={String(value)} />;
   return String(value);
 }
 
@@ -85,6 +100,18 @@ export function DemoModulePage({ screen }: { screen: DemoScreen }) {
   const list = useListParams(screen.defaultSort ? { sort: screen.defaultSort } : {});
   const rows = useDataset(screen.dataset, list.apiQuery);
   const summary = useSummary(screen.dataset);
+  const attention = useDataset(
+    screen.dataset,
+    {
+      page: 1,
+      pageSize: 50,
+      sort: screen.attention?.sort ?? '',
+      ...Object.fromEntries(
+        Object.entries(screen.attention?.filters ?? {}).map(([k, v]) => [`filter[${k}]`, v]),
+      ),
+    },
+    screen.attention !== undefined,
+  );
   const [viewing, setViewing] = useState<DemoRow | null>(null);
 
   const columns: Column<DemoRow>[] = screen.columns.map((c) => ({
@@ -99,15 +126,34 @@ export function DemoModulePage({ screen }: { screen: DemoScreen }) {
     <div className="space-y-5">
       <PageHeader title={screen.title} subtitle={screen.subtitle} />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {(summary.data ?? []).map((k) => (
-          <StatCard
-            key={k.label}
-            title={k.label}
-            value={k.value}
-            {...(k.subline ? { subline: k.subline } : {})}
-          />
-        ))}
+        {(summary.data ?? []).map((k, i) => {
+          const Icon = screen.kpiIcons?.[i];
+          return (
+            <StatCard
+              key={k.label}
+              title={k.label}
+              value={k.value}
+              {...(k.subline ? { subline: k.subline } : {})}
+              {...(k.tone ? { tone: k.tone } : {})}
+              {...(Icon ? { icon: <Icon className="size-4" aria-hidden /> } : {})}
+            />
+          );
+        })}
       </div>
+      {screen.attention && (
+        <AttentionPanel
+          title={screen.attention.title}
+          items={(attention.data?.items ?? []).map((row) => ({
+            key: row.id,
+            icon: Hourglass,
+            tone: TONE[String(row.status)] ?? 'neutral',
+            text: screen.label(row),
+            detail: screen.attention?.detail(row),
+            pill: String(row.status),
+            onClick: () => setViewing(row),
+          }))}
+        />
+      )}
       <FilterBar
         q={list.params.q}
         onQChange={(q) => list.update({ q })}

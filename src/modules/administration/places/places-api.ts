@@ -123,19 +123,14 @@ export const installationsResource: MasterResource<Installation> = {
   queryKey: [...INSTALLATIONS_KEY],
   path: '/api/v1/masters/installations',
   list: async (query) =>
-    unwrap(await api.GET('/api/v1/masters/installations', { params: { query } })) as {
-      items: Installation[];
-      total: number;
-      page: number;
-      pageSize: number;
-    },
+    unwrap(await api.GET('/api/v1/masters/installations', { params: { query } })),
   deactivate: async (record, reason) =>
     unwrap(
       await api.POST('/api/v1/masters/installations/{id}/deactivate', {
         params: { path: { id: record.id }, header: ifMatch(record.version) },
         body: { reason },
       }),
-    ) as Installation,
+    ),
   // Reactivation goes through activation, which checks the required values again.
   reactivate: async (record, reason) => activateInstallation(record, reason),
   remove: async (record, reason) => {
@@ -165,9 +160,9 @@ export async function saveInstallation(
         params: { path: { id: record.id }, header: ifMatch(record.version) },
         body: update,
       }),
-    ) as Installation;
+    );
   }
-  return unwrap(await api.POST('/api/v1/masters/installations', { body: create })) as Installation;
+  return unwrap(await api.POST('/api/v1/masters/installations', { body: create }));
 }
 
 export async function activateInstallation(
@@ -179,7 +174,7 @@ export async function activateInstallation(
       params: { path: { id: record.id }, header: ifMatch(record.version) },
       body: reason ? { reason } : {},
     }),
-  ) as Installation;
+  );
 }
 
 export async function syncInstallationCoordinates(record: Installation): Promise<Installation> {
@@ -187,7 +182,7 @@ export async function syncInstallationCoordinates(record: Installation): Promise
     await api.POST('/api/v1/masters/installations/{id}/coordinates/sync', {
       params: { path: { id: record.id }, header: ifMatch(record.version) },
     }),
-  ) as Installation;
+  );
 }
 
 export async function setInstallationServiceability(
@@ -199,7 +194,7 @@ export async function setInstallationServiceability(
       params: { path: { id: record.id }, header: ifMatch(record.version) },
       body: change,
     }),
-  ) as Installation;
+  );
 }
 
 export function useInstallationOptions() {

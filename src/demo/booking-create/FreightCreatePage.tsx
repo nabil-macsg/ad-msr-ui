@@ -120,7 +120,10 @@ export default function FreightCreatePage() {
               value={form.cargoType}
               error={errors.cargoType}
               onChange={(e) =>
-                set({ cargoType: e.target.value, hazmat: form.hazmat || e.target.value === 'HAZMAT' })
+                set({
+                  cargoType: e.target.value,
+                  hazmat: form.hazmat || e.target.value === 'HAZMAT',
+                })
               }
             >
               <option value="">— Select type —</option>
@@ -228,7 +231,7 @@ export default function FreightCreatePage() {
                 onChange={(e) => set({ requestedDate: e.target.value })}
               />
               <fieldset className="space-y-1.5">
-                <legend className="text-label text-ink-secondary after:ml-0.5 after:text-danger-fg after:content-['*']">
+                <legend className="text-label text-ink-secondary after:ms-0.5 after:text-danger-fg after:content-['*']">
                   Priority
                 </legend>
                 <div className="flex gap-2">
@@ -247,7 +250,7 @@ export default function FreightCreatePage() {
             </div>
           </section>
           <section className={card}>
-            <h2 className="text-base font-semibold text-ink after:ml-0.5 after:text-danger-fg after:content-['*']">
+            <h2 className="text-base font-semibold text-ink after:ms-0.5 after:text-danger-fg after:content-['*']">
               Transport Mode
             </h2>
             <div className="grid gap-3 sm:grid-cols-3">
@@ -260,7 +263,7 @@ export default function FreightCreatePage() {
                     aria-pressed={active}
                     onClick={() => set({ transportMode: m.name })}
                     className={cn(
-                      'rounded-lg border p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-primary',
+                      'rounded-lg border p-4 text-start transition-colors hover:border-primary/60 focus-visible:outline-2 focus-visible:outline-primary',
                       active ? 'border-primary bg-primary-subtle' : 'border-border bg-card',
                     )}
                   >
@@ -280,7 +283,7 @@ export default function FreightCreatePage() {
         <div className="space-y-5">
           <section className={card}>
             <h2 className="text-base font-semibold text-ink">Responsible Person</h2>
-            <p className="text-label text-ink-secondary after:ml-0.5 after:text-danger-fg after:content-['*']">
+            <p className="text-label text-ink-secondary after:ms-0.5 after:text-danger-fg after:content-['*']">
               Recorded Against
             </p>
             {person ? (
@@ -335,15 +338,21 @@ export default function FreightCreatePage() {
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between gap-2">
                 <span className="text-ink-muted">{k}</span>
-                <span className="text-right text-ink">{v}</span>
+                <span className="text-end text-ink">{v}</span>
               </div>
             ))}
             <div className="flex justify-between">
               <span className="text-ink-muted">Priority</span>
-              <StatusPill tone={PRIORITY_TONE[form.priority] ?? 'neutral'}>{form.priority}</StatusPill>
+              <StatusPill tone={PRIORITY_TONE[form.priority] ?? 'neutral'}>
+                {form.priority}
+              </StatusPill>
             </div>
           </section>
-          <Button block disabled={blockers.length > 0 || submit.isPending} onClick={() => submit.mutate()}>
+          <Button
+            block
+            disabled={blockers.length > 0 || submit.isPending}
+            onClick={() => submit.mutate()}
+          >
             Submit Freight Booking
           </Button>
           {blockers.length > 0 && (
@@ -409,7 +418,12 @@ function PersonPicker({
       ),
     },
     { id: 'department', header: 'Department', sortField: 'department', cell: (p) => p.department },
-    { id: 'designation', header: 'Designation', sortField: 'designation', cell: (p) => p.designation },
+    {
+      id: 'designation',
+      header: 'Designation',
+      sortField: 'designation',
+      cell: (p) => p.designation,
+    },
     {
       id: 'company',
       header: 'Company',
@@ -423,7 +437,12 @@ function PersonPicker({
     },
   ];
   return (
-    <Modal open={open} onOpenChange={onOpenChange} title="Who is this cargo recorded against?" size="lg">
+    <Modal
+      open={open}
+      onOpenChange={onOpenChange}
+      title="Who is this cargo recorded against?"
+      size="lg"
+    >
       <div className="space-y-3">
         <Input
           type="search"

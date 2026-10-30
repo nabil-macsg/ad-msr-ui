@@ -39,7 +39,10 @@
     "delegation": "Delegation",
     "changePassword": "Change password",
     "mainNavigation": "Main navigation",
-    "adminNavigation": "Administration navigation"
+    "adminNavigation": "Administration navigation",
+    "switchLanguage": "Switch to Arabic",
+    "panelTitle": "Alerts & Notifications",
+    "viewAll": "View all notifications"
   },
   "signIn": {
     "brand": "ADNOC Offshore · MASAR",
@@ -262,6 +265,10 @@
       "empty": "No changes recorded yet.",
       "showMore": "Show more",
       "onBehalfOf": "on behalf of {{name}}"
+    },
+    "attention": {
+      "showAll": "Show all {{count}}",
+      "showFewer": "Show fewer"
     }
   },
   "masters": {
@@ -2477,10 +2484,16 @@
         "needingRoute": "Requests needing a route",
         "needingRouteHint": "From today: no master route goes there"
       },
+      "overview": "Overview",
+      "attention": "Needs attention",
       "conflicts": "Fleet conflicts in the next 14 days",
       "conflict": {
         "overlap": "{{fleet}} on {{date}}: {{journeys}} at the same time",
         "maintenance": "{{fleet}} is under maintenance, with {{journeys}} on {{date}}"
+      },
+      "conflictKind": {
+        "overlap": "Overlap",
+        "maintenance": "Maintenance"
       },
       "modes": "Modes",
       "all": "All",

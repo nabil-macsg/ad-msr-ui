@@ -15,7 +15,7 @@ export function AdminSidebar() {
     <nav
       aria-label={t('shell.adminNavigation')}
       data-sidebar
-      className="sticky top-[var(--preview-bar-h)] z-30 flex h-[calc(100vh-var(--preview-bar-h))] w-sidebar shrink-0 flex-col border-r border-nav-border bg-nav text-on-nav"
+      className="sticky top-[var(--preview-bar-h)] z-30 flex h-[calc(100vh-var(--preview-bar-h))] w-sidebar shrink-0 flex-col border-e border-nav-border bg-nav text-on-nav"
     >
       <Brand />
       <div className="shrink-0 px-2 pt-3">

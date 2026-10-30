@@ -186,7 +186,9 @@ function ScheduleModal({
 }) {
   const reports = useReportList<ReportDefinitionRow>('definitions', { sort: 'name:asc' });
   const [draft, setDraft] = useState<Draft>(row ?? EMPTY);
-  const [errors, setErrors] = useState<Partial<Record<'reportId' | 'recipients', string | undefined>>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<'reportId' | 'recipients', string | undefined>>
+  >({});
   const [failure, setFailure] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const set = (patch: Partial<Draft>) => setDraft((d) => ({ ...d, ...patch }));
@@ -269,7 +271,7 @@ function ScheduleModal({
           aria-invalid={errors.recipients ? true : undefined}
           aria-describedby="schedule-recipients-hint"
         >
-          <legend className="text-label text-ink-secondary after:ml-0.5 after:text-danger-fg after:content-['*']">
+          <legend className="text-label text-ink-secondary after:ms-0.5 after:text-danger-fg after:content-['*']">
             Recipients
           </legend>
           <div className="flex flex-wrap gap-4">

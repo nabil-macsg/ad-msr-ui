@@ -129,7 +129,7 @@ export default function FleetPage() {
               <span>
                 {f.effective.passengerCapacity ?? '—'}
                 {f.overrides.passengerCapacity !== null && (
-                  <span className="ml-1 text-xs text-ink-secondary">
+                  <span className="ms-1 text-xs text-ink-secondary">
                     ({t('resources.fleet.own')})
                   </span>
                 )}
@@ -609,7 +609,7 @@ function FleetDetails({
           <Detail label={t('resources.fleet.form.capacity')}>
             {unit.effective.passengerCapacity ?? t('resources.fleet.notRecorded')}
             {unit.overrides.passengerCapacity !== null && (
-              <span className="ml-1 text-xs text-ink-secondary">({t('resources.fleet.own')})</span>
+              <span className="ms-1 text-xs text-ink-secondary">({t('resources.fleet.own')})</span>
             )}
           </Detail>
         </dl>

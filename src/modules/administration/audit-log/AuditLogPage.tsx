@@ -219,7 +219,7 @@ export default function AuditLogPage() {
         <div className="overflow-x-auto rounded-lg border border-border bg-card shadow-card">
           <table className="w-full text-sm">
             <caption className="sr-only">{t('auditLog.title')}</caption>
-            <thead className="bg-surface-muted text-left text-xs uppercase tracking-wide text-ink-secondary">
+            <thead className="bg-surface-muted text-start text-xs uppercase tracking-wide text-ink-secondary">
               <tr>
                 {(['when', 'module', 'action', 'record', 'who', 'change', 'source'] as const).map(
                   (c) => (

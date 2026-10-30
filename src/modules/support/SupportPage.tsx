@@ -67,7 +67,7 @@ export default function SupportPage() {
                 <table className="w-full text-sm">
                   <caption className="sr-only">{t('support.contacts.title')}</caption>
                   <thead>
-                    <tr className="text-left text-ink-secondary">
+                    <tr className="text-start text-ink-secondary">
                       <th scope="col" className="py-1 font-medium">
                         {t('support.contacts.location')}
                       </th>

@@ -22,22 +22,15 @@ export function StatCard({ title, value, subline, tone, icon, to }: StatCardProp
       {icon && (
         <span
           className={cn(
-            'absolute top-3 right-3 flex size-8 items-center justify-center rounded-lg bg-primary-subtle text-primary',
+            'absolute top-3 end-3 flex size-8 items-center justify-center rounded-lg bg-primary-subtle text-primary',
             tone && TONE_TEXT[tone],
           )}
         >
           {icon}
         </span>
       )}
-      <p className={cn('text-label font-medium text-ink-secondary', icon && 'pr-10')}>{title}</p>
-      <p
-        className={cn(
-          'mt-2 text-kpi leading-none font-semibold tracking-tight text-ink tabular-nums',
-          tone && TONE_TEXT[tone],
-        )}
-      >
-        {value}
-      </p>
+      <p className={cn('type-kpi-label text-ink-secondary', icon && 'pe-10')}>{title}</p>
+      <p className={cn('type-kpi mt-2 text-ink', tone && TONE_TEXT[tone])}>{value}</p>
       {subline && <p className="mt-2 text-xs text-ink-muted">{subline}</p>}
     </>
   );

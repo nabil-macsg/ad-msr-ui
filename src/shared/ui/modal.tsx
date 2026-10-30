@@ -48,7 +48,7 @@ export function Modal({
               )}
             </div>
             <Dialog.Close
-              className="-mr-1 rounded-lg p-1 text-ink-muted transition-colors hover:text-ink-secondary focus-visible:outline-2 focus-visible:outline-primary"
+              className="-me-1 rounded-lg p-1 text-ink-muted transition-colors hover:text-ink-secondary focus-visible:outline-2 focus-visible:outline-primary"
               aria-label={t('ui.close')}
             >
               <X className="size-[18px]" aria-hidden />

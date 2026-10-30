@@ -33,7 +33,7 @@ import {
 
 const MODULE_LABEL = new Map<string, string>(MODULES.map((m) => [m.key, m.label]));
 const CODE = /^[A-Za-z][A-Za-z0-9]*(-[A-Za-z0-9]+)*$/;
-const TH = 'px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-ink-secondary';
+const TH = 'px-3 py-2 text-start text-xs font-semibold uppercase tracking-wide text-ink-secondary';
 
 function ContextSelect({
   contexts,

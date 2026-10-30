@@ -44,7 +44,7 @@ function Card({
     <section aria-labelledby={id} className="space-y-3 rounded-xl border border-border bg-card p-4">
       <div className="flex items-center justify-between gap-3">
         <h2 id={id} className="text-base font-semibold text-ink">
-          {title} <span className="ml-1 text-sm font-normal text-ink-muted">{count}</span>
+          {title} <span className="ms-1 text-sm font-normal text-ink-muted">{count}</span>
         </h2>
         {action && (
           <Button asChild variant="secondary">

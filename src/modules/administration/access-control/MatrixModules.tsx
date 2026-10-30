@@ -61,7 +61,7 @@ export function MatrixModules({
                   <tr className="border-b border-border bg-surface-muted/60">
                     <th
                       scope="col"
-                      className="px-4 py-2 text-left text-xs font-semibold text-ink-secondary uppercase"
+                      className="px-4 py-2 text-start text-xs font-semibold text-ink-secondary uppercase"
                     >
                       {t('matrix.page')}
                     </th>
@@ -81,9 +81,9 @@ export function MatrixModules({
                     const granted = draft.pages[page.key] ?? [];
                     return (
                       <tr key={page.key} className="border-b border-border last:border-0">
-                        <th scope="row" className="px-4 py-2 text-left font-normal text-ink">
+                        <th scope="row" className="px-4 py-2 text-start font-normal text-ink">
                           <span className="font-medium">{page.label}</span>
-                          <span className="ml-2 text-xs text-ink-muted">
+                          <span className="ms-2 text-xs text-ink-muted">
                             {page.area}
                             {page.channel === 'mobile' && ` · ${t('matrix.app')}`}
                           </span>

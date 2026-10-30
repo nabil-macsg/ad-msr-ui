@@ -23,7 +23,7 @@ export function Detail({ label, children }: { label: string; children: ReactNode
   return (
     <div className="flex justify-between gap-4 border-b border-border py-1.5 text-sm last:border-b-0">
       <span className="text-ink-muted">{label}</span>
-      <span className="text-right text-ink">{children}</span>
+      <span className="text-end text-ink">{children}</span>
     </div>
   );
 }
@@ -56,7 +56,7 @@ export function PersonChoice({
     </>
   );
   const box = cn(
-    'flex w-full cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-left text-sm transition-colors',
+    'flex w-full cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-start text-sm transition-colors',
     selected ? 'border-primary bg-primary-subtle' : 'border-border hover:bg-surface-muted',
   );
   return radio ? (

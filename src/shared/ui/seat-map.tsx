@@ -41,7 +41,7 @@ export function SeatMap({
       <div className="space-y-2">
         {Array.from({ length: layout.rows }, (_, i) => i + 1).map((row) => (
           <div key={row} className="flex items-center gap-2">
-            <span className="w-5 text-right text-xs text-ink-muted" aria-hidden>
+            <span className="w-5 text-end text-xs text-ink-muted" aria-hidden>
               {row}
             </span>
             {layout.columns.map((column, index) => {

@@ -515,7 +515,7 @@ function TemplatesEditor({
       ))}
       {live.data && live.data.problems.length > 0 && (
         <Banner tone="warning">
-          <ul className="list-disc space-y-1 pl-4">
+          <ul className="list-disc space-y-1 ps-4">
             {live.data.problems.map((p) => (
               <li key={p}>{p}</li>
             ))}

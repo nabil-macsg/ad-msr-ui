@@ -13,12 +13,12 @@ export function PageHeader({
   return (
     <header className="flex flex-wrap items-start justify-between gap-4">
       <div className="min-w-0 flex-1">
-        <h1 id="page-title" className="text-title leading-tight font-semibold text-ink">
+        <h1 id="page-title" className="type-page-title text-ink">
           {title}
         </h1>
-        <p className="mt-1 max-w-4xl text-sm text-ink-muted">{subtitle}</p>
+        <p className="type-intro mt-1.5 max-w-4xl text-ink-secondary">{subtitle}</p>
       </div>
-      {actions && <div className="ml-auto flex shrink-0 items-center gap-2">{actions}</div>}
+      {actions && <div className="ms-auto flex shrink-0 items-center gap-2">{actions}</div>}
     </header>
   );
 }

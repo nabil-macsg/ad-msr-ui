@@ -26,9 +26,7 @@ import {
   useRoleMatrix,
 } from './matrix-api';
 import { bodyOf, type Draft, draftOf, sameDraft } from './matrix-draft';
-
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary data-[state=active]:border-primary data-[state=active]:text-ink';
+import { TAB, TAB_LIST } from '../../../shared/ui/tab-styles';
 
 type Notice = { tone: 'success' | 'danger'; text: string; reload?: boolean } | null;
 
@@ -200,14 +198,14 @@ function RoleEditor({
         <Banner tone="warning">{t(`matrix.readOnly.${matrix.readOnlyReason}`)}</Banner>
       )}
       <Tabs.Root defaultValue="pages" className="space-y-4">
-        <Tabs.List className="flex gap-2 border-b border-border" aria-label={matrix.role.name}>
-          <Tabs.Trigger value="pages" className={TAB_CLASS}>
+        <Tabs.List className={TAB_LIST} aria-label={matrix.role.name}>
+          <Tabs.Trigger value="pages" className={TAB}>
             {t('matrix.tabs.pages')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="capabilities" className={TAB_CLASS}>
+          <Tabs.Trigger value="capabilities" className={TAB}>
             {t('matrix.tabs.capabilities')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="history" className={TAB_CLASS}>
+          <Tabs.Trigger value="history" className={TAB}>
             {t('matrix.tabs.history')}
           </Tabs.Trigger>
         </Tabs.List>

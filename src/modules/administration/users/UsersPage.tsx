@@ -25,13 +25,12 @@ import {
   useUserKpis,
   useUsers,
 } from './users-api';
+import { TAB, TAB_LIST } from '../../../shared/ui/tab-styles';
 
 const SOURCES = ['sap', 'fieldglass', 'external_contact', 'manual_exception'] as const;
 const STATUSES = ['invited', 'active', 'deactivated'] as const;
 /** The list also carries each person's approval tier (demo mock; absent on older payloads). */
 type UserRow = UserSummary & { approvalTier?: number | null };
-const TAB_CLASS =
-  'min-h-touch border-b-2 border-transparent px-4 text-sm font-semibold text-ink-secondary data-[state=active]:border-primary data-[state=active]:text-ink';
 
 /**
  * Users (spec 10 §2.1, BRD D.2.1.1). There is no "New user": users arrive from the source
@@ -192,11 +191,11 @@ export default function UsersPage() {
       <SyncStatus canSync={has('edit')} />
 
       <Tabs.Root defaultValue="directory" className="space-y-4">
-        <Tabs.List className="flex gap-2 border-b border-border" aria-label={t('users.title')}>
-          <Tabs.Trigger value="directory" className={TAB_CLASS}>
+        <Tabs.List className={TAB_LIST} aria-label={t('users.title')}>
+          <Tabs.Trigger value="directory" className={TAB}>
             {t('users.tabs.directory')}
           </Tabs.Trigger>
-          <Tabs.Trigger value="analytics" className={TAB_CLASS}>
+          <Tabs.Trigger value="analytics" className={TAB}>
             {t('users.tabs.analytics')}
           </Tabs.Trigger>
         </Tabs.List>
